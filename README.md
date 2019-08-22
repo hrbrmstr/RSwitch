@@ -1,3 +1,8 @@
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) 
+[![Signed by](https://img.shields.io/badge/Keybase-Verified-brightgreen.svg)](https://keybase.io/hrbrmstr) 
+![Minimum macOS Target](https://img.shields.io/badge/macOS-10.14%2B-blue) 
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+
 # RSwitch
 
 Change 'Current' R version on macOS
@@ -40,6 +45,14 @@ You should really build this yourself since installing random binaries from the 
 - File an issue claiming an item (on any social coding site you like)
 - Ensure you have [signed commits](https://git-scm.com/book/ms/v2/Git-Tools-Signing-Your-Work)
 - File a PR or submit a patch via email (bob at rud dot is)
+
+This codebase has been uploaded to the following authoritative social coding sites:
+
+- [Gitea](https://git.rud.is/hrbrmstr/RSwitch) (self-hosted)
+- [SourceHut](https://git.sr.ht/~hrbrmstr/RSwitch)
+- [GitLab](https://gitlab.com/hrbrmstr/RSwitch)
+- [BitBucket](https://bitbucket.com/hrbrmstr/RSwitch)
+- [GitHub](https://github.com/hrbrmstr/RSwitch)
 
 ## TODO
 
