@@ -123,6 +123,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   @objc func download_latest_rstudio(_ sender: NSMenuItem?) {
     
     let url = URL(string: "https://dailies.rstudio.com/rstudio/oss/mac/")
+    
     do {
       let html = try String.init(contentsOf: url!)
       let document = try SwiftSoup.parse(html)
@@ -142,23 +143,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                           
               try FileManager.default.copyItem(at: tempURL, to: dlfile)
               NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
+              
+              DispatchQueue.main.async { infoAlert("Download of latest RStudio daily successful.") }
 
             } catch {
-              //infoAlert("Error downloading and saving file.")
+              DispatchQueue.main.async { infoAlert("Error downloading and saving latest RStudio daily.") }
             }
             
           } else {
-           // infoAlert("File not found.")
+            DispatchQueue.main.async { infoAlert("Latest RStudio daily not found.") }
           }
         } else {
-          //infoAlert("Error downloading file.")
+          DispatchQueue.main.async { infoAlert("Error downloading latest RStudio daily.") }
         }
       }
       
       task.resume()
 
     } catch {
-      // error
+      DispatchQueue.main.async { infoAlert("Error downloading latrest RStudio daily.") }
     }
     
   }
@@ -179,16 +182,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         
             try FileManager.default.copyItem(at: tempURL, to: dlfile)
             NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
+            
+            DispatchQueue.main.async { infoAlert("Download of latest r-devel successful.") }
+
 
           } catch {
-            //infoAlert("Error downloading and saving file.")
+            DispatchQueue.main.async { infoAlert("Error downloading and saving latest r-devel .") }
           }
           
         } else {
-         // infoAlert("File not found.")
+          DispatchQueue.main.async { infoAlert("Latest r-devel file not found.") }
         }
       } else {
-        //infoAlert("Error downloading file.")
+        DispatchQueue.main.async { infoAlert("Error downloading latest r-devel .") }
       }
     }
 
