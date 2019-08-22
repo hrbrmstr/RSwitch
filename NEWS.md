@@ -1,6 +1,7 @@
 # 1.2.0
 
 - numbered key equivalents (up to 9)
+- added shortcuts to various useful macOS R resources
 
 # 1.1.0
 

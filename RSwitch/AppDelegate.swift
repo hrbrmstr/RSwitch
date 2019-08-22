@@ -84,6 +84,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       
   }
   
+  // browse macOS dev page
+  @objc func browse_r_macos_dev_page(_ sender: NSMenuItem?) {
+    let url = URL(string: "https://mac.r-project.org/")!
+    NSWorkspace.shared.open(url)
+  }
+  
+  // browse macOS dev page
+  @objc func browse_r_macos_cran_page(_ sender: NSMenuItem?) {
+    let url = URL(string: "https://cran.rstudio.org/bin/macosx/")!
+    NSWorkspace.shared.open(url)
+  }
+  
+  // browse macOS dev page
+  @objc func browse_r_sig_mac_page(_ sender: NSMenuItem?) {
+    let url = URL(string: "https://stat.ethz.ch/pipermail/r-sig-mac/")!
+    NSWorkspace.shared.open(url)
+  }
+  
+  // browse RStudio macOS Dailies
+  @objc func browse_rstudio_mac_dailies_page(_ sender: NSMenuItem?) {
+    let url = URL(string: "https://dailies.rstudio.com/rstudio/oss/mac/")!
+    NSWorkspace.shared.open(url)
+  }
+
   // Show about dialog
   @objc func about(_ sender: NSMenuItem?) {
     abtController.showWindow(self)
@@ -156,6 +180,13 @@ extension AppDelegate: NSMenuDelegate {
       quitAlert("Failed to list contents of R framework directory. You either do not have R installed or have incorrect permissions set on " + macos_r_framework_dir)
     }
     
+    // Add items to open variosu R for macOS pages
+    menu.addItem(NSMenuItem.separator())
+    menu.addItem(NSMenuItem(title: NSLocalizedString("Open R for macOS Developers Page…", comment: "Open macOS Dev Page item"), action: #selector(browse_r_macos_dev_page), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: NSLocalizedString("Open R for macOS CRAN Page…", comment: "Open macOS CRAN Page item"), action: #selector(browse_r_macos_cran_page), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: NSLocalizedString("Open R-SIG-Mac Archives Page…", comment: "Open R-SIG-Mac Page item"), action: #selector(browse_r_sig_mac_page), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: NSLocalizedString("Open RStudio macOS Dailies Page…", comment: "Open RStudio macOS Dailies Page item"), action: #selector(browse_rstudio_mac_dailies_page), keyEquivalent: ""))
+
     // Add a About item
     menu.addItem(NSMenuItem.separator())
     menu.addItem(NSMenuItem(title: NSLocalizedString("About RSwitch…", comment: "About menu item"), action: #selector(about), keyEquivalent: ""))
