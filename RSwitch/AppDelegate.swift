@@ -84,7 +84,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       
   }
   
-  //
+  // Show about dialog
   @objc func about(_ sender: NSMenuItem?) {
     abtController.showWindow(self)
   }
@@ -120,9 +120,10 @@ extension AppDelegate: NSMenuDelegate {
       
       // retrieves all versions (excludes hidden files and the Current alias
       let versions = entries.sorted().filter { !($0.hasPrefix(".")) && !($0 == "Current") }
-            
+      let hasCurrent = entries.filter { $0 == "Current" }
+      
       // if there was a Current alias (prbly shld alert if not)
-      if ((entries.filter { $0 == "Current" })[0] == "Current") {
+      if (hasCurrent.count > 0) {
       
         // get where Current points to
         let furl = NSURL(fileURLWithPath: macos_r_framework_dir + "/" + "Current")
@@ -138,12 +139,15 @@ extension AppDelegate: NSMenuDelegate {
 
         // populate menu items with all installed R versions, ensuring we
         // put a checkbox next to the one that is Current
+        var i = 1
         for version in versions {
-          let item = NSMenuItem(title: version, action: #selector(handleSwitch), keyEquivalent: "")
+          let keynum = (i < 10) ? String(i) : ""
+          let item = NSMenuItem(title: version, action: #selector(handleSwitch), keyEquivalent: keynum)
           item.isEnabled = true
           if (version == targetPath) { item.state = NSControl.StateValue.on }
           item.representedObject = version
           menu.addItem(item)
+          i = i + 1
         }
 
       }
