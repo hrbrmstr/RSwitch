@@ -26,6 +26,10 @@ public func quitAlert(_ message: String, _ extra: String? = nil) {
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
+  var mainStoryboard: NSStoryboard!
+  var abtController: NSWindowController!
+
+
   // Where the official R installs go
   let macos_r_framework_dir = "/Library/Frameworks/R.framework/Versions"
   
@@ -34,7 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   let statusMenu = NSMenu()
   
   let quitItem = NSMenuItem(title: NSLocalizedString("Quit", comment: "Quit menu item"), action: #selector(NSApp.terminate), keyEquivalent: "q")
-  
+
   override init() {
     super.init()
     
@@ -43,10 +47,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // dial by IconMark from the Noun Project
     statusItem.button?.image =  #imageLiteral(resourceName: "RSwitch")
     statusItem.menu = statusMenu
+    
+    mainStoryboard = NSStoryboard(name: "Main", bundle: nil)
+    abtController = (mainStoryboard.instantiateController(withIdentifier: "aboutPanelController") as! NSWindowController)
+    
   }
   
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-    // Insert code here to initialize app
   }
     
   func applicationWillTerminate(_ aNotification: Notification) {
@@ -77,6 +84,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       
   }
   
+  //
+  @objc func about(_ sender: NSMenuItem?) {
+    abtController.showWindow(self)
+  }
+
   // Show the framework dir in a new Finder window
   @objc func openFrameworksDir(_ sender: NSMenuItem?) {
     NSWorkspace.shared.openFile(macos_r_framework_dir, withApplication: "Finder")
@@ -140,6 +152,10 @@ extension AppDelegate: NSMenuDelegate {
       quitAlert("Failed to list contents of R framework directory. You either do not have R installed or have incorrect permissions set on " + macos_r_framework_dir)
     }
     
+    // Add a About item
+    menu.addItem(NSMenuItem.separator())
+    menu.addItem(NSMenuItem(title: NSLocalizedString("About RSwitch…", comment: "About menu item"), action: #selector(about), keyEquivalent: ""))
+
     // Add a Quit item
     menu.addItem(NSMenuItem.separator())
     menu.addItem(quitItem)

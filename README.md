@@ -60,7 +60,7 @@ This codebase has been uploaded to the following authoritative social coding sit
 - Add Cmd-1, -2, -3, (etc) key equivalents in the menu bar for fast selection (one reason why ^^ might not be a good idea)
 - Clean up the icon (which is "dial" by IconMark from the Noun Project). This means having it look better in the menu bar in dark/light mode _including_ the highlight mode for it. Possibly means getting a visible "R" on it somewhere.
 - Better/prettier alerting (which also means more sanity checks)
-- Add an "about" box (mostly to ensure IconMark gets more credit than a comment and README)
+- <strike>Add an "about" box (mostly to ensure IconMark gets more credit than a comment and README)</strike>
 - (add your own TODO suggestions via PR)
 
 ## License
