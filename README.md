@@ -19,6 +19,8 @@ After launching the app, there will be a new menu item in the main macOS menubar
 
 The checkmarked version is the default (i.e. the one `Current` points to) and if you select any other version the alias will be changed. You can also launch a new Finder window that opens to the R frameworks directory or quit the app.
 
+There are also links to various useful R macOS resources plus two menu items that will download the latest RStudio macOS daily or the latest macOS r-devel tarball. Neither shows a progress dialog but will download the respective files to `~/Downloads` and both open the Finder to that directory as well as display an alert with any succes or failure. NOTE: that you will need to delete old versions of r-devel from `~/Downloads` before re-downloading (this behavior might be changed in future releases).
+
 ## Why?
 
 - I needed to brush up on Swift 5 coding
