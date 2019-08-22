@@ -1,4 +1,5 @@
 import Cocoa
+import SwiftSoup
 
 // Show an informational alert
 public func infoAlert(_ message: String, _ extra: String? = nil, style: NSAlert.Style = NSAlert.Style.informational) {
@@ -117,6 +118,82 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   @objc func openFrameworksDir(_ sender: NSMenuItem?) {
     NSWorkspace.shared.openFile(macos_r_framework_dir, withApplication: "Finder")
   }
+
+  // Download latest rstudio daily build
+  @objc func download_latest_rstudio(_ sender: NSMenuItem?) {
+    
+    let url = URL(string: "https://dailies.rstudio.com/rstudio/oss/mac/")
+    do {
+      let html = try String.init(contentsOf: url!)
+      let document = try SwiftSoup.parse(html)
+      
+      let link = try document.select("td > a").first!
+      let href = try link.attr("href")
+      let dlurl = URL(string: href)!
+      let dldir = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
+      var dlfile = dldir
+      dlfile.appendPathComponent(dlurl.lastPathComponent)
+      
+      let task = URLSession.shared.downloadTask(with: dlurl) { (tempURL, response, error) in
+        if let tempURL = tempURL, error == nil {
+          if ((response as? HTTPURLResponse)?.statusCode == 200) {
+            
+            do {
+                          
+              try FileManager.default.copyItem(at: tempURL, to: dlfile)
+              NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
+
+            } catch {
+              //infoAlert("Error downloading and saving file.")
+            }
+            
+          } else {
+           // infoAlert("File not found.")
+          }
+        } else {
+          //infoAlert("Error downloading file.")
+        }
+      }
+      
+      task.resume()
+
+    } catch {
+      // error
+    }
+    
+  }
+  
+  // Download latest r-devel tarball
+  @objc func download_latest_tarball(_ sender: NSMenuItem?) {
+    
+    let url = URL(string: "https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz")!
+    let dldir = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
+    var dlfile = dldir
+    dlfile.appendPathComponent("R-devel-el-capitan-sa-x86_64.tar.gz")
+  
+    let task = URLSession.shared.downloadTask(with: url) { (tempURL, response, error) in
+      if let tempURL = tempURL, error == nil {
+        if ((response as? HTTPURLResponse)?.statusCode == 200) {
+          
+          do {
+                        
+            try FileManager.default.copyItem(at: tempURL, to: dlfile)
+            NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
+
+          } catch {
+            //infoAlert("Error downloading and saving file.")
+          }
+          
+        } else {
+         // infoAlert("File not found.")
+        }
+      } else {
+        //infoAlert("Error downloading file.")
+      }
+    }
+
+    task.resume()
+  }
   
 }
 
@@ -179,6 +256,12 @@ extension AppDelegate: NSMenuDelegate {
     } catch {
       quitAlert("Failed to list contents of R framework directory. You either do not have R installed or have incorrect permissions set on " + macos_r_framework_dir)
     }
+
+    // Add items to download latest r-devel tarball and latest macOS daily
+    menu.addItem(NSMenuItem.separator())
+    menu.addItem(NSMenuItem(title: NSLocalizedString("Download latest R-devel tarball", comment: "Download latest tarball item"), action: #selector(download_latest_tarball), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: NSLocalizedString("Download latest RStudio daily build", comment: "Download latest RStudio item"), action: #selector(download_latest_rstudio), keyEquivalent: ""))
+
     
     // Add items to open variosu R for macOS pages
     menu.addItem(NSMenuItem.separator())

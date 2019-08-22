@@ -1,0 +1,6 @@
+framework module Pods_RSwitch {
+  umbrella header "Pods-RSwitch-umbrella.h"
+
+  export *
+  module * { export * }
+}

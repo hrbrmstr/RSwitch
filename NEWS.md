@@ -2,6 +2,7 @@
 
 - numbered key equivalents (up to 9)
 - added shortcuts to various useful macOS R resources
+- added ability to download latest RStudio daily and latest macOS r-devel tar.gz
 
 # 1.1.0
 
