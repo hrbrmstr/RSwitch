@@ -1,3 +1,7 @@
+# 1.4.0
+
+- Use Notification Center vs alerts for everything but super-fatal errors
+
 # 1.3.0
 
 - revamped app icon

@@ -741,7 +741,7 @@
                                             <attributedString key="textStorage">
                                                 <fragment>
                                                     <string key="content">
-RSwitch v1.3.0
+RSwitch v1.4.0
 
 Copyright © 2019 Bob Rudis
 
@@ -750,14 +750,14 @@ MIT Licensed
 </string>
                                                     <attributes>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" metaFont="system" size="17"/>
+                                                        <font key="NSFont" metaFont="label" size="17"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                                 <fragment content="https://git.rud.is/hrbrmstr/RSwitch">
                                                     <attributes>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" metaFont="system" size="17"/>
+                                                        <font key="NSFont" metaFont="label" size="17"/>
                                                         <url key="NSLink" string="https://git.rud.is/hrbrmstr/RSwitch"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
@@ -769,7 +769,7 @@ dial app icon by IconMark from the Noun Project
 </string>
                                                     <attributes>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" metaFont="system" size="17"/>
+                                                        <font key="NSFont" metaFont="label" size="17"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>

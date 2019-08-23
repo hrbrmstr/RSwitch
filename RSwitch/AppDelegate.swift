@@ -16,8 +16,9 @@ public func quitAlert(_ message: String, _ extra: String? = nil) {
   NSApp.terminate(nil)
 }
 
+
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
     
   var mainStoryboard: NSStoryboard!
   var abtController: NSWindowController!
@@ -27,6 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   let macos_cran_url = "https://cran.rstudio.org/bin/macosx/"
   let r_sig_mac_url = "https://stat.ethz.ch/pipermail/r-sig-mac/"
   let rstudio_dailies_url = "https://dailies.rstudio.com/rstudio/oss/mac/"
+  let latest_rstudio_dailies_url = "https://www.rstudio.org/download/latest/daily/desktop/mac/RStudio-latest.dmg"
   
   // Get the bar setup
   let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -45,7 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     mainStoryboard = NSStoryboard(name: "Main", bundle: nil)
     abtController = (mainStoryboard.instantiateController(withIdentifier: "aboutPanelController") as! NSWindowController)
-    
+        
   }
   
   func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -54,7 +56,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationWillTerminate(_ aNotification: Notification) {
     // Insert code here to tear down app
   }
+  
+  func notifyUser(title: String? = nil, subtitle: String? = nil, text: String? = nil) -> Void {
+    
+    let notification = NSUserNotification()
+    
+    notification.title = title
+    notification.subtitle = subtitle
+    notification.informativeText = text
+    
+    notification.soundName = NSUserNotificationDefaultSoundName
+    
+    NSUserNotificationCenter.default.delegate = self
+    NSUserNotificationCenter.default.deliver(notification)
+    
+  }
 
+
+  func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+    return true
+  }
+  
   // The core worker function. Receives the basename of the selected directory
   // then removes the current alias and creates the new one.
   @objc func handleSwitch(_ sender: NSMenuItem?) {
@@ -65,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     do {
       try fm.removeItem(atPath: macos_r_framework_dir + "/" + "Current")
     } catch {
-      infoAlert("Failed to remove 'Current' alias", macos_r_framework_dir + "/" + "Current")
+      self.notifyUser(title: "Action failed", text: "Failed to remove 'Current' alias" + macos_r_framework_dir + "/" + "Current")
     }
     
     do {
@@ -73,8 +95,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             at: NSURL(fileURLWithPath: macos_r_framework_dir + "/" + "Current") as URL,
             withDestinationURL: NSURL(fileURLWithPath: macos_r_framework_dir + "/" + title!) as URL
       )
+      self.notifyUser(title: "Success", text: "Current R version switched to " + title!)
     } catch {
-      infoAlert("Failed to create alias for " + macos_r_framework_dir + "/" + title!)
+      self.notifyUser(title: "Action failed", text: "Failed to create alias for " + macos_r_framework_dir + "/" + title!)
     }
       
   }
@@ -131,7 +154,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       dlfile.appendPathComponent(dlurl.lastPathComponent)
       
       if (FileManager.default.fileExists(atPath: dlfile.relativePath)) {
-        infoAlert("A local copy of the latest RStudio daily already exists. Please remove or rename it if you wish to re-download it.")
+        self.notifyUser(title: "Action required", subtitle: "RStudio Download", text: "A local copy of the latest RStudio daily already exists. Please remove or rename it if you wish to re-download it.")
       } else {
         let task = URLSession.shared.downloadTask(with: dlurl) { (tempURL, response, error) in
           if let tempURL = tempURL, error == nil {
@@ -139,21 +162,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
               do {
                 try FileManager.default.copyItem(at: tempURL, to: dlfile)
                 NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
-                DispatchQueue.main.async { infoAlert("Download of latest RStudio daily (" + dlurl.lastPathComponent + ") successful.") }
+                self.notifyUser(title: "Success", subtitle: "RStudio Download", text: "Download of latest RStudio daily (" + dlurl.lastPathComponent + ") successful.")
               } catch {
-                DispatchQueue.main.async { infoAlert("Error downloading and saving latest RStudio daily.") }
+                self.notifyUser(title: "Action failed", subtitle: "RStudio Download", text: "Failed to successfully save latest RStudio daily.")
               }
             } else {
-              DispatchQueue.main.async { infoAlert("Latest RStudio daily not found.") }
+              self.notifyUser(title: "Action failed", subtitle: "RStudio Download", text: "Received unsuccessful status code from RStudio's site.")
             }
           } else {
-            DispatchQueue.main.async { infoAlert("Error downloading latest RStudio daily.") }
+            self.notifyUser(title: "Action failed", subtitle: "RStudio Download", text: "System error when attempting to download file.")
           }
         }
         task.resume()
       }
     } catch {
-      DispatchQueue.main.async { infoAlert("Error downloading latrest RStudio daily.") }
+      self.notifyUser(title: "Action failed", subtitle: "RStudio Download", text: "Error downloading and saving latest RStudio daily.")
     }
     
   }
@@ -167,9 +190,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     dlfile.appendPathComponent("R-devel-el-capitan-sa-x86_64.tar.gz")
   
-    
     if (FileManager.default.fileExists(atPath: dlfile.relativePath)) {
-      infoAlert("R-devel tarball already exists. Please remove or rename it before downloading.")
+      self.notifyUser(title: "Action required", subtitle: "r-devel Download", text: "R-devel tarball already exists. Please remove or rename it before downloading.")
     } else {
         let task = URLSession.shared.downloadTask(with: url) { (tempURL, response, error) in
           if let tempURL = tempURL, error == nil {
@@ -177,15 +199,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
               do {
                 try FileManager.default.copyItem(at: tempURL, to: dlfile)
                 NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
-                DispatchQueue.main.async { infoAlert("Download of latest r-devel successful.") }
+                self.notifyUser(title: "Success", subtitle: "r-devel Download", text: "Download of latest r-devel successful.")
               } catch {
-                DispatchQueue.main.async { infoAlert("Error downloading and saving latest r-devel .") }
+                self.notifyUser(title: "Action failed", subtitle: "r-devel Download", text: "Failed to save latest r-devel.")
               }
             } else {
-              DispatchQueue.main.async { infoAlert("Latest r-devel file not found.") }
+              self.notifyUser(title: "Action failed", subtitle: "r-devel Download", text: "Received unsuccessful status code from macOS r-devel site.")
             }
           } else {
-            DispatchQueue.main.async { infoAlert("Error downloading latest r-devel .") }
+            self.notifyUser(title: "Action failed", subtitle: "r-devel Download", text: "Error downloading and saving latest r-devel .")
           }
         }
       task.resume()
