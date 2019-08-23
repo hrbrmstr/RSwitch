@@ -1,3 +1,10 @@
+# 1.3.0
+
+- revamped app icon
+- revamped menubar icon (shld work better on light/dark switching)
+- handles existing filenames in a cleaner fashion
+- more informative download alerts
+
 # 1.2.0
 
 - numbered key equivalents (up to 9)

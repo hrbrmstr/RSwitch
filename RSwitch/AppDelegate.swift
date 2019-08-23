@@ -3,25 +3,17 @@ import SwiftSoup
 
 // Show an informational alert
 public func infoAlert(_ message: String, _ extra: String? = nil, style: NSAlert.Style = NSAlert.Style.informational) {
-  
   let alert = NSAlert()
-  
   alert.messageText = message
-  
   if extra != nil { alert.informativeText = extra! }
-  
   alert.alertStyle = style
-  
   alert.runModal()
 }
 
 // Show an informational alert and then quit
 public func quitAlert(_ message: String, _ extra: String? = nil) {
-  
   infoAlert(message, "The application will now quit.", style: NSAlert.Style.critical)
-  
   NSApp.terminate(nil)
-  
 }
 
 @NSApplicationMain
@@ -30,9 +22,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var mainStoryboard: NSStoryboard!
   var abtController: NSWindowController!
 
-
-  // Where the official R installs go
-  let macos_r_framework_dir = "/Library/Frameworks/R.framework/Versions"
+  let macos_r_framework_dir = "/Library/Frameworks/R.framework/Versions" // Where the official R installs go
+  let mac_r_project_url = "https://mac.r-project.org/"
+  let macos_cran_url = "https://cran.rstudio.org/bin/macosx/"
+  let r_sig_mac_url = "https://stat.ethz.ch/pipermail/r-sig-mac/"
+  let rstudio_dailies_url = "https://dailies.rstudio.com/rstudio/oss/mac/"
   
   // Get the bar setup
   let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -87,25 +81,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   // browse macOS dev page
   @objc func browse_r_macos_dev_page(_ sender: NSMenuItem?) {
-    let url = URL(string: "https://mac.r-project.org/")!
+    let url = URL(string: mac_r_project_url)!
     NSWorkspace.shared.open(url)
   }
   
   // browse macOS dev page
   @objc func browse_r_macos_cran_page(_ sender: NSMenuItem?) {
-    let url = URL(string: "https://cran.rstudio.org/bin/macosx/")!
+    let url = URL(string: macos_cran_url)!
     NSWorkspace.shared.open(url)
   }
   
   // browse macOS dev page
   @objc func browse_r_sig_mac_page(_ sender: NSMenuItem?) {
-    let url = URL(string: "https://stat.ethz.ch/pipermail/r-sig-mac/")!
+    let url = URL(string: r_sig_mac_url)!
     NSWorkspace.shared.open(url)
   }
   
   // browse RStudio macOS Dailies
   @objc func browse_rstudio_mac_dailies_page(_ sender: NSMenuItem?) {
-    let url = URL(string: "https://dailies.rstudio.com/rstudio/oss/mac/")!
+    let url = URL(string: rstudio_dailies_url)!
     NSWorkspace.shared.open(url)
   }
 
@@ -122,7 +116,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   // Download latest rstudio daily build
   @objc func download_latest_rstudio(_ sender: NSMenuItem?) {
     
-    let url = URL(string: "https://dailies.rstudio.com/rstudio/oss/mac/")
+    let url = URL(string: rstudio_dailies_url)
     
     do {
       let html = try String.init(contentsOf: url!)
@@ -133,33 +127,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       let dlurl = URL(string: href)!
       let dldir = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
       var dlfile = dldir
+      
       dlfile.appendPathComponent(dlurl.lastPathComponent)
       
-      let task = URLSession.shared.downloadTask(with: dlurl) { (tempURL, response, error) in
-        if let tempURL = tempURL, error == nil {
-          if ((response as? HTTPURLResponse)?.statusCode == 200) {
-            
-            do {
-                          
-              try FileManager.default.copyItem(at: tempURL, to: dlfile)
-              NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
-              
-              DispatchQueue.main.async { infoAlert("Download of latest RStudio daily successful.") }
-
-            } catch {
-              DispatchQueue.main.async { infoAlert("Error downloading and saving latest RStudio daily.") }
+      if (FileManager.default.fileExists(atPath: dlfile.relativePath)) {
+        infoAlert("A local copy of the latest RStudio daily already exists. Please remove or rename it if you wish to re-download it.")
+      } else {
+        let task = URLSession.shared.downloadTask(with: dlurl) { (tempURL, response, error) in
+          if let tempURL = tempURL, error == nil {
+            if ((response as? HTTPURLResponse)?.statusCode == 200) {
+              do {
+                try FileManager.default.copyItem(at: tempURL, to: dlfile)
+                NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
+                DispatchQueue.main.async { infoAlert("Download of latest RStudio daily (" + dlurl.lastPathComponent + ") successful.") }
+              } catch {
+                DispatchQueue.main.async { infoAlert("Error downloading and saving latest RStudio daily.") }
+              }
+            } else {
+              DispatchQueue.main.async { infoAlert("Latest RStudio daily not found.") }
             }
-            
           } else {
-            DispatchQueue.main.async { infoAlert("Latest RStudio daily not found.") }
+            DispatchQueue.main.async { infoAlert("Error downloading latest RStudio daily.") }
           }
-        } else {
-          DispatchQueue.main.async { infoAlert("Error downloading latest RStudio daily.") }
         }
+        task.resume()
       }
-      
-      task.resume()
-
     } catch {
       DispatchQueue.main.async { infoAlert("Error downloading latrest RStudio daily.") }
     }
@@ -172,33 +164,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let url = URL(string: "https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz")!
     let dldir = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
     var dlfile = dldir
+    
     dlfile.appendPathComponent("R-devel-el-capitan-sa-x86_64.tar.gz")
   
-    let task = URLSession.shared.downloadTask(with: url) { (tempURL, response, error) in
-      if let tempURL = tempURL, error == nil {
-        if ((response as? HTTPURLResponse)?.statusCode == 200) {
-          
-          do {
-                        
-            try FileManager.default.copyItem(at: tempURL, to: dlfile)
-            NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
-            
-            DispatchQueue.main.async { infoAlert("Download of latest r-devel successful.") }
-
-
-          } catch {
-            DispatchQueue.main.async { infoAlert("Error downloading and saving latest r-devel .") }
+    
+    if (FileManager.default.fileExists(atPath: dlfile.relativePath)) {
+      infoAlert("R-devel tarball already exists. Please remove or rename it before downloading.")
+    } else {
+        let task = URLSession.shared.downloadTask(with: url) { (tempURL, response, error) in
+          if let tempURL = tempURL, error == nil {
+            if ((response as? HTTPURLResponse)?.statusCode == 200) {
+              do {
+                try FileManager.default.copyItem(at: tempURL, to: dlfile)
+                NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
+                DispatchQueue.main.async { infoAlert("Download of latest r-devel successful.") }
+              } catch {
+                DispatchQueue.main.async { infoAlert("Error downloading and saving latest r-devel .") }
+              }
+            } else {
+              DispatchQueue.main.async { infoAlert("Latest r-devel file not found.") }
+            }
+          } else {
+            DispatchQueue.main.async { infoAlert("Error downloading latest r-devel .") }
           }
-          
-        } else {
-          DispatchQueue.main.async { infoAlert("Latest r-devel file not found.") }
         }
-      } else {
-        DispatchQueue.main.async { infoAlert("Error downloading latest r-devel .") }
-      }
+      task.resume()
     }
-
-    task.resume()
   }
   
 }

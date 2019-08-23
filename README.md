@@ -3,13 +3,15 @@
 ![Minimum macOS Target](https://img.shields.io/badge/macOS-10.14%2B-blue) 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
+![](rswitch.png)
+
 # RSwitch
 
 Change 'Current' R version on macOS
 
 ## Description
 
-At the bottom of the [R for macOS Developer's Page](http://mac.r-project.org/) there's mention of an "other binary" called "RSwitch" that is _"a small GUI that allows you to switch between R versions quickly (if you have multiple versions of R framework installed)."_ Said switching requires you to use the "tar.gz" versions of R from the R for macOS Developer's Page since the official CRAN binary installers clean up after themselves quite nicely to prevent potentially wacky behavior.
+At the bottom of the [R for macOS Developer's Page](https://mac.r-project.org/) there's mention of an "other binary" called "RSwitch" that is _"a small GUI that allows you to switch between R versions quickly (if you have multiple versions of R framework installed)."_ Said switching requires you to use the "tar.gz" versions of R from the R for macOS Developer's Page since the official CRAN binary installers clean up after themselves quite nicely to prevent potentially wacky behavior.
 
 All this GUI does is change the `Current` alias target in `/Library/Frameworks/R.framework/Versions` to the appropriate version. You can do that from the command line but the switcher GUI was created so that means some folks prefer click-switching.
 
@@ -58,10 +60,10 @@ This codebase has been uploaded to the following authoritative social coding sit
 
 ## TODO
 
-- Clean up the icon (which is "dial" by IconMark from the Noun Project). This means having it look better in the menu bar in dark/light mode _including_ the highlight mode for it. Possibly means getting a visible "R" on it somewhere.
-- Better/prettier alerting (which also means more sanity checks)
 - Allow hiding of the app icon? (not sure this is a good idea, tho&hellip;pls discuss in an issue!)
 - (add your own TODO suggestions via PR)
+- <strike>Clean up the icon (which is "dial" by IconMark from the Noun Project). This means having it look better in the menu bar in dark/light mode _including_ the highlight mode for it. Possibly means getting a visible "R" on it somewhere.</strike>
+- <strike>Better/prettier alerting (which also means more sanity checks)</strike>
 - <strike>Add Cmd-1, -2, -3, (etc) key equivalents in the menu bar for fast selection (one reason why ^^ might not be a good idea)</strike>
 - <strike>Add an "about" box (mostly to ensure IconMark gets more credit than a comment and README)</strike>
 
