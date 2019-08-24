@@ -1,6 +1,12 @@
 # 1.4.0
 
 - Use Notification Center vs alerts for everything but super-fatal errors
+- More informative notification messages, especially on errors
+- Notification for what the switched-to R version is
+- Menu items that provide download capability grey out when a download is in-progress
+- Downloaded file(s) now hilighted/selected in Finder window post-download
+- Added launcher menu items for RStudio and R GUI
+- Added a cpl more handy URLs
 
 # 1.3.0
 

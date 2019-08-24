@@ -16,7 +16,6 @@ public func quitAlert(_ message: String, _ extra: String? = nil) {
   NSApp.terminate(nil)
 }
 
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
     
@@ -29,6 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
   let r_sig_mac_url = "https://stat.ethz.ch/pipermail/r-sig-mac/"
   let rstudio_dailies_url = "https://dailies.rstudio.com/rstudio/oss/mac/"
   let latest_rstudio_dailies_url = "https://www.rstudio.org/download/latest/daily/desktop/mac/RStudio-latest.dmg"
+  let browse_r_admin_macos_url = "https://cran.rstudio.org/doc/manuals/R-admin.html#Installing-R-under-macOS"
   
   // Get the bar setup
   let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -36,7 +36,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
   
   let quitItem = NSMenuItem(title: NSLocalizedString("Quit", comment: "Quit menu item"), action: #selector(NSApp.terminate), keyEquivalent: "q")
 
+  var rdevel_enabled: Bool!
+  var rstudio_enabled: Bool!
+
   override init() {
+    
     super.init()
     
     statusMenu.delegate = self
@@ -47,6 +51,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     mainStoryboard = NSStoryboard(name: "Main", bundle: nil)
     abtController = (mainStoryboard.instantiateController(withIdentifier: "aboutPanelController") as! NSWindowController)
+    
+    rdevel_enabled = true
+    rstudio_enabled = true
         
   }
   
@@ -125,7 +132,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let url = URL(string: rstudio_dailies_url)!
     NSWorkspace.shared.open(url)
   }
-
+  
+  
+  // browse R Install/Admin macOS section
+  @objc func browse_r_admin_macos_page(_ sender: NSMenuItem?) {
+    let url = URL(string: browse_r_admin_macos_url)!
+    NSWorkspace.shared.open(url)
+  }
+  
   // Show about dialog
   @objc func about(_ sender: NSMenuItem?) {
     abtController.showWindow(self)
@@ -135,13 +149,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
   @objc func openFrameworksDir(_ sender: NSMenuItem?) {
     NSWorkspace.shared.openFile(macos_r_framework_dir, withApplication: "Finder")
   }
+  
+  // Launch RStudio
+  @objc func launchRStudio(_ sender: NSMenuItem?) {
+    NSWorkspace.shared.launchApplication("RStudio.app")
+  }
 
+  // Launch R.app
+  @objc func launchRApp(_ sender: NSMenuItem?) {
+    NSWorkspace.shared.launchApplication("R.app")
+  }
+  
   // Download latest rstudio daily build
   @objc func download_latest_rstudio(_ sender: NSMenuItem?) {
     
+    self.rstudio_enabled = false
+
     let url = URL(string: rstudio_dailies_url)
     
     do {
+      
       let html = try String.init(contentsOf: url!)
       let document = try SwiftSoup.parse(html)
       
@@ -153,28 +180,59 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
       
       dlfile.appendPathComponent(dlurl.lastPathComponent)
       
+      print("RStudio href: " + href)
+      
       if (FileManager.default.fileExists(atPath: dlfile.relativePath)) {
+        
         self.notifyUser(title: "Action required", subtitle: "RStudio Download", text: "A local copy of the latest RStudio daily already exists. Please remove or rename it if you wish to re-download it.")
+        
+        NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
+        NSWorkspace.shared.activateFileViewerSelecting([dlfile])
+
+        self.rstudio_enabled = true
+        
       } else {
-        let task = URLSession.shared.downloadTask(with: dlurl) { (tempURL, response, error) in
-          if let tempURL = tempURL, error == nil {
-            if ((response as? HTTPURLResponse)?.statusCode == 200) {
-              do {
-                try FileManager.default.copyItem(at: tempURL, to: dlfile)
-                NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
-                self.notifyUser(title: "Success", subtitle: "RStudio Download", text: "Download of latest RStudio daily (" + dlurl.lastPathComponent + ") successful.")
-              } catch {
-                self.notifyUser(title: "Action failed", subtitle: "RStudio Download", text: "Failed to successfully save latest RStudio daily.")
+        
+        print("Timeout value: ", URLSession.shared.configuration.timeoutIntervalForRequest)
+        
+        let task = URLSession.shared.downloadTask(with: dlurl) {
+          tempURL, response, error in
+          
+          if (error != nil) {
+            self.notifyUser(title: "Action failed", subtitle: "RStudio Download", text: "Error: " + error!.localizedDescription)
+          } else if (response != nil) {
+            
+            let status = (response as? HTTPURLResponse)!.statusCode
+            if (status < 300) {
+              
+              guard let fileURL = tempURL else {
+                DispatchQueue.main.async { [weak self] in  self?.rstudio_enabled = true }
+                return
               }
+              
+              do {
+                try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                try FileManager.default.moveItem(at: fileURL, to: dlfile)
+                self.notifyUser(title: "Success", subtitle: "RStudio Download", text: "Download of latest RStudio daily (" + dlurl.lastPathComponent + ") successful.")
+                NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
+                NSWorkspace.shared.activateFileViewerSelecting([dlfile])
+              } catch {
+                self.notifyUser(title: "Action failed", subtitle: "RStudio Download", text: "Error: \(error)")
+              }
+              
             } else {
-              self.notifyUser(title: "Action failed", subtitle: "RStudio Download", text: "Received unsuccessful status code from RStudio's site.")
+              self.notifyUser(title: "Action failed", subtitle: "RStudio Download", text: "Error downloading latest RStudio daily. Status code: " + String(status))
+
             }
-          } else {
-            self.notifyUser(title: "Action failed", subtitle: "RStudio Download", text: "System error when attempting to download file.")
           }
+          
+          DispatchQueue.main.async { [weak self] in  self?.rstudio_enabled = true }
+          
         }
+        
         task.resume()
       }
+      
     } catch {
       self.notifyUser(title: "Action failed", subtitle: "RStudio Download", text: "Error downloading and saving latest RStudio daily.")
     }
@@ -184,32 +242,58 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
   // Download latest r-devel tarball
   @objc func download_latest_tarball(_ sender: NSMenuItem?) {
     
-    let url = URL(string: "https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz")!
+    self.rdevel_enabled = false
+    
+    let dlurl = URL(string: "https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz")!
     let dldir = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
     var dlfile = dldir
     
     dlfile.appendPathComponent("R-devel-el-capitan-sa-x86_64.tar.gz")
   
     if (FileManager.default.fileExists(atPath: dlfile.relativePath)) {
+      
       self.notifyUser(title: "Action required", subtitle: "r-devel Download", text: "R-devel tarball already exists. Please remove or rename it before downloading.")
+      
+      NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
+      NSWorkspace.shared.activateFileViewerSelecting([dlfile])
+      
+      self.rdevel_enabled = true
     } else {
-        let task = URLSession.shared.downloadTask(with: url) { (tempURL, response, error) in
-          if let tempURL = tempURL, error == nil {
-            if ((response as? HTTPURLResponse)?.statusCode == 200) {
-              do {
-                try FileManager.default.copyItem(at: tempURL, to: dlfile)
-                NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
-                self.notifyUser(title: "Success", subtitle: "r-devel Download", text: "Download of latest r-devel successful.")
-              } catch {
-                self.notifyUser(title: "Action failed", subtitle: "r-devel Download", text: "Failed to save latest r-devel.")
-              }
-            } else {
-              self.notifyUser(title: "Action failed", subtitle: "r-devel Download", text: "Received unsuccessful status code from macOS r-devel site.")
+      
+      let task = URLSession.shared.downloadTask(with: dlurl) {
+        tempURL, response, error in
+        
+        if (error != nil) {
+          self.notifyUser(title: "Action failed", subtitle: "r-devel Download", text: "Error: " + error!.localizedDescription)
+        } else if (response != nil) {
+          
+          let status = (response as? HTTPURLResponse)!.statusCode
+          if (status < 300) {
+            
+            guard let fileURL = tempURL else {
+              DispatchQueue.main.async { [weak self] in  self?.rdevel_enabled = true }
+              return
             }
+            
+            do {
+              try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+              try FileManager.default.moveItem(at: fileURL, to: dlfile)
+              self.notifyUser(title: "Success", subtitle: "r-devel Download", text: "Download of latest r-devel (" + dlurl.lastPathComponent + ") successful.")
+              NSWorkspace.shared.openFile(dldir.path, withApplication: "Finder")
+              NSWorkspace.shared.activateFileViewerSelecting([dlfile])
+            } catch {
+              self.notifyUser(title: "Action failed", subtitle: "r-devel Download", text: "Error: \(error)")
+            }
+            
           } else {
-            self.notifyUser(title: "Action failed", subtitle: "r-devel Download", text: "Error downloading and saving latest r-devel .")
+            self.notifyUser(title: "Action failed", subtitle: "r-devel Download", text: "Error downloading latest r-devel. Status code: " + String(status))
           }
         }
+        
+        DispatchQueue.main.async { [weak self] in  self?.rdevel_enabled = true }
+        
+      }
+      
       task.resume()
     }
   }
@@ -278,8 +362,14 @@ extension AppDelegate: NSMenuDelegate {
 
     // Add items to download latest r-devel tarball and latest macOS daily
     menu.addItem(NSMenuItem.separator())
-    menu.addItem(NSMenuItem(title: NSLocalizedString("Download latest R-devel tarball", comment: "Download latest tarball item"), action: #selector(download_latest_tarball), keyEquivalent: ""))
-    menu.addItem(NSMenuItem(title: NSLocalizedString("Download latest RStudio daily build", comment: "Download latest RStudio item"), action: #selector(download_latest_rstudio), keyEquivalent: ""))
+    
+    let rdevelItem = NSMenuItem(title: NSLocalizedString("Download latest R-devel tarball", comment: "Download latest tarball item"), action: self.rdevel_enabled ? #selector(download_latest_tarball) : nil, keyEquivalent: "")
+    rdevelItem.isEnabled = self.rdevel_enabled
+    menu.addItem(rdevelItem)
+    
+    let rstudioItem = NSMenuItem(title: NSLocalizedString("Download latest RStudio daily build", comment: "Download latest RStudio item"), action: self.rstudio_enabled ? #selector(download_latest_rstudio) : nil, keyEquivalent: "")
+    rstudioItem.isEnabled = self.rstudio_enabled
+    menu.addItem(rstudioItem)
 
     
     // Add items to open variosu R for macOS pages
@@ -287,7 +377,13 @@ extension AppDelegate: NSMenuDelegate {
     menu.addItem(NSMenuItem(title: NSLocalizedString("Open R for macOS Developers Page…", comment: "Open macOS Dev Page item"), action: #selector(browse_r_macos_dev_page), keyEquivalent: ""))
     menu.addItem(NSMenuItem(title: NSLocalizedString("Open R for macOS CRAN Page…", comment: "Open macOS CRAN Page item"), action: #selector(browse_r_macos_cran_page), keyEquivalent: ""))
     menu.addItem(NSMenuItem(title: NSLocalizedString("Open R-SIG-Mac Archives Page…", comment: "Open R-SIG-Mac Page item"), action: #selector(browse_r_sig_mac_page), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: NSLocalizedString("Open R Installation/Admin macOS Section…", comment: "Open R Install Page item"), action: #selector(browse_r_admin_macos_page), keyEquivalent: ""))
     menu.addItem(NSMenuItem(title: NSLocalizedString("Open RStudio macOS Dailies Page…", comment: "Open RStudio macOS Dailies Page item"), action: #selector(browse_rstudio_mac_dailies_page), keyEquivalent: ""))
+
+    // Add launchers
+    menu.addItem(NSMenuItem.separator())
+    menu.addItem(NSMenuItem(title: NSLocalizedString("Launch R GUI", comment: "Launch R GUI item"), action: #selector(launchRApp), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: NSLocalizedString("Launch RStudio", comment: "Launch RStudio item"), action: #selector(launchRStudio), keyEquivalent: ""))
 
     // Add a About item
     menu.addItem(NSMenuItem.separator())
