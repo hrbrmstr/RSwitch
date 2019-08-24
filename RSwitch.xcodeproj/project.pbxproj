@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		01073F0F2311AE2E007162C9 /* String+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F0E2311AE2E007162C9 /* String+Version.swift */; };
+		01073F112311E0F7007162C9 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F102311E0F7007162C9 /* Alerts.swift */; };
+		01073F132311E1CF007162C9 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F122311E1CF007162C9 /* Utils.swift */; };
+		01073F152311E370007162C9 /* Notify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F142311E370007162C9 /* Notify.swift */; };
+		01073F172311E397007162C9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F162311E397007162C9 /* Menu.swift */; };
+		01073F192311E3B8007162C9 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F182311E3B8007162C9 /* Bundle.swift */; };
+		01073F1B2311E613007162C9 /* DownloadTarball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F1A2311E613007162C9 /* DownloadTarball.swift */; };
+		01073F1D2311E64E007162C9 /* DownloadRStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F1C2311E64E007162C9 /* DownloadRStudio.swift */; };
+		01073F1F2311E67D007162C9 /* HandleUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F1E2311E67D007162C9 /* HandleUpdate.swift */; };
+		01073F212311E6BD007162C9 /* HandleSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F202311E6BD007162C9 /* HandleSwitch.swift */; };
 		0178970D230ED25100F8F5BC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178970C230ED25100F8F5BC /* AboutViewController.swift */; };
 		01F3EF0C230E635300DF5DF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3EF0B230E635300DF5DF9 /* AppDelegate.swift */; };
 		01F3EF0E230E635300DF5DF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3EF0D230E635300DF5DF9 /* ViewController.swift */; };
@@ -18,6 +27,15 @@
 
 /* Begin PBXFileReference section */
 		01073F0E2311AE2E007162C9 /* String+Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Version.swift"; sourceTree = "<group>"; };
+		01073F102311E0F7007162C9 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		01073F122311E1CF007162C9 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		01073F142311E370007162C9 /* Notify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notify.swift; sourceTree = "<group>"; };
+		01073F162311E397007162C9 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		01073F182311E3B8007162C9 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		01073F1A2311E613007162C9 /* DownloadTarball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTarball.swift; sourceTree = "<group>"; };
+		01073F1C2311E64E007162C9 /* DownloadRStudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadRStudio.swift; sourceTree = "<group>"; };
+		01073F1E2311E67D007162C9 /* HandleUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleUpdate.swift; sourceTree = "<group>"; };
+		01073F202311E6BD007162C9 /* HandleSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleSwitch.swift; sourceTree = "<group>"; };
 		0178970C230ED25100F8F5BC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		01F3EF08230E635300DF5DF9 /* RSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01F3EF0B230E635300DF5DF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +60,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01073F232311E859007162C9 /* swift */ = {
+			isa = PBXGroup;
+			children = (
+				01F3EF0B230E635300DF5DF9 /* AppDelegate.swift */,
+				01073F102311E0F7007162C9 /* Alerts.swift */,
+				01073F202311E6BD007162C9 /* HandleSwitch.swift */,
+				01073F1E2311E67D007162C9 /* HandleUpdate.swift */,
+				01073F1C2311E64E007162C9 /* DownloadRStudio.swift */,
+				01073F1A2311E613007162C9 /* DownloadTarball.swift */,
+				01073F182311E3B8007162C9 /* Bundle.swift */,
+				01073F162311E397007162C9 /* Menu.swift */,
+				01073F142311E370007162C9 /* Notify.swift */,
+				01073F0E2311AE2E007162C9 /* String+Version.swift */,
+				01073F122311E1CF007162C9 /* Utils.swift */,
+				01F3EF0D230E635300DF5DF9 /* ViewController.swift */,
+				0178970C230ED25100F8F5BC /* AboutViewController.swift */,
+			);
+			path = swift;
+			sourceTree = "<group>";
+		};
 		01F3EEFF230E635300DF5DF9 = {
 			isa = PBXGroup;
 			children = (
@@ -63,12 +101,9 @@
 		01F3EF0A230E635300DF5DF9 /* RSwitch */ = {
 			isa = PBXGroup;
 			children = (
-				01F3EF0B230E635300DF5DF9 /* AppDelegate.swift */,
-				01F3EF0D230E635300DF5DF9 /* ViewController.swift */,
+				01073F232311E859007162C9 /* swift */,
 				01F3EF0F230E635500DF5DF9 /* Assets.xcassets */,
 				01F3EF11230E635500DF5DF9 /* Main.storyboard */,
-				0178970C230ED25100F8F5BC /* AboutViewController.swift */,
-				01073F0E2311AE2E007162C9 /* String+Version.swift */,
 				01F3EF14230E635500DF5DF9 /* Info.plist */,
 			);
 			path = RSwitch;
@@ -205,10 +240,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01073F212311E6BD007162C9 /* HandleSwitch.swift in Sources */,
+				01073F1F2311E67D007162C9 /* HandleUpdate.swift in Sources */,
+				01073F1B2311E613007162C9 /* DownloadTarball.swift in Sources */,
 				0178970D230ED25100F8F5BC /* AboutViewController.swift in Sources */,
+				01073F192311E3B8007162C9 /* Bundle.swift in Sources */,
+				01073F152311E370007162C9 /* Notify.swift in Sources */,
+				01073F1D2311E64E007162C9 /* DownloadRStudio.swift in Sources */,
+				01073F172311E397007162C9 /* Menu.swift in Sources */,
+				01073F112311E0F7007162C9 /* Alerts.swift in Sources */,
 				01F3EF0E230E635300DF5DF9 /* ViewController.swift in Sources */,
 				01F3EF0C230E635300DF5DF9 /* AppDelegate.swift in Sources */,
 				01073F0F2311AE2E007162C9 /* String+Version.swift in Sources */,
+				01073F132311E1CF007162C9 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
