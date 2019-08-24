@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01073F0F2311AE2E007162C9 /* String+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F0E2311AE2E007162C9 /* String+Version.swift */; };
 		0178970D230ED25100F8F5BC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178970C230ED25100F8F5BC /* AboutViewController.swift */; };
 		01F3EF0C230E635300DF5DF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3EF0B230E635300DF5DF9 /* AppDelegate.swift */; };
 		01F3EF0E230E635300DF5DF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3EF0D230E635300DF5DF9 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01073F0E2311AE2E007162C9 /* String+Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Version.swift"; sourceTree = "<group>"; };
 		0178970C230ED25100F8F5BC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		01F3EF08230E635300DF5DF9 /* RSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01F3EF0B230E635300DF5DF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				01F3EF0F230E635500DF5DF9 /* Assets.xcassets */,
 				01F3EF11230E635500DF5DF9 /* Main.storyboard */,
 				0178970C230ED25100F8F5BC /* AboutViewController.swift */,
+				01073F0E2311AE2E007162C9 /* String+Version.swift */,
 				01F3EF14230E635500DF5DF9 /* Info.plist */,
 			);
 			path = RSwitch;
@@ -205,6 +208,7 @@
 				0178970D230ED25100F8F5BC /* AboutViewController.swift in Sources */,
 				01F3EF0E230E635300DF5DF9 /* ViewController.swift in Sources */,
 				01F3EF0C230E635300DF5DF9 /* AppDelegate.swift in Sources */,
+				01073F0F2311AE2E007162C9 /* String+Version.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

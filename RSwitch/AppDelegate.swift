@@ -21,14 +21,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
   var mainStoryboard: NSStoryboard!
   var abtController: NSWindowController!
-
+  
   let macos_r_framework_dir = "/Library/Frameworks/R.framework/Versions" // Where the official R installs go
-  let mac_r_project_url = "https://mac.r-project.org/"
-  let macos_cran_url = "https://cran.rstudio.org/bin/macosx/"
-  let r_sig_mac_url = "https://stat.ethz.ch/pipermail/r-sig-mac/"
-  let rstudio_dailies_url = "https://dailies.rstudio.com/rstudio/oss/mac/"
-  let latest_rstudio_dailies_url = "https://www.rstudio.org/download/latest/daily/desktop/mac/RStudio-latest.dmg"
-  let browse_r_admin_macos_url = "https://cran.rstudio.org/doc/manuals/R-admin.html#Installing-R-under-macOS"
+  
+  struct app_urls {
+    static let mac_r_project = "https://mac.r-project.org/"
+    static let macos_cran = "https://cran.rstudio.org/bin/macosx/"
+    static let r_sig_mac = "https://stat.ethz.ch/pipermail/r-sig-mac/"
+    static let rstudio_dailies = "https://dailies.rstudio.com/rstudio/oss/mac/"
+    static let latest_rstudio_dailies = "https://www.rstudio.org/download/latest/daily/desktop/mac/RStudio-latest.dmg"
+    static let browse_r_admin_macos = "https://cran.rstudio.org/doc/manuals/R-admin.html#Installing-R-under-macOS"
+    static let version_check = "https://rud.is/rswitch/releases/current-version.txt"
+    static let releases = "https://git.rud.is/hrbrmstr/RSwitch/releases"
+  }
   
   // Get the bar setup
   let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -54,6 +59,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     rdevel_enabled = true
     rstudio_enabled = true
+    
+    URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
         
   }
   
@@ -111,32 +118,32 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
   
   // browse macOS dev page
   @objc func browse_r_macos_dev_page(_ sender: NSMenuItem?) {
-    let url = URL(string: mac_r_project_url)!
+    let url = URL(string: app_urls.mac_r_project)!
     NSWorkspace.shared.open(url)
   }
   
   // browse macOS dev page
   @objc func browse_r_macos_cran_page(_ sender: NSMenuItem?) {
-    let url = URL(string: macos_cran_url)!
+    let url = URL(string: app_urls.macos_cran)!
     NSWorkspace.shared.open(url)
   }
   
   // browse macOS dev page
   @objc func browse_r_sig_mac_page(_ sender: NSMenuItem?) {
-    let url = URL(string: r_sig_mac_url)!
+    let url = URL(string: app_urls.r_sig_mac)!
     NSWorkspace.shared.open(url)
   }
   
   // browse RStudio macOS Dailies
   @objc func browse_rstudio_mac_dailies_page(_ sender: NSMenuItem?) {
-    let url = URL(string: rstudio_dailies_url)!
+    let url = URL(string: app_urls.rstudio_dailies)!
     NSWorkspace.shared.open(url)
   }
   
   
   // browse R Install/Admin macOS section
   @objc func browse_r_admin_macos_page(_ sender: NSMenuItem?) {
-    let url = URL(string: browse_r_admin_macos_url)!
+    let url = URL(string: app_urls.browse_r_admin_macos)!
     NSWorkspace.shared.open(url)
   }
   
@@ -159,13 +166,35 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
   @objc func launchRApp(_ sender: NSMenuItem?) {
     NSWorkspace.shared.launchApplication("R.app")
   }
+
+  // Launch R.app
+  @objc func checkForUpdate(_ sender: NSMenuItem?) {
+    
+    let url = URL(string: app_urls.version_check)
+    
+    do {
+      URLCache.shared.removeAllCachedResponses()
+      var version = try String.init(contentsOf: url!)
+      version = version.trimmingCharacters(in: .whitespacesAndNewlines)
+      if (version.isVersion(greaterThan: Bundle.main.releaseVersionNumber!)) {
+        let url = URL(string: app_urls.releases)
+        NSWorkspace.shared.open(url!)
+      } else {
+        self.notifyUser(title: "RSwitch", text: "You are running the latest version of RSwitch.")
+      }
+    } catch {
+      self.notifyUser(title: "Action failed", subtitle: "Update check", text: "Error: \(error)")
+    }
+
+    
+  }
   
   // Download latest rstudio daily build
   @objc func download_latest_rstudio(_ sender: NSMenuItem?) {
     
     self.rstudio_enabled = false
 
-    let url = URL(string: rstudio_dailies_url)
+    let url = URL(string: app_urls.rstudio_dailies)
     
     do {
       
@@ -300,6 +329,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
   
 }
 
+extension Bundle {
+  var releaseVersionNumber: String? {
+    return infoDictionary?["CFBundleShortVersionString"] as? String
+  }
+  var buildVersionNumber: String? {
+    return infoDictionary?["CFBundleVersion"] as? String
+  }
+  var releaseVersionNumberPretty: String {
+    return "v\(releaseVersionNumber ?? "1.0.0")"
+  }
+}
+
 extension AppDelegate: NSMenuDelegate {
   
   func menuWillOpen(_ menu: NSMenu) {
@@ -384,6 +425,10 @@ extension AppDelegate: NSMenuDelegate {
     menu.addItem(NSMenuItem.separator())
     menu.addItem(NSMenuItem(title: NSLocalizedString("Launch R GUI", comment: "Launch R GUI item"), action: #selector(launchRApp), keyEquivalent: ""))
     menu.addItem(NSMenuItem(title: NSLocalizedString("Launch RStudio", comment: "Launch RStudio item"), action: #selector(launchRStudio), keyEquivalent: ""))
+    
+    // Add a About item
+    menu.addItem(NSMenuItem.separator())
+    menu.addItem(NSMenuItem(title: NSLocalizedString("Check for update…", comment: "Check for update item"), action: #selector(checkForUpdate), keyEquivalent: ""))
 
     // Add a About item
     menu.addItem(NSMenuItem.separator())

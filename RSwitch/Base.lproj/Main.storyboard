@@ -754,11 +754,11 @@ MIT Licensed
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
-                                                <fragment content="https://git.rud.is/hrbrmstr/RSwitch">
+                                                <fragment content="https://rud.is/rswitch/">
                                                     <attributes>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" metaFont="label" size="17"/>
-                                                        <url key="NSLink" string="https://git.rud.is/hrbrmstr/RSwitch"/>
+                                                        <url key="NSLink" string="https://rud.is/rswitch/"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
