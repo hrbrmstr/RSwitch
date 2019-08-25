@@ -1,0 +1,15 @@
+---
+title: "Acknowledgements"
+---
+  
+RSwitch wasn't my idea. It's been around forever on the [R for macOS Developer's Page](http://mac.r-project.org/) but stopped working on Catalina since it hadn't been updated in ages, was only 32-bit (which is a no-go for Catalina), and had no available source code to modify.
+
+Despite having found and old-old copy of the source code by hacking URLs via the Internet Archive, none of that code was used to make this incarnation of RSwitch.
+
+RSwitch uses three external frameworks to accomplish its tasks:
+
+- [SwiftSoup](https://github.com/scinfu/SwiftSoup) by Nabil Chatbi
+- [ProcInfo](https://github.com/objective-see/ProcInfo) by the infamous Patrick Wardle
+- [VersionCompare](https://github.com/DragonCherry/VersionCompare/) by DragonCherry
+
+The current (but, likely not final) app icon and menubar icon is based on the ['dial' Noun Project font icon](https://thenounproject.com/search/?q=dial&i=866019#) created by Icon Mark.

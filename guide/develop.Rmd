@@ -1,0 +1,25 @@
+---
+title: "Developing RSwitch"
+---
+
+Contributions to RSwitch are welcome and encouraged!
+
+You will need:
+
+- [Xcode 11](https://developer.apple.com/xcode/) (still in beta as of this writing)
+- Familiarity with [Swift 5.x](https://swift.org/blog/swift-5-released/)
+- Tolerance to use one of the following social coding sites:
+    - [My self-hosted Gitea instance](https://git.rud.is/hrbrmstr/RSwitch)
+    - [SourceHut](https://git.sr.ht/~hrbrmstr/RSwitch)
+    - [GitLab](https://gitlab.com/hrbrmstr/RSwitch)
+    - [Bitbucket](https://bitbucket.com/hrbrmstr/RSwitch)
+    - [GitHub](https://github.com/hrbrmstr/RSwitch)
+- The ability to use [signed git commits](https://git-scm.com/book/ms/v2/Git-Tools-Signing-Your-Work)
+
+To work on anything related to RSwitch:
+
+- claim or file a new issue
+- get concensus on the feature/change
+- develop and test on a fork & branch
+- share a copy of the app back to the folks monitoring the issue
+- submit a PR once the feature/change has been finalized

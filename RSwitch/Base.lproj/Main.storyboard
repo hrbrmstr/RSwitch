@@ -721,22 +721,22 @@
             <objects>
                 <viewController storyboardIdentifier="about2" id="KlD-6a-3Gc" customClass="AboutViewController" sceneMemberID="viewController">
                     <view key="view" id="SgY-wa-ilj">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="240"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView appearanceType="aqua" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEB-nx-gFw">
-                                <rect key="frame" x="7" y="9" width="463" height="223"/>
+                                <rect key="frame" x="9" y="11" width="463" height="247"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="iCP-uh-CRl">
-                                    <rect key="frame" x="0.0" y="0.0" width="463" height="223"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="463" height="247"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" smartInsertDelete="YES" id="kWH-Et-k6l">
-                                            <rect key="frame" x="0.0" y="0.0" width="463" height="223"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="463" height="247"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="alternatingContentBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="463" height="223"/>
+                                            <size key="minSize" width="463" height="247"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
@@ -763,13 +763,22 @@ MIT Licensed
                                                     </attributes>
                                                 </fragment>
                                                 <fragment>
-                                                    <string key="content">
-
-dial app icon by IconMark from the Noun Project
+                                                    <string key="content" base64-UTF8="YES">
+Cgo
 </string>
                                                     <attributes>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" metaFont="label" size="17"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment>
+                                                    <string key="content">dial app icon by IconMark from the Noun Project
+String+Version by DragonCherry
+ProcInfo by Patrick Wardle </string>
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" size="11" name="HelveticaNeue"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -792,7 +801,7 @@ dial app icon by IconMark from the Noun Project
                 </viewController>
                 <customObject id="N40-nE-NTQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="689" y="357"/>
+            <point key="canvasLocation" x="689" y="373"/>
         </scene>
     </scenes>
 </document>

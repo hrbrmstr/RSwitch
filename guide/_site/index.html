@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Using RSwitch</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/darkly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">RSwitch</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Use</a>
+</li>
+<li>
+  <a href="develop.html">Develop</a>
+</li>
+<li>
+  <a href="acknowledgements.html">Acknowledgements</a>
+</li>
+<li>
+  <a href="https://rud.is/rswitch">Landing Page</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Using RSwitch</h1>
+
+</div>
+
+
+<p>RSwitch is a macOS menubar application that works on macOS 10.14+ and provides handy shortcuts for developing with R on macOS. You can download it from the <a href="https://rud.is/rswitch/">landing page</a> or contribute to the <a href="develop.html">development</a> of the application.</p>
+<div id="basiccore-usage" class="section level2">
+<h2>Basic/Core Usage</h2>
+<p>After downloading and running the application a new menubar item will appear and the core menu will look something like this:</p>
+<p><img src="menu-info.png" /></p>
+<p>The initial and primary feature of the RSwitch app was to enable switching what your system considers to be the “current” version of R. To understand how that is “computed”, you should use the “R Frameworks Directory” option which opens up <code>/Library/Frameworks/R.framework/Versions</code> in the Finder so you can browse and manipulate the contents of that directory tree on your own.</p>
+<pre class="r"><code>fs::dir_tree(path = &quot;/Library/Frameworks/R.framework/Versions&quot;, recurse = FALSE)</code></pre>
+<pre><code>/Library/Frameworks/R.framework/Versions
+├── 3.5
+├── 3.6
+├── 3.7
+└── Current</code></pre>
+<p>The “R Framework” is, well, <em>R</em> on your macOS system. All of the necessary supporting libraries, code, pacakges, configuration elements, etc. exist in the framework directory. Here is the top-level contents of the <code>3.5</code> version of the R Framework:</p>
+<pre class="r"><code>fs::dir_tree(path = &quot;/Library/Frameworks/R.framework/Versions/3.5&quot;, recurse = 1)</code></pre>
+<pre><code>/Library/Frameworks/R.framework/Versions/3.5
+├── Headers
+├── PrivateHeaders
+│   ├── Defn.h
+│   ├── Errormsg.h
+│   ├── Fileio.h
+│   ├── Graphics.h
+│   ├── GraphicsBase.h
+│   ├── IOStuff.h
+│   ├── Internal.h
+│   ├── Makefile.in
+│   ├── Makefile.win
+│   ├── Parse.h
+│   ├── Print.h
+│   ├── R.h
+│   ├── R_ext
+│   ├── Rconnections.h
+│   ├── Rdefines.h
+│   ├── Rdynpriv.h
+│   ├── Rembedded.h
+│   ├── Rgraphics.h
+│   ├── Rinlinedfuns.h
+│   ├── Rinterface.h
+│   ├── Rinternals.h
+│   ├── Rmath.h0.in
+│   ├── Rmodules
+│   ├── S.h
+│   ├── Startup.h
+│   ├── config.h
+│   ├── config.h.in
+│   ├── rlocale.h
+│   ├── stamp-h.in
+│   └── vg
+├── R
+└── Resources
+    ├── COPYING
+    ├── Info.plist
+    ├── R
+    ├── Rscript
+    ├── SVN-REVISION
+    ├── bin
+    ├── doc
+    ├── etc
+    ├── fontconfig
+    ├── include
+    ├── lib
+    ├── library
+    ├── man1
+    ├── modules
+    ├── share
+    └── tests</code></pre>
+<p>When you download and run the <a href="https://cran.r-project.org/bin/macosx/">official R macOS installer</a> files are installed into a versioned tree and the <code>Current</code> symbolic link is updated to point to what you just installed. By making all of the installed resources depend on the <code>Current</code> symbolic link, the R Core team made it possible to switch R versions just by changing that link. For example, The <code>R</code> console application in <code>/usr/local/bin</code> is a symbolc link to:</p>
+<p><code>/usr/local/bin/R@ -&gt; /Library/Frameworks/R.framework/Resources/bin/R</code></p>
+<p>The <code>Resources</code> directory (and everything else in <code>/Library/Frameworks/R.framework/</code> uses the <code>Current</code> symbolic link to get to the correct targets):</p>
+<ul>
+<li><code>Headers@ -&gt; Versions/Current/Headers</code></li>
+<li><code>Libraries@ -&gt; Versions/Current/Resources/lib</code></li>
+<li><code>PrivateHeaders@ -&gt; Versions/Current/PrivateHeaders</code></li>
+<li><code>R@ -&gt; Versions/Current/R</code></li>
+<li><code>Resources@ -&gt; Versions/Current/Resources</code></li>
+<li><code>Versions/</code></li>
+</ul>
+<p>For the most control, you can install a coexisting version of R <strong>oldrel</strong>-1, <strong>oldrel</strong> (as of the date this document was created those would be R 3.4 and R 3.5), current <strong>release</strong> (R 3.6) and <strong>devel</strong> (3.7) by hand by going to the <a href="https://mac.r-project.org/">R for macOS Developer’s Page</a> and downloading the <code>tar.gz</code> version of those distributions:</p>
+<p><img src="r-macos-downloads.png" /></p>
+<p>Here are direct <code>https</code> links to the tarballs:</p>
+<ul>
+<li><a href="https://mac.r-project.org/mavericks/R-3.4-branch/R-3.4-branch-mavericks-sa-x86_64.tar.gz">R 3.4</a> (oldrel-1)</li>
+<li><a href="https://mac.r-project.org/el-capitan/R-3.5-branch/R-3.5-branch-el-capitan-sa-x86_64.tar.gz">R 3.5</a> (oldrel)</li>
+<li><a href="https://mac.r-project.org/el-capitan/R-3.6-branch/R-3.6-branch-el-capitan-sa-x86_64.tar.gz">R 3.6</a> (current)</li>
+<li><a href="https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz">R 3.7</a> (devel)</li>
+</ul>
+<p>Once downloaded, you can fire up a terminal prompt, head to the root directory (i.e. <code>cd /</code>) and run <code>tar -xvzf path-to-thing-you-just-downloaded</code> to lay out the contents of the tarball onto the filesystem. (You can also use the <code>.pkg</code> versions if you prefer a clicky-installer wizard.)</p>
+<p>Once you install one of these versions, <code>Current</code> gets manipulated to point to it. You can either <code>rm</code> the existing symbolic link and <code>ln -s</code> a new one or <em>just use RSwitch</em>!</p>
+<p>Upon initial click, RSwitch figures out which versions of R you have installed and lets you switch them just by selecting the versioned menu item. When the change is made you get a handy notification letting you know the action performed successfully and which R version you changed to:</p>
+<p><img src="r-change-notify.png" /></p>
+<div class="alert alert-warning" role="alert" style="color:black">
+<span class="glyphicon glyphicon-bell" aria-hidden="true"></span> NOTE that it is not a good idea to switch what your Mac thinks is the current version of R while active R sessions exist unless you really know what you’re doing as you may lose work.
+</div>
+</div>
+<div id="keeping-toolsets-current" class="section level2">
+<h2>Keeping Toolsets Current</h2>
+<p>The main goal of the package was to make it easier to switch the current version of R to something else. If you have that need, chances are that you are playing with the development version of R and said version has nightly builds.</p>
+<p>Similarly, if you are living on the cutting edge of R you are also likely doing the same with <a href="https://dailies.rstudio.com/rstudio/oss/mac/">RStudio dailies</a>.</p>
+<p>RSwitch provides two handy menu item shortcuts to download either of those resources, but it expects you do <em>some</em> work to use them. When you select either of the “Download latest&amp;hellip” items some checks are performed (mostly to find the current version of the latest RStudio daily) and if it finds either the r-devel tarball or the exact same version of the RStudio disk image in the <code>~/Downloads</code> directory it will let you know you need to clean up after yourself first:</p>
+<p><img src="r-devel-exists.png" /></p>
+<p><img src="rstudio-exists.png" /></p>
+<p>If RSwitch can download the requested resource it will do so in the background and grey out the selected item until the process is complete:</p>
+<p><img src="rstudio-in-progress.png" /></p>
+<p>When the process is complete (or errors) a notification will be sent:</p>
+<p><img src="rstudio-success.png" /></p>
+<p>and the Finder will open up to <code>~/Downloads</code> with the target file selected.</p>
+</div>
+<div id="getting-help-or-resources-from-the-internet" class="section level2">
+<h2>Getting Help or Resources from the Internet</h2>
+<p>Since RSwitch is designed to help you work with R on macOS it seemed only fitting to provide some handy links to resources like the R for macOS page, the CRAN R page, RStudio dailies link, etc. They’re all available via the fairly obvious sub-menu:</p>
+<p><img src="web-help.png" /></p>
+<p>and each item will open up in your default web browser. (File an issue if you’d like more links added)</p>
+</div>
+<div id="even-moar-switching" class="section level2">
+<h2>Even Moar Switching</h2>
+<p>Since the theme of RSwitch is, well, <em>switching</em> it, further, seemed only fitting to allow you to make any open RStudio or R GUI instance active from the app:</p>
+<p><img src="app-switch.png" /></p>
+<p>The list is presented in app order (RStudio first since it’s super likely that’s what most macOS R folk are using) and then in app launch order (oldest on top). As shown, if RSwitch can detect what the open RStudio project or package is, that name gets added to the switching title.</p>
+</div>
+<div id="the-item-that-launched-a-thousand-instances" class="section level2">
+<h2>The Item That Launched A Thousand Instances</h2>
+<p>While being able to switch to running instances is fine, it would also be handy to be able to launch RStudio or R GUI from the menubar app. If none are currently running you can launch them with the obviously named menu items. If you hold down <code>&lt;Control&gt;</code> as you click on the RSwitch icon you’ll be given the opportunity to launch new, concurrent instances of either application:</p>
+<p><img src="launch-new.png" /></p>
+</div>
+<div id="speaking-of-current" class="section level2">
+<h2>Speaking of Current</h2>
+<p>RSwitch is under active, heavy development. Even when the development cycle dies down it will receive updates as bugs are fixed and new features are added. Rather than make you subscribe to a blog or monitor Twitter or social coding sites RSwitch now lets you check for updates right within the app. If there are no updates you get a notification telling you so:</p>
+<p><img src="latest.png" /></p>
+<p>otherwise, a link will open in your default browser so you can download the latest version.</p>
+</div>
+<div id="always-on" class="section level2">
+<h2>Always On</h2>
+<p>If you like RSwitch enough to keep it running all the time, just drag the item to the “Login Items” table of your user in the “Users &amp; Groups” pane of “System Preferences”</p>
+<p><img src="users-n-grps.png" /></p>
+</div>
+<div id="getting-help" class="section level2">
+<h2>Getting Help</h2>
+<p>If you’re having trouble with RSwitch or have a feature request, head on over to any of the following social coding sites and file an issue:</p>
+<ul>
+<li><a href="https://git.rud.is/hrbrmstr/RSwitch">My self-hosted Gitea instance</a></li>
+<li><a href="https://git.sr.ht/~hrbrmstr/RSwitch">SourceHut</a></li>
+<li><a href="https://gitlab.com/hrbrmstr/RSwitch">GitLab</a></li>
+<li><a href="https://bitbucket.com/hrbrmstr/RSwitch">Bitbucket</a></li>
+<li><a href="https://github.com/hrbrmstr/RSwitch">GitHub</a></li>
+</ul>
+</div>
+
+<hr noshade size=1/>
+<p>Copyright &copy; 2019 Bob Rudis. All rights reserved.</p>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
