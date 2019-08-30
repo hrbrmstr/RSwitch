@@ -41,6 +41,7 @@
 		01073F1C2311E64E007162C9 /* DownloadRStudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadRStudio.swift; sourceTree = "<group>"; };
 		01073F1E2311E67D007162C9 /* HandleUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleUpdate.swift; sourceTree = "<group>"; };
 		01073F202311E6BD007162C9 /* HandleRSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleRSwitch.swift; sourceTree = "<group>"; };
+		016750FB2319A7A4009E2FD6 /* RSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RSwitch.entitlements; sourceTree = "<group>"; };
 		0178970C230ED25100F8F5BC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		018A8C392312C7BC0006E87D /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = procInfo.h; sourceTree = "<group>"; };
 		018A8C3A2312C7BC0006E87D /* libprocInfo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libprocInfo.a; sourceTree = "<group>"; };
@@ -181,6 +182,7 @@
 		01F3EF0A230E635300DF5DF9 /* RSwitch */ = {
 			isa = PBXGroup;
 			children = (
+				016750FB2319A7A4009E2FD6 /* RSwitch.entitlements */,
 				018A8C342312C6510006E87D /* ObjC */,
 				01073F232311E859007162C9 /* swift */,
 				01F3EF0F230E635500DF5DF9 /* Assets.xcassets */,
@@ -479,11 +481,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RSwitch/RSwitch.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBY22P58G8;
-				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = RSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -511,11 +514,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RSwitch/RSwitch.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBY22P58G8;
-				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = RSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -532,6 +536,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RSwitch/ObjC/RSwitch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
