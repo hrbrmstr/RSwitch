@@ -1,5 +1,5 @@
 //
-//  HandleSwitch.swift
+//  HandleRSwitch.swift
 //  RSwitch
 //
 //  Created by hrbrmstr on 8/24/19.
@@ -17,7 +17,7 @@ extension AppDelegate {
   
   // The core worker function. Receives the basename of the selected directory
   // then removes the current alias and creates the new one.
-  @objc func handleSwitch(_ sender: NSMenuItem?) {
+  @objc func handleRSwitch(_ sender: NSMenuItem?) {
     
     let fm = FileManager.default;
     let title = sender?.title
@@ -35,7 +35,7 @@ extension AppDelegate {
       )
       self.notifyUser(title: "Success", text: "Current R version switched to " + title!)
     } catch {
-      self.notifyUser(title: "Action failed", text: "Failed to create alias for " + app_dirs.macos_r_framework + "/" + title!)
+      self.notifyUser(title: "Action failed", text: "Failed to create alias for " + app_dirs.macos_r_framework + "/" + title! + " (\(error))")
     }
       
   }

@@ -78,7 +78,7 @@ extension AppDelegate {
             }
           }
           
-          DispatchQueue.main.async { [weak self] in  self?.rstudio_enabled = true }
+          DispatchQueue.main.async { [weak self] in self?.rstudio_enabled = true }
           
         }
         

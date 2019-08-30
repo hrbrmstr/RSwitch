@@ -62,7 +62,7 @@ extension AppDelegate {
           }
         }
         
-        DispatchQueue.main.async { [weak self] in  self?.rdevel_enabled = true }
+        DispatchQueue.main.async { [weak self] in self?.rdevel_enabled = true }
         
       }
       

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		01073F0F2311AE2E007162C9 /* String+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F0E2311AE2E007162C9 /* String+Version.swift */; };
-		01073F112311E0F7007162C9 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F102311E0F7007162C9 /* Alerts.swift */; };
 		01073F132311E1CF007162C9 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F122311E1CF007162C9 /* Utils.swift */; };
 		01073F152311E370007162C9 /* Notify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F142311E370007162C9 /* Notify.swift */; };
 		01073F172311E397007162C9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F162311E397007162C9 /* Menu.swift */; };
@@ -16,11 +15,15 @@
 		01073F1B2311E613007162C9 /* DownloadTarball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F1A2311E613007162C9 /* DownloadTarball.swift */; };
 		01073F1D2311E64E007162C9 /* DownloadRStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F1C2311E64E007162C9 /* DownloadRStudio.swift */; };
 		01073F1F2311E67D007162C9 /* HandleUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F1E2311E67D007162C9 /* HandleUpdate.swift */; };
-		01073F212311E6BD007162C9 /* HandleSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F202311E6BD007162C9 /* HandleSwitch.swift */; };
+		01073F212311E6BD007162C9 /* HandleRSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F202311E6BD007162C9 /* HandleRSwitch.swift */; };
 		0178970D230ED25100F8F5BC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178970C230ED25100F8F5BC /* AboutViewController.swift */; };
 		018A8C3B2312C7BC0006E87D /* libprocInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 018A8C3A2312C7BC0006E87D /* libprocInfo.a */; };
 		018A8C3F2312CB480006E87D /* procHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 018A8C3E2312CB480006E87D /* procHelper.m */; };
 		018A8C412312F4940006E87D /* HandleSwitchTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018A8C402312F4940006E87D /* HandleSwitchTo.swift */; };
+		0198B99E23196689003F7578 /* BrowseMenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B99D23196689003F7578 /* BrowseMenuAction.swift */; };
+		0198B9A0231970ED003F7578 /* AppAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B99F231970ED003F7578 /* AppAlerts.swift */; };
+		0198B9A823197CBA003F7578 /* LaunchUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B9A723197CBA003F7578 /* LaunchUtils.swift */; };
+		0198B9AA23197D3A003F7578 /* Versions+RunningUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B9A923197D3A003F7578 /* Versions+RunningUtils.swift */; };
 		01F3EF0C230E635300DF5DF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3EF0B230E635300DF5DF9 /* AppDelegate.swift */; };
 		01F3EF0E230E635300DF5DF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3EF0D230E635300DF5DF9 /* ViewController.swift */; };
 		01F3EF10230E635500DF5DF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01F3EF0F230E635500DF5DF9 /* Assets.xcassets */; };
@@ -30,7 +33,6 @@
 
 /* Begin PBXFileReference section */
 		01073F0E2311AE2E007162C9 /* String+Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Version.swift"; sourceTree = "<group>"; };
-		01073F102311E0F7007162C9 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		01073F122311E1CF007162C9 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		01073F142311E370007162C9 /* Notify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notify.swift; sourceTree = "<group>"; };
 		01073F162311E397007162C9 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -38,7 +40,7 @@
 		01073F1A2311E613007162C9 /* DownloadTarball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTarball.swift; sourceTree = "<group>"; };
 		01073F1C2311E64E007162C9 /* DownloadRStudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadRStudio.swift; sourceTree = "<group>"; };
 		01073F1E2311E67D007162C9 /* HandleUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleUpdate.swift; sourceTree = "<group>"; };
-		01073F202311E6BD007162C9 /* HandleSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleSwitch.swift; sourceTree = "<group>"; };
+		01073F202311E6BD007162C9 /* HandleRSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleRSwitch.swift; sourceTree = "<group>"; };
 		0178970C230ED25100F8F5BC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		018A8C392312C7BC0006E87D /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = procInfo.h; sourceTree = "<group>"; };
 		018A8C3A2312C7BC0006E87D /* libprocInfo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libprocInfo.a; sourceTree = "<group>"; };
@@ -46,6 +48,10 @@
 		018A8C3D2312CB480006E87D /* procHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = procHelper.h; sourceTree = "<group>"; };
 		018A8C3E2312CB480006E87D /* procHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = procHelper.m; sourceTree = "<group>"; };
 		018A8C402312F4940006E87D /* HandleSwitchTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleSwitchTo.swift; sourceTree = "<group>"; };
+		0198B99D23196689003F7578 /* BrowseMenuAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseMenuAction.swift; sourceTree = "<group>"; };
+		0198B99F231970ED003F7578 /* AppAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlerts.swift; sourceTree = "<group>"; };
+		0198B9A723197CBA003F7578 /* LaunchUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchUtils.swift; sourceTree = "<group>"; };
+		0198B9A923197D3A003F7578 /* Versions+RunningUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Versions+RunningUtils.swift"; sourceTree = "<group>"; };
 		01F3EF08230E635300DF5DF9 /* RSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01F3EF0B230E635300DF5DF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01F3EF0D230E635300DF5DF9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,35 +79,85 @@
 		01073F232311E859007162C9 /* swift */ = {
 			isa = PBXGroup;
 			children = (
+				0198B9A1231970F5003F7578 /* AppAlerts */,
+				0198B9A323197301003F7578 /* Downloaders */,
+				0198B99C23196666003F7578 /* MenuActions */,
+				0198B9A2231971D1003F7578 /* String+Version */,
+				0198B9A623197C8E003F7578 /* Utils */,
+				0178970C230ED25100F8F5BC /* AboutViewController.swift */,
 				01F3EF0B230E635300DF5DF9 /* AppDelegate.swift */,
-				01073F102311E0F7007162C9 /* Alerts.swift */,
-				01073F202311E6BD007162C9 /* HandleSwitch.swift */,
+				01073F202311E6BD007162C9 /* HandleRSwitch.swift */,
 				01073F1E2311E67D007162C9 /* HandleUpdate.swift */,
-				01073F1C2311E64E007162C9 /* DownloadRStudio.swift */,
-				01073F1A2311E613007162C9 /* DownloadTarball.swift */,
 				018A8C402312F4940006E87D /* HandleSwitchTo.swift */,
-				01073F182311E3B8007162C9 /* Bundle.swift */,
 				01073F162311E397007162C9 /* Menu.swift */,
 				01073F142311E370007162C9 /* Notify.swift */,
-				01073F0E2311AE2E007162C9 /* String+Version.swift */,
-				01073F122311E1CF007162C9 /* Utils.swift */,
 				01F3EF0D230E635300DF5DF9 /* ViewController.swift */,
-				0178970C230ED25100F8F5BC /* AboutViewController.swift */,
 			);
 			path = swift;
 			sourceTree = "<group>";
 		};
-		018A8C342312C6510006E87D /* c */ = {
+		018A8C342312C6510006E87D /* ObjC */ = {
 			isa = PBXGroup;
 			children = (
+				0198B99B23196479003F7578 /* ProcInfo */,
 				018A8C3C2312C8380006E87D /* RSwitch-Bridging-Header.h */,
+			);
+			path = ObjC;
+			sourceTree = "<group>";
+		};
+		0198B99B23196479003F7578 /* ProcInfo */ = {
+			isa = PBXGroup;
+			children = (
 				018A8C3A2312C7BC0006E87D /* libprocInfo.a */,
 				018A8C392312C7BC0006E87D /* procInfo.h */,
 				018A8C3D2312CB480006E87D /* procHelper.h */,
 				018A8C3E2312CB480006E87D /* procHelper.m */,
-				01073F232311E859007162C9 /* swift */,
 			);
-			path = c;
+			path = ProcInfo;
+			sourceTree = "<group>";
+		};
+		0198B99C23196666003F7578 /* MenuActions */ = {
+			isa = PBXGroup;
+			children = (
+				0198B99D23196689003F7578 /* BrowseMenuAction.swift */,
+			);
+			path = MenuActions;
+			sourceTree = "<group>";
+		};
+		0198B9A1231970F5003F7578 /* AppAlerts */ = {
+			isa = PBXGroup;
+			children = (
+				0198B99F231970ED003F7578 /* AppAlerts.swift */,
+			);
+			path = AppAlerts;
+			sourceTree = "<group>";
+		};
+		0198B9A2231971D1003F7578 /* String+Version */ = {
+			isa = PBXGroup;
+			children = (
+				01073F182311E3B8007162C9 /* Bundle.swift */,
+				01073F0E2311AE2E007162C9 /* String+Version.swift */,
+			);
+			path = "String+Version";
+			sourceTree = "<group>";
+		};
+		0198B9A323197301003F7578 /* Downloaders */ = {
+			isa = PBXGroup;
+			children = (
+				01073F1A2311E613007162C9 /* DownloadTarball.swift */,
+				01073F1C2311E64E007162C9 /* DownloadRStudio.swift */,
+			);
+			path = Downloaders;
+			sourceTree = "<group>";
+		};
+		0198B9A623197C8E003F7578 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				01073F122311E1CF007162C9 /* Utils.swift */,
+				0198B9A723197CBA003F7578 /* LaunchUtils.swift */,
+				0198B9A923197D3A003F7578 /* Versions+RunningUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		01F3EEFF230E635300DF5DF9 = {
@@ -125,7 +181,8 @@
 		01F3EF0A230E635300DF5DF9 /* RSwitch */ = {
 			isa = PBXGroup;
 			children = (
-				018A8C342312C6510006E87D /* c */,
+				018A8C342312C6510006E87D /* ObjC */,
+				01073F232311E859007162C9 /* swift */,
 				01F3EF0F230E635500DF5DF9 /* Assets.xcassets */,
 				01F3EF11230E635500DF5DF9 /* Main.storyboard */,
 				01F3EF14230E635500DF5DF9 /* Info.plist */,
@@ -265,20 +322,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01073F212311E6BD007162C9 /* HandleSwitch.swift in Sources */,
+				01073F212311E6BD007162C9 /* HandleRSwitch.swift in Sources */,
+				0198B9A0231970ED003F7578 /* AppAlerts.swift in Sources */,
 				018A8C3F2312CB480006E87D /* procHelper.m in Sources */,
 				01073F1F2311E67D007162C9 /* HandleUpdate.swift in Sources */,
 				01073F1B2311E613007162C9 /* DownloadTarball.swift in Sources */,
 				018A8C412312F4940006E87D /* HandleSwitchTo.swift in Sources */,
+				0198B9AA23197D3A003F7578 /* Versions+RunningUtils.swift in Sources */,
 				0178970D230ED25100F8F5BC /* AboutViewController.swift in Sources */,
 				01073F192311E3B8007162C9 /* Bundle.swift in Sources */,
 				01073F152311E370007162C9 /* Notify.swift in Sources */,
 				01073F1D2311E64E007162C9 /* DownloadRStudio.swift in Sources */,
 				01073F172311E397007162C9 /* Menu.swift in Sources */,
-				01073F112311E0F7007162C9 /* Alerts.swift in Sources */,
 				01F3EF0E230E635300DF5DF9 /* ViewController.swift in Sources */,
 				01F3EF0C230E635300DF5DF9 /* AppDelegate.swift in Sources */,
 				01073F0F2311AE2E007162C9 /* String+Version.swift in Sources */,
+				0198B9A823197CBA003F7578 /* LaunchUtils.swift in Sources */,
+				0198B99E23196689003F7578 /* BrowseMenuAction.swift in Sources */,
 				01073F132311E1CF007162C9 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,14 +491,15 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/RSwitch/c",
+					"$(PROJECT_DIR)/RSwitch/ObjC",
+					"$(PROJECT_DIR)/RSwitch/ObjC/ProcInfo",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = is.rud.bob.RSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "RSwitch/c/RSwitch-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "RSwitch/ObjC/RSwitch-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -462,14 +523,15 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/RSwitch/c",
+					"$(PROJECT_DIR)/RSwitch/ObjC",
+					"$(PROJECT_DIR)/RSwitch/ObjC/ProcInfo",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = is.rud.bob.RSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "RSwitch/c/RSwitch-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "RSwitch/ObjC/RSwitch-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

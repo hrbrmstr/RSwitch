@@ -7,8 +7,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var abtController: NSWindowController!
 
   let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-  let statusMenu = NSMenu()
-  let quitItem = NSMenuItem(title: NSLocalizedString("Quit", comment: "Quit menu item"), action: #selector(NSApp.terminate), keyEquivalent: "q")
+  let statusMenu = NSMenu(title: "RSwitch")
 
   var rdevel_enabled: Bool!
   var rstudio_enabled: Bool!
