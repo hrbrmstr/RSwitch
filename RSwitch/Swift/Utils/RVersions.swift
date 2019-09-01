@@ -18,6 +18,8 @@ class RVersions {
   
   static let macos_r_framework = "/Library/Frameworks/R.framework/Versions" // Where the official R installs go
 
+  static let replRegex = try!NSRegularExpression(pattern: "[[:alpha:][:space:]\"#_]+", options: NSRegularExpression.Options.caseInsensitive)
+  
   static func currentVersionTarget() -> String {
         
     // get where Current points to
@@ -34,6 +36,41 @@ class RVersions {
       return("")
     }
 
+  }
+  
+  static func preciseVersion(versionPath : String) -> String {
+
+    let actualPath = (versionPath.starts(with: "/") ? "" : RVersions.macos_r_framework + "/" ) +
+    versionPath + "/Headers/Rversion.h"
+    var out = ""
+    
+    if (FileManager.default.fileExists(atPath:actualPath)) {
+     
+        do {
+          
+          let versionHeader = (try NSString(contentsOfFile: actualPath, encoding: String.Encoding.utf8.rawValue)) as String
+
+          let majMin = versionHeader
+                .split(separator: "\n")
+                .filter{
+                  $0.contains("R_MAJOR") || $0.contains("R_MINOR")
+                }
+                .map{
+                  replRegex.stringByReplacingMatches(in: String($0),
+                                                     options: [],
+                                                     range: NSMakeRange(0, $0.count),
+                                                     withTemplate: "")
+                }
+          
+          out = " (" + majMin[0] + "." + majMin[1] + ")"
+                
+      } catch {
+      }
+
+    }
+    
+    return(out)
+    
   }
   
   static func hasRBinary(versionPath : String) -> Bool {
@@ -70,7 +107,7 @@ class RVersions {
         let complete = RVersions.hasRBinary(versionPath: version)
         let keynum = (i < 10) ? String(i) : ""
         let item = NSMenuItem(
-          title: complete ? version : version + " (incomplete)",
+          title: complete ? version + RVersions.preciseVersion(versionPath: version) : version + " (incomplete)",
           action: complete ? handler : nil,
           keyEquivalent: complete ? keynum : ""
         )
