@@ -30,13 +30,18 @@ class BrowseMenuAction {
     BrowseMenuAction(title: "R for macOS CRAN…", url: "https://cran.rstudio.org/bin/macosx/"),
     BrowseMenuAction(title: "R-SIG-Mac Archives…", url: "https://stat.ethz.ch/pipermail/r-sig-mac/"),
     BrowseMenuAction(title: "R-devel News…", url: "https://developer.r-project.org/blosxom.cgi/R-devel/NEWS"),
+    BrowseMenuAction(title: "R-Forge macOS Subversion…", url: "http://svn.rforge.net/osx/trunk/"),
     BrowseMenuAction(title: "R Installation/Admin macOS Section…", url: "https://cran.rstudio.org/doc/manuals/R-admin.html#Installing-R-under-macOS"),
   ]
 
   private static let webItemsExt = [
     BrowseMenuAction(title: "RStudio macOS Dailies…", url: "https://dailies.rstudio.com/rstudio/oss/mac/"),
     BrowseMenuAction(title: "R StackOverflow…", url: "https://stackoverflow.com/questions/tagged/r"),
-    BrowseMenuAction(title: "RStudio Community…", url: "https://community.rstudio.com/")
+    BrowseMenuAction(title: "RStudio Community…", url: "https://community.rstudio.com/"),
+    BrowseMenuAction(title: "Unofficial R-O GitHub CRAN Mirror…", url: "https://github.com/cran"),
+    BrowseMenuAction(title: "XQuartz (X11 for macOS)…", url: "https://www.xquartz.org/"),
+    BrowseMenuAction(title: "Homebrew (macOS Package Manager)…", url: "https://brew.sh/"),
+    BrowseMenuAction(title: "Apple Developer Portal…", url: "https://developer.apple.com/")
   ]
 
   init(title: String, url: String, selector: String = "browseFromMenu", keyEquivalent: String = "") {
@@ -44,7 +49,6 @@ class BrowseMenuAction {
     self.url = URL(string: url)!
     self.selector = Selector((selector+":"))
     self.keyEquivalent = keyEquivalent
-    print(self.selector)
   }
   
   public func asMenuItem() -> NSMenuItem {

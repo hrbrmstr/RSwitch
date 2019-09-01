@@ -25,7 +25,7 @@ extension AppDelegate: NSMenuDelegate {
     menu.addItem(NSMenuItem(title: "Current R Version:", action: nil, keyEquivalent: ""))
 
     // populate installed versions
-    populateRVersionsMenu(menu: menu)
+    RVersions.populateRVersionsMenu(menu: menu, handler: #selector(handleRSwitch))
 
     // Add items to download latest r-devel tarball and latest macOS daily
     menu.addItem(NSMenuItem.separator())

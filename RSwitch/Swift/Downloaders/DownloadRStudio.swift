@@ -32,8 +32,6 @@ extension AppDelegate {
       
       dlfile.appendPathComponent(dlurl.lastPathComponent)
       
-      print("RStudio href: " + href)
-      
       if (FileManager.default.fileExists(atPath: dlfile.relativePath)) {
         
         self.notifyUser(title: "Action required", subtitle: "RStudio Download", text: "A local copy of the latest RStudio daily already exists. Please remove or rename it if you wish to re-download it.")
@@ -44,8 +42,6 @@ extension AppDelegate {
         self.rstudio_enabled = true
         
       } else {
-        
-        print("Timeout value: ", URLSession.shared.configuration.timeoutIntervalForRequest)
         
         let task = URLSession.shared.downloadTask(with: dlurl) {
           tempURL, response, error in

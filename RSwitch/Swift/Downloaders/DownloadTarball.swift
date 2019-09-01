@@ -9,6 +9,9 @@
 import Foundation
 import Cocoa
 
+let tarballURL = "https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz"
+let tarballFile = NSString(string: tarballURL).lastPathComponent as String
+
 extension AppDelegate {
   
   // Download latest r-devel tarball
@@ -16,11 +19,11 @@ extension AppDelegate {
     
     self.rdevel_enabled = false
     
-    let dlurl = URL(string: "https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz")!
+    let dlurl = URL(string: tarballURL)!
     let dldir = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
     var dlfile = dldir
     
-    dlfile.appendPathComponent("R-devel-el-capitan-sa-x86_64.tar.gz")
+    dlfile.appendPathComponent(tarballFile)
   
     if (FileManager.default.fileExists(atPath: dlfile.relativePath)) {
       
@@ -30,6 +33,7 @@ extension AppDelegate {
       NSWorkspace.shared.activateFileViewerSelecting([dlfile])
       
       self.rdevel_enabled = true
+      
     } else {
       
       let task = URLSession.shared.downloadTask(with: dlurl) {

@@ -719,7 +719,7 @@
         <!--About View Controller-->
         <scene sceneID="lbz-cy-h0Y">
             <objects>
-                <viewController storyboardIdentifier="about2" id="KlD-6a-3Gc" customClass="AboutViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="about2" id="KlD-6a-3Gc" customClass="AboutViewController" customModule="RSwitch" sceneMemberID="viewController">
                     <view key="view" id="SgY-wa-ilj">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -734,14 +734,14 @@
                                         <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" smartInsertDelete="YES" id="kWH-Et-k6l">
                                             <rect key="frame" x="0.0" y="0.0" width="463" height="247"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="textColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="alternatingContentBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="463" height="247"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
                                                     <string key="content">
-RSwitch v1.4.0
+RSwitch v1.4.1
 
 Copyright © 2019 Bob Rudis
 
@@ -749,14 +749,14 @@ MIT Licensed
 
 </string>
                                                     <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="NSColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" metaFont="label" size="17"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                                 <fragment content="https://rud.is/rswitch/">
                                                     <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="NSColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" metaFont="label" size="17"/>
                                                         <url key="NSLink" string="https://rud.is/rswitch/"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -767,7 +767,7 @@ MIT Licensed
 Cgo
 </string>
                                                     <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="NSColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" metaFont="label" size="17"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
@@ -777,7 +777,7 @@ Cgo
 String+Version by DragonCherry
 ProcInfo by Patrick Wardle </string>
                                                     <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="NSColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" size="11" name="HelveticaNeue"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
