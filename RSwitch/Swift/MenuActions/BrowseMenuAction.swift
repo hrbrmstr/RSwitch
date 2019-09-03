@@ -62,6 +62,7 @@ class BrowseMenuAction {
   ]
   
   private static let webItemsBook = [
+    BrowseMenuAction(title: "A moderndive into R and the tidyverse…", url: "https://moderndive.com/"),
     BrowseMenuAction(title: "Advanced R…", url: "https://adv-r.hadley.nz/"),
     BrowseMenuAction(title: "bookdown: Authoring Books and Technical Documents with R Markdown…", url: "https://bookdown.org/yihui/bookdown/"),
     BrowseMenuAction(title: "Data Visualization: A practical introduction…", url: "https://socviz.co/"),
@@ -71,11 +72,14 @@ class BrowseMenuAction {
     BrowseMenuAction(title: "Geocomputation with R…", url: "https://geocompr.robinlovelace.net/"),
     BrowseMenuAction(title: "ggplot2: Elegant Graphics for Data Analysis…", url: "https://ggplot2-book.org/"),
     BrowseMenuAction(title: "Hands-On Programming with R…", url: "https://rstudio-education.github.io/hopr/"),
+    BrowseMenuAction(title: "Happy Git and GitHub with R…", url: "https://happygitwithr.com/"),
+    BrowseMenuAction(title: "Modern R with the tidyverse", url: "https://b-rodrigues.github.io/modern_R/"),
     BrowseMenuAction(title: "R for Data Science…", url: "https://r4ds.had.co.nz"),
     BrowseMenuAction(title: "R Gaphics Cookbook…", url: "https://r-graphics.org/"),
     BrowseMenuAction(title: "R Markdown: The Definitive Guide…", url: "https://bookdown.org/yihui/rmarkdown/"),
     BrowseMenuAction(title: "R Packages…", url: "http://r-pkgs.had.co.nz/"),
     BrowseMenuAction(title: "Rcpp for Everyone…", url: "https://teuder.github.io/rcpp4everyone_en/"),
+    BrowseMenuAction(title: "Spatio-Temporal Statistics with R…", url: "http://spacetimewithr.org/"),
     BrowseMenuAction(title: "Text Mining with R…", url: "https://www.tidytextmining.com/")
   ]
 
