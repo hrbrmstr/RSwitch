@@ -9,7 +9,6 @@
 import Foundation
 import Cocoa
 
-
 extension AppDelegate {
 
   struct app_urls {

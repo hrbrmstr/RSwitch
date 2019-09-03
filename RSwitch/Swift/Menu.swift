@@ -10,6 +10,19 @@ import Foundation
 import Cocoa
 
 extension AppDelegate: NSMenuDelegate {
+  
+  @objc
+  func toggle_dock_icon(_ sender: NSMenuItem) {
+  
+    Preferences.showDockIcon = !Preferences.showDockIcon
+    
+    DockIcon.standard.setVisibility(Preferences.showDockIcon)
+    
+    if let menu = statusItem.menu, let item = menu.item(withTag: 99) {
+      item.state = Preferences.showDockIcon.stateValue
+    }
+    
+  }
 
   func menuWillOpen(_ menu: NSMenu) {
     
@@ -65,6 +78,14 @@ extension AppDelegate: NSMenuDelegate {
     menu.addItem(NSMenuItem.separator())
     menu.addItem(NSMenuItem(title: "About RSwitch…", action: #selector(about), keyEquivalent: ""))
     menu.addItem(NSMenuItem(title: "RSwitch Help…", action: #selector(rswitch_help), keyEquivalent: ""))
+      
+    // Toggle Dock Icon
+    menu.addItem(NSMenuItem.separator())
+    let item = NSMenuItem(title: "Toggle Dock Icon", action: #selector(toggle_dock_icon), keyEquivalent: "")
+    item.tag = 99
+    item.target = self
+    item.state = Preferences.showDockIcon.stateValue
+    menu.addItem(item)
 
     // Add a Quit item
     menu.addItem(NSMenuItem.separator())

@@ -1,3 +1,11 @@
+//
+//  AppDelegate.swift
+//  RSwitch
+//
+//  Created by hrbrmstr on 8/24/19.
+//  Copyright © 2019 Bob Rudis. All rights reserved.
+//
+
 import Cocoa
 
 @NSApplicationMain
@@ -11,19 +19,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   var rdevel_enabled: Bool!
   var rstudio_enabled: Bool!
+  var timer: Timer? = nil;
 
   override init() {
     
     super.init()
     
     statusMenu.delegate = self
-    
-    // dial by IconMark from the Noun Project
-    statusItem.button?.image =  #imageLiteral(resourceName: "RSwitch")
-    statusItem.menu = statusMenu
-    
-    mainStoryboard = NSStoryboard(name: "Main", bundle: nil)
-    abtController = (mainStoryboard.instantiateController(withIdentifier: "aboutPanelController") as! NSWindowController)
     
     rdevel_enabled = true
     rstudio_enabled = true
@@ -32,7 +34,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
   }
   
-  func applicationDidFinishLaunching(_ aNotification: Notification) { }
+  func applicationWillFinishLaunching(_ aNotification: Notification) {
+    
+    if Preferences.firstRunGone == false {
+      Preferences.firstRunGone = true
+      Preferences.restore()
+    }
+
+    DockIcon.standard.setVisibility(Preferences.showDockIcon)
+    
+  }
+
+  func applicationDidFinishLaunching(_ aNotification: Notification) {
+    
+    // dial by IconMark from the Noun Project
+    statusItem.button?.image =  #imageLiteral(resourceName: "RSwitch")
+    statusItem.menu = statusMenu
+    
+    mainStoryboard = NSStoryboard(name: "Main", bundle: nil)
+    abtController = (mainStoryboard.instantiateController(withIdentifier: "aboutPanelController") as! NSWindowController)
+    
+    timer = Timer.scheduledTimer(
+        timeInterval: 3600,
+        target: self,
+        selector: #selector(updateTimer),
+        userInfo: nil,
+        repeats: true
+    )
+    
+  }
     
   func applicationWillTerminate(_ aNotification: Notification) { }
 

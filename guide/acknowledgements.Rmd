@@ -13,3 +13,10 @@ RSwitch uses three external frameworks to accomplish its tasks:
 - [VersionCompare](https://github.com/DragonCherry/VersionCompare/) by DragonCherry
 
 The current (but, likely not final) app icon and menubar icon is based on the ['dial' Noun Project font icon](https://thenounproject.com/search/?q=dial&i=866019#) created by Icon Mark.
+
+## Extra Credits
+
+Many thanks to the following folks for their contributions to the project to help make RSwitch better for everyone:
+
+- [Benjamin Guiastrennec](https://github.com/guiastrennec) for suggesting improvements to the documentation regarding how to use the installer packages from the [R for macOS Developer's Page](https://mac.r-project.org/) without clobbering existing R Framework installs.
+- [Xavier Adam](https://github.com/xvrdm) for [adding books to the RSwitch library](https://github.com/hrbrmstr/RSwitch/pull/4).

@@ -16,6 +16,7 @@
 		01073F1D2311E64E007162C9 /* DownloadRStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F1C2311E64E007162C9 /* DownloadRStudio.swift */; };
 		01073F1F2311E67D007162C9 /* HandleUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F1E2311E67D007162C9 /* HandleUpdate.swift */; };
 		01073F212311E6BD007162C9 /* HandleRSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F202311E6BD007162C9 /* HandleRSwitch.swift */; };
+		011951B4231F00A000B62C3A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011951B3231F00A000B62C3A /* Preferences.swift */; };
 		0178970D230ED25100F8F5BC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178970C230ED25100F8F5BC /* AboutViewController.swift */; };
 		018A8C3B2312C7BC0006E87D /* libprocInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 018A8C3A2312C7BC0006E87D /* libprocInfo.a */; };
 		018A8C3F2312CB480006E87D /* procHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 018A8C3E2312CB480006E87D /* procHelper.m */; };
@@ -42,6 +43,7 @@
 		01073F1C2311E64E007162C9 /* DownloadRStudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadRStudio.swift; sourceTree = "<group>"; };
 		01073F1E2311E67D007162C9 /* HandleUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleUpdate.swift; sourceTree = "<group>"; };
 		01073F202311E6BD007162C9 /* HandleRSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleRSwitch.swift; sourceTree = "<group>"; };
+		011951B3231F00A000B62C3A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		016750FB2319A7A4009E2FD6 /* RSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RSwitch.entitlements; sourceTree = "<group>"; };
 		0178970C230ED25100F8F5BC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		018A8C392312C7BC0006E87D /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = procInfo.h; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				0198B9A723197CBA003F7578 /* Launch.swift */,
 				01975549231BD919003FAD7B /* RVersions.swift */,
 				0198B9A923197D3A003F7578 /* Running.swift */,
+				011951B3231F00A000B62C3A /* Preferences.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 			files = (
 				01073F212311E6BD007162C9 /* HandleRSwitch.swift in Sources */,
 				0198B9A0231970ED003F7578 /* AppAlerts.swift in Sources */,
+				011951B4231F00A000B62C3A /* Preferences.swift in Sources */,
 				018A8C3F2312CB480006E87D /* procHelper.m in Sources */,
 				01073F1F2311E67D007162C9 /* HandleUpdate.swift in Sources */,
 				01073F1B2311E613007162C9 /* DownloadTarball.swift in Sources */,
