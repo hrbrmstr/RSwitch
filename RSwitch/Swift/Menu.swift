@@ -38,9 +38,19 @@ extension AppDelegate: NSMenuDelegate {
     rstudioItem.isEnabled = self.rstudio_enabled
     menu.addItem(rstudioItem)
     
-    // Add items to open variosu R for macOS pages
+    menu.addItem(NSMenuItem.separator())
+
+    // Add items to open various R for macOS pages
     BrowseMenuAction.populateWebItems(menu: menu)
 
+    menu.addItem(NSMenuItem.separator())
+
+    // Add links to local copies of the R Manuals
+    BrowseMenuAction.populateLocalRManualsItems(menu: menu)
+    
+    // Add links to free R online books
+    BrowseMenuAction.populateRBooksItems(menu: menu)
+    
     // Add running apps
     populateRunningApps(menu: menu)
     
@@ -49,11 +59,12 @@ extension AppDelegate: NSMenuDelegate {
     
     // Add a Check for update
     menu.addItem(NSMenuItem.separator())
-    menu.addItem(NSMenuItem(title: NSLocalizedString("Check for update…", comment: "Check for update item"), action: #selector(checkForUpdate), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: "Check for update…", action: #selector(checkForUpdate), keyEquivalent: ""))
 
     // Add an About item
     menu.addItem(NSMenuItem.separator())
-    menu.addItem(NSMenuItem(title: NSLocalizedString("About RSwitch…", comment: "About menu item"), action: #selector(about), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: "About RSwitch…", action: #selector(about), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: "RSwitch Help…", action: #selector(rswitch_help), keyEquivalent: ""))
 
     // Add a Quit item
     menu.addItem(NSMenuItem.separator())

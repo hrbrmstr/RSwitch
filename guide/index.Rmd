@@ -13,6 +13,12 @@ knitr::opts_chunk$set(
 ```
 RSwitch is a macOS menubar application that works on macOS 10.14+ and provides handy shortcuts for developing with R on macOS. You can download it from the [landing page](https://rud.is/rswitch/) or contribute to the [development](develop.html) of the application.
 
+## Credits
+
+Many thanks to the following folks for their contributions to the project to help make RSwitch better for everyone:
+
+- [Benjamin Guiastrennec](https://github.com/guiastrennec) for suggesting improvements to the documentation regarding how to use the installer packages from the [R for macOS Developer's Page](https://mac.r-project.org/) without clobbering existing R Framework installs.
+
 ## Basic/Core Usage
 
 After downloading and running the application a new menubar item will appear and the core menu will look something like this:
@@ -55,7 +61,14 @@ Here are direct `https` links to the tarballs:
 - [R 3.6](https://mac.r-project.org/el-capitan/R-3.6-branch/R-3.6-branch-el-capitan-sa-x86_64.tar.gz) (current)
 - [R 3.7](https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz) (devel)
 
-Once downloaded, you can fire up a terminal prompt, head to the root directory (i.e. `cd /`) and run `tar -xvzf path-to-thing-you-just-downloaded` to lay out the contents of the tarball onto the filesystem. (You can also use the `.pkg` versions if you prefer a clicky-installer wizard.)
+Once downloaded, you can fire up a terminal prompt, head to the root directory (i.e. `cd /`) and run `tar -xvzf path-to-thing-you-just-downloaded` to lay out the contents of the tarball onto the filesystem. You can also use the `.pkg` versions if you prefer a clicky-installer wizard, but these installers will remove any previous versions of the framework (kinda defeating the purpose). You can still use the `.pkg` format by heading over to the command line and using `pkgutil --forget` to prevent said clobbering behavior (as noted in [Section 4.2](https://cran.rstudio.org/doc/manuals/R-admin.html#Uninstalling-under-macOS) of _R Installation and Administration_. For example:
+
+```{bash eval=FALSE}
+sudo pkgutil --forget org.r-project.R.el-capitan.fw.pkg \
+             --forget org.r-project.x86_64.tcltk.x11 \
+             --forget org.r-project.x86_64.texinfo \
+             --forget org.r-project.R.el-capitan.GUI.pkg
+```
 
 Once you install one of these versions, `Current` gets manipulated to point to it. You can either `rm` the existing symbolic link and `ln -s` a new one or _just use RSwitch_!
 
@@ -132,8 +145,6 @@ If you're having trouble with RSwitch or have a feature request, head on over to
 - [GitLab](https://gitlab.com/hrbrmstr/RSwitch)
 - [Bitbucket](https://bitbucket.com/hrbrmstr/RSwitch)
 - [GitHub](https://github.com/hrbrmstr/RSwitch)
-
-
 
 
 

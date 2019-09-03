@@ -372,6 +372,13 @@ div.tocify {
 
 
 <p>RSwitch is a macOS menubar application that works on macOS 10.14+ and provides handy shortcuts for developing with R on macOS. You can download it from the <a href="https://rud.is/rswitch/">landing page</a> or contribute to the <a href="develop.html">development</a> of the application.</p>
+<div id="credits" class="section level2">
+<h2>Credits</h2>
+<p>Many thanks to the following folks for their contributions to the project to help make RSwitch better for everyone:</p>
+<ul>
+<li><a href="https://github.com/guiastrennec">Benjamin Guiastrennec</a> for suggesting improvements to the documentation regarding how to use the installer packages from the <a href="https://mac.r-project.org/">R for macOS Developer’s Page</a> without clobbering existing R Framework installs.</li>
+</ul>
+</div>
 <div id="basiccore-usage" class="section level2">
 <h2>Basic/Core Usage</h2>
 <p>After downloading and running the application a new menubar item will appear and the core menu will look something like this:</p>
@@ -379,6 +386,7 @@ div.tocify {
 <p>The initial and primary feature of the RSwitch app was to enable switching what your system considers to be the “current” version of R. To understand how that is “computed”, you should use the “R Frameworks Directory” option which opens up <code>/Library/Frameworks/R.framework/Versions</code> in the Finder so you can browse and manipulate the contents of that directory tree on your own.</p>
 <pre class="r"><code>fs::dir_tree(path = &quot;/Library/Frameworks/R.framework/Versions&quot;, recurse = FALSE)</code></pre>
 <pre><code>/Library/Frameworks/R.framework/Versions
+├── 2.14
 ├── 3.5
 ├── 3.6
 ├── 3.7
@@ -456,7 +464,11 @@ div.tocify {
 <li><a href="https://mac.r-project.org/el-capitan/R-3.6-branch/R-3.6-branch-el-capitan-sa-x86_64.tar.gz">R 3.6</a> (current)</li>
 <li><a href="https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz">R 3.7</a> (devel)</li>
 </ul>
-<p>Once downloaded, you can fire up a terminal prompt, head to the root directory (i.e. <code>cd /</code>) and run <code>tar -xvzf path-to-thing-you-just-downloaded</code> to lay out the contents of the tarball onto the filesystem. (You can also use the <code>.pkg</code> versions if you prefer a clicky-installer wizard.)</p>
+<p>Once downloaded, you can fire up a terminal prompt, head to the root directory (i.e. <code>cd /</code>) and run <code>tar -xvzf path-to-thing-you-just-downloaded</code> to lay out the contents of the tarball onto the filesystem. You can also use the <code>.pkg</code> versions if you prefer a clicky-installer wizard, but these installers will remove any previous versions of the framework (kinda defeating the purpose). You can still use the <code>.pkg</code> format by heading over to the command line and using <code>pkgutil --forget</code> to prevent said clobbering behavior (as noted in <a href="https://cran.rstudio.org/doc/manuals/R-admin.html#Uninstalling-under-macOS">Section 4.2</a> of <em>R Installation and Administration</em>. For example:</p>
+<pre class="bash"><code>sudo pkgutil --forget org.r-project.R.el-capitan.fw.pkg \
+             --forget org.r-project.x86_64.tcltk.x11 \
+             --forget org.r-project.x86_64.texinfo \
+             --forget org.r-project.R.el-capitan.GUI.pkg</code></pre>
 <p>Once you install one of these versions, <code>Current</code> gets manipulated to point to it. You can either <code>rm</code> the existing symbolic link and <code>ln -s</code> a new one or <em>just use RSwitch</em>!</p>
 <p>Upon initial click, RSwitch figures out which versions of R you have installed and lets you switch them just by selecting the versioned menu item. When the change is made you get a handy notification letting you know the action performed successfully and which R version you changed to:</p>
 <p><img src="r-change-notify.png" /></p>
