@@ -15,11 +15,7 @@ import Cocoa
 extension AppDelegate {
   
   @objc func switch_to(_ sender: NSMenuItem?) {
-
-    let app = sender!.representedObject as! NSRunningApplication
-    
-    app.activate(options: NSApplication.ActivationOptions.activateIgnoringOtherApps)
-    
+    (sender!.representedObject as! NSRunningApplication).activate(options: NSApplication.ActivationOptions.activateIgnoringOtherApps)
   }
 
 }

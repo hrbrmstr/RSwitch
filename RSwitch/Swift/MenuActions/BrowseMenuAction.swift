@@ -133,7 +133,6 @@ class BrowseMenuAction {
     for item in webItemsBook { bookSub.addItem(item.asMenuItem()) }
     
   }
-
   
 }
 

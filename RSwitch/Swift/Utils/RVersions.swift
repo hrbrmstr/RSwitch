@@ -23,7 +23,7 @@ class RVersions {
   static func currentVersionTarget() -> String {
         
     // get where Current points to
-    let furl = NSURL(fileURLWithPath: RVersions.macos_r_framework + "/" + "Current")
+    let furl = NSURL(fileURLWithPath: (RVersions.macos_r_framework as NSString).appendingPathComponent("Current"))
     
     if (furl.fileReferenceURL() != nil) {
       do {
@@ -40,8 +40,8 @@ class RVersions {
   
   static func preciseVersion(versionPath : String) -> String {
 
-    let actualPath = (versionPath.starts(with: "/") ? "" : RVersions.macos_r_framework + "/" ) +
-    versionPath + "/Headers/Rversion.h"
+    let actualPath = NSString.path(withComponents: [ versionPath.starts(with: "/") ? "" : RVersions.macos_r_framework, versionPath, "Headers", "Rversion.h" ])
+    
     var out = ""
     
     if (FileManager.default.fileExists(atPath:actualPath)) {
@@ -57,9 +57,9 @@ class RVersions {
                 }
                 .map{
                   replRegex.stringByReplacingMatches(in: String($0),
-                                                     options: [],
-                                                     range: NSMakeRange(0, $0.count),
-                                                     withTemplate: "")
+                                                         options: [],
+                                                         range: NSMakeRange(0, $0.count),
+                                                         withTemplate: "")
                 }
           
           out = " (" + majMin[0] + "." + majMin[1] + ")"
@@ -74,12 +74,8 @@ class RVersions {
   }
   
   static func hasRBinary(versionPath : String) -> Bool {
-    return(
-      FileManager.default.fileExists(
-        atPath: (versionPath.starts(with: "/") ? "" : RVersions.macos_r_framework + "/" ) +
-          versionPath + "/Resources/bin/R"
-      )
-    )
+    let resourcesPath = NSString.path(withComponents: [ versionPath.starts(with: "/") ? "" : RVersions.macos_r_framework, versionPath, "Resources", "bin", "R" ])
+    return(FileManager.default.fileExists(atPath: resourcesPath))
   }
   
   static func reloadVersions() throws -> [String] {

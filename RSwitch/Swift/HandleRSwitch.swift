@@ -17,7 +17,8 @@ extension AppDelegate {
     
     let fm = FileManager.default;
     let title = sender?.title
-    let rm_link = (RVersions.macos_r_framework) + "/" + "Current"
+    let rm_link = (RVersions.macos_r_framework as NSString).appendingPathComponent("Current")
+    let title_link = (RVersions.macos_r_framework as NSString).appendingPathComponent(title!)
 
     do {
       try fm.removeItem(atPath: rm_link)
@@ -27,12 +28,12 @@ extension AppDelegate {
     
     do {
       try fm.createSymbolicLink(
-            at: NSURL(fileURLWithPath: RVersions.macos_r_framework + "/" + "Current") as URL,
-            withDestinationURL: NSURL(fileURLWithPath: RVersions.macos_r_framework + "/" + title!) as URL
+            at: NSURL(fileURLWithPath: rm_link) as URL,
+            withDestinationURL: NSURL(fileURLWithPath: title_link) as URL
       )
       self.notifyUser(title: "Success", text: "Current R version switched to " + title!)
     } catch {
-      self.notifyUser(title: "Action failed", text: "Failed to create alias for " + RVersions.macos_r_framework + "/" + title! + " (\(error))")
+      self.notifyUser(title: "Action failed", text: "Failed to create alias for " + title_link + " (\(error))")
     }
       
   }

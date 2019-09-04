@@ -8,20 +8,6 @@
 
 import Cocoa
 
-extension AppDelegate {
-  
-  // Show about dialog
-  @objc func about(_ sender: NSMenuItem?) { abtController.showWindow(self) }
-  
-  @objc
-  func updateTimer(_ sender: Timer) {  print("timer fired") }
-
-}
-
 class AboutViewController: NSViewController {
-    
-  override func viewDidLoad() {
-    super.viewDidLoad()
-  }
-    
+  override func viewDidLoad() { super.viewDidLoad() }
 }

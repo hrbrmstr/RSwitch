@@ -11,8 +11,7 @@ import Cocoa
 
 extension AppDelegate: NSMenuDelegate {
   
-  @objc
-  func toggle_dock_icon(_ sender: NSMenuItem) {
+  @objc func toggle_dock_icon(_ sender: NSMenuItem) {
   
     Preferences.showDockIcon = !Preferences.showDockIcon
     
@@ -68,7 +67,7 @@ extension AppDelegate: NSMenuDelegate {
     populateRunningApps(menu: menu)
     
     // Add launchers
-    populateLaunchers(menu: menu)
+    AppMenuAction.populateLaunchers(menu: menu)
     
     // Add a Check for update
     menu.addItem(NSMenuItem.separator())
