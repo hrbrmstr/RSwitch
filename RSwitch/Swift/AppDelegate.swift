@@ -40,13 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     rdevel_enabled = true
     rstudio_enabled = true
-    
-    sess = RStudioServerSessionManager()
-    sess.newSession(url: "https://rstudio.hrbrmstr.de", title: "One")
-    sess.newSession(url: "https://rud.is/b", title: "Two")
-    
-    sess.debugSessions()
-    
+        
     URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
         
   }
@@ -71,6 +65,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     mainStoryboard = NSStoryboard(name: "Main", bundle: nil)
     
     abtController = (mainStoryboard.instantiateController(withIdentifier: "aboutPanelController") as! NSWindowController)
+        
+    sess = RStudioServerSessionManager()
+//    sess.newSession(url: "https://rstudio.hrbrmstr.de", title: "One")
+//    sess.newSession(url: "https://rud.is/b", title: "Two")
+    
+    sess.debugSessions()
     
     timer = Timer.scheduledTimer(
         timeInterval: 3600,
@@ -81,7 +81,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     )
     
   }
+
+  func applicationWillTerminate(_ aNotification: Notification) {
     
-  func applicationWillTerminate(_ aNotification: Notification) { }
+  }
 
 }

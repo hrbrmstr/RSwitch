@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14897.2" systemVersion="19A546d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="RStudioServerSess" representedClassName=".RStudioServerSess" syncable="YES">
+        <attribute name="menuTitle" attributeType="String"/>
+        <attribute name="url" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="RStudioServerSess" positionX="-63" positionY="-18" width="128" height="73"/>
+    </elements>
+</model>

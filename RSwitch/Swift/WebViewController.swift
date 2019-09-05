@@ -25,5 +25,11 @@ class WebViewController: NSViewController {
     let request = URLRequest(url: URL(string: url)!)
     rstudioServerView.load(request)
   }
+  
+  override var representedObject: Any? {
+    didSet {
+    // Update the view, if already loaded.
+    }
+  }
     
 }

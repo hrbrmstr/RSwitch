@@ -44,7 +44,7 @@ class RStudioServerMenuAction {
     rsSub.addItem(newRStudioSessItem)
     rsSub.addItem(NSMenuItem.separator())
     
-    for sess in manager.sessions {
+    for sess in manager.sessions! {
       
       let sessItem = NSMenuItem(title: sess.menuTitle, action: Selector(("activateServerSession:")), keyEquivalent: "")
       sessItem.representedObject = sess
