@@ -10,7 +10,12 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
+      
+  @objc func showAabout(_ sender: NSMenuItem?) { abtController.showWindow(self) }
+  
+  @objc func performTimer(_ sender: Timer) { print("timer fired") }
+
+  
   var mainStoryboard: NSStoryboard!
   var abtController: NSWindowController!
 
@@ -57,7 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     timer = Timer.scheduledTimer(
         timeInterval: 3600,
         target: self,
-        selector: #selector(updateTimer),
+        selector: #selector(performTimer),
         userInfo: nil,
         repeats: true
     )

@@ -11,11 +11,6 @@ import Cocoa
 
 extension AppDelegate {
   
-  // Show about dialog
-  @objc func about(_ sender: NSMenuItem?) { abtController.showWindow(self) }
-  
-  @objc func updateTimer(_ sender: Timer) {  print("timer fired") }
-  
   // Show the framework dir in a new Finder window
   @objc func openFrameworksDir(_ sender: NSMenuItem?) {
     NSWorkspace.shared.openFile(RVersions.macos_r_framework, withApplication: "Finder")

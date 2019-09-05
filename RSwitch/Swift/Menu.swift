@@ -75,7 +75,7 @@ extension AppDelegate: NSMenuDelegate {
 
     // Add an About item
     menu.addItem(NSMenuItem.separator())
-    menu.addItem(NSMenuItem(title: "About RSwitch…", action: #selector(about), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: "About RSwitch…", action: #selector(showAabout), keyEquivalent: ""))
     menu.addItem(NSMenuItem(title: "RSwitch Help…", action: #selector(rswitch_help), keyEquivalent: ""))
       
     // Toggle Dock Icon
