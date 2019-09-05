@@ -16,6 +16,7 @@
 		01073F1D2311E64E007162C9 /* DownloadRStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F1C2311E64E007162C9 /* DownloadRStudio.swift */; };
 		01073F1F2311E67D007162C9 /* HandleUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F1E2311E67D007162C9 /* HandleUpdate.swift */; };
 		01073F212311E6BD007162C9 /* HandleRSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F202311E6BD007162C9 /* HandleRSwitch.swift */; };
+		010A1C1423215B0900E32A9A /* SessionWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010A1C1323215B0900E32A9A /* SessionWindowController.swift */; };
 		011951B4231F00A000B62C3A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011951B3231F00A000B62C3A /* Preferences.swift */; };
 		0178970D230ED25100F8F5BC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178970C230ED25100F8F5BC /* AboutViewController.swift */; };
 		018A8C3B2312C7BC0006E87D /* libprocInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 018A8C3A2312C7BC0006E87D /* libprocInfo.a */; };
@@ -25,6 +26,7 @@
 		0198B99E23196689003F7578 /* BrowseMenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B99D23196689003F7578 /* BrowseMenuAction.swift */; };
 		0198B9A0231970ED003F7578 /* AppAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B99F231970ED003F7578 /* AppAlerts.swift */; };
 		0198B9AA23197D3A003F7578 /* Running.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B9A923197D3A003F7578 /* Running.swift */; };
+		01B611EC232176A200432807 /* NewSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B611EB232176A200432807 /* NewSessionViewController.swift */; };
 		01D3E43A232119DD00E3BC02 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D3E439232119DD00E3BC02 /* WebViewController.swift */; };
 		01D3E43C23211B4C00E3BC02 /* RStudioServerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D3E43B23211B4C00E3BC02 /* RStudioServerAction.swift */; };
 		01D3E43F2321315900E3BC02 /* RStudioServerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D3E43E2321315900E3BC02 /* RStudioServerSession.swift */; };
@@ -47,6 +49,7 @@
 		01073F1C2311E64E007162C9 /* DownloadRStudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadRStudio.swift; sourceTree = "<group>"; };
 		01073F1E2311E67D007162C9 /* HandleUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleUpdate.swift; sourceTree = "<group>"; };
 		01073F202311E6BD007162C9 /* HandleRSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleRSwitch.swift; sourceTree = "<group>"; };
+		010A1C1323215B0900E32A9A /* SessionWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWindowController.swift; sourceTree = "<group>"; };
 		011951B3231F00A000B62C3A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		016750FB2319A7A4009E2FD6 /* RSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RSwitch.entitlements; sourceTree = "<group>"; };
 		0178970C230ED25100F8F5BC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 		0198B99D23196689003F7578 /* BrowseMenuAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseMenuAction.swift; sourceTree = "<group>"; };
 		0198B99F231970ED003F7578 /* AppAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlerts.swift; sourceTree = "<group>"; };
 		0198B9A923197D3A003F7578 /* Running.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Running.swift; sourceTree = "<group>"; };
+		01B611EB232176A200432807 /* NewSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSessionViewController.swift; sourceTree = "<group>"; };
 		01D3E439232119DD00E3BC02 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		01D3E43B23211B4C00E3BC02 /* RStudioServerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RStudioServerAction.swift; sourceTree = "<group>"; };
 		01D3E43E2321315900E3BC02 /* RStudioServerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RStudioServerSession.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 				01073F142311E370007162C9 /* Notify.swift */,
 				01F3EF0D230E635300DF5DF9 /* ViewController.swift */,
 				01D3E439232119DD00E3BC02 /* WebViewController.swift */,
+				010A1C1323215B0900E32A9A /* SessionWindowController.swift */,
+				01B611EB232176A200432807 /* NewSessionViewController.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 				01073F212311E6BD007162C9 /* HandleRSwitch.swift in Sources */,
 				0198B9A0231970ED003F7578 /* AppAlerts.swift in Sources */,
 				011951B4231F00A000B62C3A /* Preferences.swift in Sources */,
+				010A1C1423215B0900E32A9A /* SessionWindowController.swift in Sources */,
 				01D3E43C23211B4C00E3BC02 /* RStudioServerAction.swift in Sources */,
 				018A8C3F2312CB480006E87D /* procHelper.m in Sources */,
 				01D3E43A232119DD00E3BC02 /* WebViewController.swift in Sources */,
@@ -371,6 +378,7 @@
 				01F3EF0E230E635300DF5DF9 /* ViewController.swift in Sources */,
 				01F3EF0C230E635300DF5DF9 /* AppDelegate.swift in Sources */,
 				01D3E441232131F300E3BC02 /* RStudioServerSessionManager.swift in Sources */,
+				01B611EC232176A200432807 /* NewSessionViewController.swift in Sources */,
 				01073F0F2311AE2E007162C9 /* String+Version.swift in Sources */,
 				0198B99E23196689003F7578 /* BrowseMenuAction.swift in Sources */,
 				01073F132311E1CF007162C9 /* Globals.swift in Sources */,

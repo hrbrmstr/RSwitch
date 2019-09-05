@@ -12,17 +12,15 @@ import Cocoa
 extension AppDelegate {
   
   @objc func newRstudioServerSession(_ sender: NSMenuItem) {
-    print("New Session")    
+      newSessController.showWindow(self)
+      newSessController.window?.orderFront(self)
+      NSApp.activate(ignoringOtherApps: true)
   }
 
   @objc func activateServerSession(_ sender: NSMenuItem) {
-    
     print("activate Session")
-    
     let sess = (sender.representedObject as! RStudioServerSession)
-
     sess.show()
-    
   }
 
 }

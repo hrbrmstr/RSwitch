@@ -34,12 +34,12 @@ class RStudioServerSession : Codable {
     let mainStoryboard = appDelegate.mainStoryboard!
     
     if (wk == nil) {
-      print("wk was nil")
       wk = (mainStoryboard.instantiateController(withIdentifier: "wkPanelController") as! NSWindowController)
       wv = wk!.window?.contentViewController as? WebViewController
       wv!.url = url
+      wv!.nickname = menuTitle
     }
-    
+   
     wk?.window?.orderFront(appDelegate)
     wk?.showWindow(appDelegate)
     

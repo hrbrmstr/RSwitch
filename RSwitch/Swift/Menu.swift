@@ -90,7 +90,9 @@ extension AppDelegate: NSMenuDelegate {
 
     // Add a Quit item
     menu.addItem(NSMenuItem.separator())
-    menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApp.terminate), keyEquivalent: "q"))
+    let quitItem = NSMenuItem(title: "Quit", action: #selector(NSApp.terminate), keyEquivalent: "q")
+    quitItem.keyEquivalentModifierMask = NSEvent.ModifierFlags.option
+    menu.addItem(quitItem)
     
   }
   

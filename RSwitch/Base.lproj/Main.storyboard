@@ -51,6 +51,7 @@
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
                                         <menuItem title="Quit RSwitch" keyEquivalent="q" id="4sb-4s-VLi">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -699,22 +700,181 @@
         <!--Window Controller-->
         <scene sceneID="MKQ-4Y-Oth">
             <objects>
-                <windowController storyboardIdentifier="wkPanelController" id="qjv-aN-QDU" sceneMemberID="viewController">
-                    <window key="window" identifier="wkPanelController" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="0uE-Xe-6tV">
+                <windowController storyboardIdentifier="wkPanelController" id="qjv-aN-QDU" customClass="SessionWindowController" customModule="RSwitch" sceneMemberID="viewController">
+                    <window key="window" identifier="wkPanelController" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titleVisibility="hidden" id="0uE-Xe-6tV">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="-480" y="985" width="480" height="270"/>
                         <rect key="screenRect" x="-2560" y="0.0" width="2560" height="1440"/>
+                        <toolbar key="toolbar" implicitIdentifier="120C2095-EF52-4259-9751-99BE445F0A18" explicitIdentifier="sessionDelete" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="1h8-Yt-Vhz">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="SDw-ZN-plv"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="WNi-eE-iYD"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="xHz-Mi-NXD"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Jbz-Yu-NVz"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="rDu-xC-TQY"/>
+                                <toolbarItem implicitItemIdentifier="F7A6A7DB-439F-4CDA-A709-0B604ACF7634" explicitItemIdentifier="titleThing" label="Window Title" paletteLabel="Window Title" tag="88" sizingBehavior="auto" id="Cz9-Cn-dUF">
+                                    <nil key="toolTip"/>
+                                    <textField key="view" identifier="sessionTitle" horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="88" id="gxD-qg-AUg">
+                                        <rect key="frame" x="15" y="14" width="45" height="14"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" identifier="toolbarTitle" title="Label" id="312-Lg-tJU">
+                                            <font key="font" metaFont="fixedUser" size="11"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="C5E453F9-B8DF-42A3-B04B-FEC4774D8C17" label="Delete Session" paletteLabel="Delete Session" toolTip="Close this session and delete the session from the sessions popup submenu." tag="77" sizingBehavior="auto" id="RdT-NR-Rq5">
+                                    <button key="view" identifier="deleteButton" verticalHuggingPriority="750" tag="77" imageHugsTitle="YES" id="yQr-Wa-hEC">
+                                        <rect key="frame" x="0.0" y="14" width="127" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Delete Session" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mLg-dJ-21p">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="message"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="deletePressed:" target="qjv-aN-QDU" id="diI-k3-yQA"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="7C1E2141-99F5-4AAF-8DFC-F98346F8B458" explicitItemIdentifier="nickThing" label="Nickname" paletteLabel="Nickname" sizingBehavior="auto" id="z3h-u9-ok2">
+                                    <nil key="toolTip"/>
+                                    <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="kjS-Ur-lI5">
+                                        <rect key="frame" x="11" y="14" width="37" height="16"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="6X3-G1-f3A">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="z3h-u9-ok2"/>
+                                <toolbarItem reference="rDu-xC-TQY"/>
+                                <toolbarItem reference="Cz9-Cn-dUF"/>
+                                <toolbarItem reference="rDu-xC-TQY"/>
+                                <toolbarItem reference="RdT-NR-Rq5"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                         <connections>
                             <outlet property="delegate" destination="qjv-aN-QDU" id="ydd-t5-B2B"/>
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="nickField" destination="kjS-Ur-lI5" id="6cc-wZ-qao"/>
+                        <outlet property="titleField" destination="gxD-qg-AUg" id="IKb-uP-5s4"/>
                         <segue destination="tec-9J-KNb" kind="relationship" relationship="window.shadowedContentViewController" id="idQ-y1-OGg"/>
                     </connections>
                 </windowController>
                 <customObject id="QEf-Ku-YK9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-454" y="470"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="NLO-A5-Grh">
+            <objects>
+                <windowController storyboardIdentifier="newSessPanel" id="hjJ-ZI-mmO" sceneMemberID="viewController">
+                    <window key="window" title="Add New RStudio Server" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="xSx-ho-xah">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <rect key="contentRect" x="425" y="470" width="480" height="153"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
+                        <connections>
+                            <outlet property="delegate" destination="hjJ-ZI-mmO" id="rQz-1I-VSd"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="yEm-BG-6ox" kind="relationship" relationship="window.shadowedContentViewController" id="uvs-jg-5j4"/>
+                    </connections>
+                </windowController>
+                <customObject id="jcq-2b-z5N" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-663" y="849"/>
+        </scene>
+        <!--New Session View Controller-->
+        <scene sceneID="C6C-1l-Uyb">
+            <objects>
+                <viewController id="yEm-BG-6ox" customClass="NewSessionViewController" customModule="RSwitch" sceneMemberID="viewController">
+                    <view key="view" id="7HF-tp-Bfd">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="132"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="xqf-Ja-9FZ">
+                                <rect key="frame" x="18" y="94" width="161" height="16"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Nickname (for submenu): " id="fok-tt-urE">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dz6-zg-r72">
+                                <rect key="frame" x="52" y="59" width="127" height="16"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="RStudio Server URL:" id="pnD-X4-BT5">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" id="tg7-6c-rrS">
+                                <rect key="frame" x="185" y="91" width="275" height="21"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="cva-Md-d45">
+                                    <font key="font" metaFont="message"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" id="lSZ-zf-FsV">
+                                <rect key="frame" x="185" y="56" width="275" height="21"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="zy1-gA-fJN">
+                                    <font key="font" metaFont="message"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" id="gC9-NN-7E1">
+                                <rect key="frame" x="148" y="9" width="82" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VDj-IV-qlo">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="message"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cancelPressed:" target="yEm-BG-6ox" id="VMR-6p-A8Q"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" id="e6I-ev-l5T">
+                                <rect key="frame" x="263" y="11" width="59" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mlc-6J-XMQ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="message"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="okPressed:" target="yEm-BG-6ox" id="Juf-kH-4iI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="nickname" destination="tg7-6c-rrS" id="uDa-nB-kUR"/>
+                        <outlet property="okButton" destination="e6I-ev-l5T" id="r88-1K-WJ9"/>
+                        <outlet property="serverURL" destination="lSZ-zf-FsV" id="f0k-iP-6g5"/>
+                    </connections>
+                </viewController>
+                <customObject id="nc3-iI-ege" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-595" y="1094"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="1Kq-xR-oeu">

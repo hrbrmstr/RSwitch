@@ -8,8 +8,16 @@
 
 import Cocoa
 
+class DeleteSessionViewController : NSViewController {
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+  }
+  
+}
+
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
 
   @objc func showAbout(_ sender: NSMenuItem?) {
     abtController.showWindow(self)
@@ -22,7 +30,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var mainStoryboard: NSStoryboard!
   var abtController: NSWindowController!
   var rsController: NSWindowController!
-
+  var newSessController: NSWindowController!
+  
   let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
   let statusMenu = NSMenu(title: "RSwitch")
 
@@ -65,13 +74,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     mainStoryboard = NSStoryboard(name: "Main", bundle: nil)
     
     abtController = (mainStoryboard.instantiateController(withIdentifier: "aboutPanelController") as! NSWindowController)
-        
+    
+    newSessController = (mainStoryboard.instantiateController(withIdentifier: "newSessPanel") as! NSWindowController)
+
     sess = RStudioServerSessionManager()
 //    sess.newSession(url: "https://rstudio.hrbrmstr.de", title: "One")
 //    sess.newSession(url: "https://rud.is/b", title: "Two")
-    
-    sess.debugSessions()
-    
+        
     timer = Timer.scheduledTimer(
         timeInterval: 3600,
         target: self,
@@ -83,7 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {
-    
+    sess.saveSessions()
   }
 
 }

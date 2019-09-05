@@ -19,7 +19,18 @@ class RStudioServerSessionManager {
   }
   
   func newSession(url: String, title: String) {
-    sessions!.append(RStudioServerSession(url: url, title: title))
+    let s = RStudioServerSession(url: url, title: title)
+    sessions!.append(s)
+    saveSessions()
+    s.show()
+  }
+  
+  func deleteSession(title: String) {
+    sessions = sessions!.filter { $0.menuTitle != title }
+    saveSessions()
+  }
+
+  func saveSessions() {
     let sessionsData = try! JSONEncoder().encode(sessions)
     UserDefaults.standard.set(sessionsData, forKey: "rstudioServerSessions")
   }
@@ -32,13 +43,5 @@ class RStudioServerSessionManager {
       sessions = [ RStudioServerSession ]()
     }
   }
-  
-  func debugSessions() {
     
-    for s in sessions! {
-      print(s.menuTitle)
-    }
-    
-  }
-  
 }
