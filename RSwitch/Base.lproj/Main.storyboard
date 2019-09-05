@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14865.1"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14865.1"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -694,6 +695,52 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="435" y="-92"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="MKQ-4Y-Oth">
+            <objects>
+                <windowController storyboardIdentifier="wkPanelController" id="qjv-aN-QDU" sceneMemberID="viewController">
+                    <window key="window" identifier="wkPanelController" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="0uE-Xe-6tV">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <rect key="contentRect" x="-480" y="985" width="480" height="270"/>
+                        <rect key="screenRect" x="-2560" y="0.0" width="2560" height="1440"/>
+                        <connections>
+                            <outlet property="delegate" destination="qjv-aN-QDU" id="ydd-t5-B2B"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="tec-9J-KNb" kind="relationship" relationship="window.shadowedContentViewController" id="idQ-y1-OGg"/>
+                    </connections>
+                </windowController>
+                <customObject id="QEf-Ku-YK9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-454" y="470"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="1Kq-xR-oeu">
+            <objects>
+                <viewController id="tec-9J-KNb" customClass="WebViewController" customModule="RSwitch" sceneMemberID="viewController">
+                    <view key="view" id="8mP-w9-nMB">
+                        <rect key="frame" x="0.0" y="0.0" width="970" height="790"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <wkWebView identifier="rstudio" wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GCI-JV-AYs">
+                                <rect key="frame" x="0.0" y="0.0" width="970" height="790"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="rstudioServerView" destination="GCI-JV-AYs" id="EHB-ub-k1V"/>
+                    </connections>
+                </viewController>
+                <customObject id="4Rz-ye-vi7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="317" y="1011"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="fg4-ci-0Xb">

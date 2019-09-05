@@ -69,13 +69,15 @@ extension AppDelegate: NSMenuDelegate {
     // Add launchers
     AppMenuAction.populateLaunchers(menu: menu)
     
+    RStudioServerMenuAction.populateRStudioServerSessions(menu: menu, manager: sess)
+    
     // Add a Check for update
     menu.addItem(NSMenuItem.separator())
     menu.addItem(NSMenuItem(title: "Check for update…", action: #selector(checkForUpdate), keyEquivalent: ""))
 
     // Add an About item
     menu.addItem(NSMenuItem.separator())
-    menu.addItem(NSMenuItem(title: "About RSwitch…", action: #selector(showAabout), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: "About RSwitch…", action: #selector(showAbout), keyEquivalent: ""))
     menu.addItem(NSMenuItem(title: "RSwitch Help…", action: #selector(rswitch_help), keyEquivalent: ""))
       
     // Toggle Dock Icon

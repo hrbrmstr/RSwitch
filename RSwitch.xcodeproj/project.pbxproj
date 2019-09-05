@@ -25,6 +25,10 @@
 		0198B99E23196689003F7578 /* BrowseMenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B99D23196689003F7578 /* BrowseMenuAction.swift */; };
 		0198B9A0231970ED003F7578 /* AppAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B99F231970ED003F7578 /* AppAlerts.swift */; };
 		0198B9AA23197D3A003F7578 /* Running.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B9A923197D3A003F7578 /* Running.swift */; };
+		01D3E43A232119DD00E3BC02 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D3E439232119DD00E3BC02 /* WebViewController.swift */; };
+		01D3E43C23211B4C00E3BC02 /* RStudioServerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D3E43B23211B4C00E3BC02 /* RStudioServerAction.swift */; };
+		01D3E43F2321315900E3BC02 /* RStudioServerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D3E43E2321315900E3BC02 /* RStudioServerSession.swift */; };
+		01D3E441232131F300E3BC02 /* RStudioServerSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D3E440232131F300E3BC02 /* RStudioServerSessionManager.swift */; };
 		01F3EF0C230E635300DF5DF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3EF0B230E635300DF5DF9 /* AppDelegate.swift */; };
 		01F3EF0E230E635300DF5DF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3EF0D230E635300DF5DF9 /* ViewController.swift */; };
 		01F3EF10230E635500DF5DF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01F3EF0F230E635500DF5DF9 /* Assets.xcassets */; };
@@ -56,6 +60,10 @@
 		0198B99D23196689003F7578 /* BrowseMenuAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseMenuAction.swift; sourceTree = "<group>"; };
 		0198B99F231970ED003F7578 /* AppAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlerts.swift; sourceTree = "<group>"; };
 		0198B9A923197D3A003F7578 /* Running.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Running.swift; sourceTree = "<group>"; };
+		01D3E439232119DD00E3BC02 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		01D3E43B23211B4C00E3BC02 /* RStudioServerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RStudioServerAction.swift; sourceTree = "<group>"; };
+		01D3E43E2321315900E3BC02 /* RStudioServerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RStudioServerSession.swift; sourceTree = "<group>"; };
+		01D3E440232131F300E3BC02 /* RStudioServerSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RStudioServerSessionManager.swift; sourceTree = "<group>"; };
 		01F3EF08230E635300DF5DF9 /* RSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01F3EF0B230E635300DF5DF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01F3EF0D230E635300DF5DF9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,19 +92,21 @@
 		01073F232311E859007162C9 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
+				01F3EF0B230E635300DF5DF9 /* AppDelegate.swift */,
+				01D3E43D2321314100E3BC02 /* Sessions */,
 				0198B9A1231970F5003F7578 /* AppAlerts */,
 				0198B9A323197301003F7578 /* Downloaders */,
 				0198B99C23196666003F7578 /* MenuActions */,
 				0198B9A2231971D1003F7578 /* String+Version */,
 				0198B9A623197C8E003F7578 /* Utils */,
 				0178970C230ED25100F8F5BC /* AboutViewController.swift */,
-				01F3EF0B230E635300DF5DF9 /* AppDelegate.swift */,
 				01073F202311E6BD007162C9 /* HandleRSwitch.swift */,
 				01073F1E2311E67D007162C9 /* HandleUpdate.swift */,
 				018A8C402312F4940006E87D /* HandleSwitchTo.swift */,
 				01073F162311E397007162C9 /* Menu.swift */,
 				01073F142311E370007162C9 /* Notify.swift */,
 				01F3EF0D230E635300DF5DF9 /* ViewController.swift */,
+				01D3E439232119DD00E3BC02 /* WebViewController.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -126,6 +136,7 @@
 			children = (
 				C4290DD5231F190E00AA5955 /* AppMenuActions.swift */,
 				0198B99D23196689003F7578 /* BrowseMenuAction.swift */,
+				01D3E43B23211B4C00E3BC02 /* RStudioServerAction.swift */,
 			);
 			path = MenuActions;
 			sourceTree = "<group>";
@@ -167,6 +178,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		01D3E43D2321314100E3BC02 /* Sessions */ = {
+			isa = PBXGroup;
+			children = (
+				01D3E43E2321315900E3BC02 /* RStudioServerSession.swift */,
+				01D3E440232131F300E3BC02 /* RStudioServerSessionManager.swift */,
+			);
+			path = Sessions;
+			sourceTree = "<group>";
+		};
 		01F3EEFF230E635300DF5DF9 = {
 			isa = PBXGroup;
 			children = (
@@ -188,11 +208,11 @@
 		01F3EF0A230E635300DF5DF9 /* RSwitch */ = {
 			isa = PBXGroup;
 			children = (
+				01F3EF11230E635500DF5DF9 /* Main.storyboard */,
 				016750FB2319A7A4009E2FD6 /* RSwitch.entitlements */,
 				018A8C342312C6510006E87D /* ObjC */,
 				01073F232311E859007162C9 /* Swift */,
 				01F3EF0F230E635500DF5DF9 /* Assets.xcassets */,
-				01F3EF11230E635500DF5DF9 /* Main.storyboard */,
 				01F3EF14230E635500DF5DF9 /* Info.plist */,
 			);
 			path = RSwitch;
@@ -333,12 +353,15 @@
 				01073F212311E6BD007162C9 /* HandleRSwitch.swift in Sources */,
 				0198B9A0231970ED003F7578 /* AppAlerts.swift in Sources */,
 				011951B4231F00A000B62C3A /* Preferences.swift in Sources */,
+				01D3E43C23211B4C00E3BC02 /* RStudioServerAction.swift in Sources */,
 				018A8C3F2312CB480006E87D /* procHelper.m in Sources */,
+				01D3E43A232119DD00E3BC02 /* WebViewController.swift in Sources */,
 				01073F1F2311E67D007162C9 /* HandleUpdate.swift in Sources */,
 				01073F1B2311E613007162C9 /* DownloadTarball.swift in Sources */,
 				018A8C412312F4940006E87D /* HandleSwitchTo.swift in Sources */,
 				0198B9AA23197D3A003F7578 /* Running.swift in Sources */,
 				0178970D230ED25100F8F5BC /* AboutViewController.swift in Sources */,
+				01D3E43F2321315900E3BC02 /* RStudioServerSession.swift in Sources */,
 				01073F192311E3B8007162C9 /* Bundle.swift in Sources */,
 				0197554A231BD919003FAD7B /* RVersions.swift in Sources */,
 				01073F152311E370007162C9 /* Notify.swift in Sources */,
@@ -347,6 +370,7 @@
 				01073F172311E397007162C9 /* Menu.swift in Sources */,
 				01F3EF0E230E635300DF5DF9 /* ViewController.swift in Sources */,
 				01F3EF0C230E635300DF5DF9 /* AppDelegate.swift in Sources */,
+				01D3E441232131F300E3BC02 /* RStudioServerSessionManager.swift in Sources */,
 				01073F0F2311AE2E007162C9 /* String+Version.swift in Sources */,
 				0198B99E23196689003F7578 /* BrowseMenuAction.swift in Sources */,
 				01073F132311E1CF007162C9 /* Globals.swift in Sources */,

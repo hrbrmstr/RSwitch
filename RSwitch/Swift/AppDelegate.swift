@@ -10,14 +10,18 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-      
-  @objc func showAabout(_ sender: NSMenuItem?) { abtController.showWindow(self) }
+
+  @objc func showAbout(_ sender: NSMenuItem?) {
+    abtController.showWindow(self)
+    abtController.window?.orderFront(self)
+    NSApp.activate(ignoringOtherApps: true)
+  }
   
   @objc func performTimer(_ sender: Timer) { print("timer fired") }
 
-  
   var mainStoryboard: NSStoryboard!
   var abtController: NSWindowController!
+  var rsController: NSWindowController!
 
   let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
   let statusMenu = NSMenu(title: "RSwitch")
@@ -25,6 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var rdevel_enabled: Bool!
   var rstudio_enabled: Bool!
   var timer: Timer? = nil;
+  
+  var sess : RStudioServerSessionManager!
 
   override init() {
     
@@ -34,6 +40,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     rdevel_enabled = true
     rstudio_enabled = true
+    
+    sess = RStudioServerSessionManager()
+    sess.newSession(url: "https://rstudio.hrbrmstr.de", title: "One")
+    sess.newSession(url: "https://rud.is/b", title: "Two")
+    
+    sess.debugSessions()
     
     URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
         
@@ -57,6 +69,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     statusItem.menu = statusMenu
     
     mainStoryboard = NSStoryboard(name: "Main", bundle: nil)
+    
     abtController = (mainStoryboard.instantiateController(withIdentifier: "aboutPanelController") as! NSWindowController)
     
     timer = Timer.scheduledTimer(
