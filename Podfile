@@ -1,11 +1,11 @@
+source 'https://cdn.cocoapods.org/'
+
 platform :osx, '10.14'
 
-source 'https://cdn.cocoapods.org/'
+use_frameworks!
 
 target 'RSwitch' do
 
-  use_frameworks!
-
-  pod 'SwiftSoup'
+  pod 'Just'
 
 end

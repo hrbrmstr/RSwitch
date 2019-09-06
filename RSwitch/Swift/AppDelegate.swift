@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Just
 
 class DeleteSessionViewController : NSViewController {
   
@@ -25,7 +26,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
     NSApp.activate(ignoringOtherApps: true)
   }
   
-  @objc func performTimer(_ sender: Timer) { print("timer fired") }
+  @objc func performTimer(_ sender: Timer) {
+    print("timer fired")
+  }
 
   var mainStoryboard: NSStoryboard!
   var abtController: NSWindowController!
@@ -66,7 +69,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
   }
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-    
+            
     // dial by IconMark from the Noun Project
     statusItem.button?.image =  #imageLiteral(resourceName: "RSwitch")
     statusItem.menu = statusMenu
@@ -78,8 +81,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
     newSessController = (mainStoryboard.instantiateController(withIdentifier: "newSessPanel") as! NSWindowController)
 
     sess = RStudioServerSessionManager()
-//    sess.newSession(url: "https://rstudio.hrbrmstr.de", title: "One")
-//    sess.newSession(url: "https://rud.is/b", title: "Two")
         
     timer = Timer.scheduledTimer(
         timeInterval: 3600,

@@ -51,26 +51,19 @@ struct DockIcon {
 struct Preferences {
   
   static var showDockIcon: Bool {
-    
     get { return(defaults.bool(forKey: .showDockIcon)) }
-    
     set {
       defaults.set(newValue, forKey: .showDockIcon)
       defaults.synchronize()
     }
-    
   }
-  
-  
+
   static var firstRunGone: Bool {
-    
     get { return(defaults.bool(forKey: .firstRunGone)) }
-    
     set {
       defaults.set(newValue, forKey: .firstRunGone)
       defaults.synchronize()
     }
-    
   }
   
   static func restore() { Preferences.showDockIcon = false }

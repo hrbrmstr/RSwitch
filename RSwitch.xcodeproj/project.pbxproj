@@ -17,6 +17,7 @@
 		01073F1F2311E67D007162C9 /* HandleUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F1E2311E67D007162C9 /* HandleUpdate.swift */; };
 		01073F212311E6BD007162C9 /* HandleRSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01073F202311E6BD007162C9 /* HandleRSwitch.swift */; };
 		010A1C1423215B0900E32A9A /* SessionWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010A1C1323215B0900E32A9A /* SessionWindowController.swift */; };
+		0117C9E0232270F0004BC889 /* RStudioUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0117C9DF232270F0004BC889 /* RStudioUtils.swift */; };
 		011951B4231F00A000B62C3A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011951B3231F00A000B62C3A /* Preferences.swift */; };
 		0178970D230ED25100F8F5BC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178970C230ED25100F8F5BC /* AboutViewController.swift */; };
 		018A8C3B2312C7BC0006E87D /* libprocInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 018A8C3A2312C7BC0006E87D /* libprocInfo.a */; };
@@ -50,6 +51,7 @@
 		01073F1E2311E67D007162C9 /* HandleUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleUpdate.swift; sourceTree = "<group>"; };
 		01073F202311E6BD007162C9 /* HandleRSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleRSwitch.swift; sourceTree = "<group>"; };
 		010A1C1323215B0900E32A9A /* SessionWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWindowController.swift; sourceTree = "<group>"; };
+		0117C9DF232270F0004BC889 /* RStudioUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RStudioUtils.swift; sourceTree = "<group>"; };
 		011951B3231F00A000B62C3A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		016750FB2319A7A4009E2FD6 /* RSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RSwitch.entitlements; sourceTree = "<group>"; };
 		0178970C230ED25100F8F5BC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			children = (
 				01073F182311E3B8007162C9 /* Bundle.swift */,
 				01073F122311E1CF007162C9 /* Globals.swift */,
+				0117C9DF232270F0004BC889 /* RStudioUtils.swift */,
 				01975549231BD919003FAD7B /* RVersions.swift */,
 				0198B9A923197D3A003F7578 /* Running.swift */,
 				011951B3231F00A000B62C3A /* Preferences.swift */,
@@ -362,6 +365,7 @@
 				010A1C1423215B0900E32A9A /* SessionWindowController.swift in Sources */,
 				01D3E43C23211B4C00E3BC02 /* RStudioServerAction.swift in Sources */,
 				018A8C3F2312CB480006E87D /* procHelper.m in Sources */,
+				0117C9E0232270F0004BC889 /* RStudioUtils.swift in Sources */,
 				01D3E43A232119DD00E3BC02 /* WebViewController.swift in Sources */,
 				01073F1F2311E67D007162C9 /* HandleUpdate.swift in Sources */,
 				01073F1B2311E613007162C9 /* DownloadTarball.swift in Sources */,
