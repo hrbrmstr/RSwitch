@@ -18,7 +18,6 @@ extension AppDelegate {
   }
 
   @objc func activateServerSession(_ sender: NSMenuItem) {
-    print("activate Session")
     let sess = (sender.representedObject as! RStudioServerSession)
     sess.show()
   }

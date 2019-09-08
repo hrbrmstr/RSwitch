@@ -26,8 +26,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
     NSApp.activate(ignoringOtherApps: true)
   }
   
+  @objc func performRStudioCheck(_ sender: NSObject) {
+    let v = RStudioUtils.latestVersionNumber()
+    if (!Preferences.lastVersionNotified.isVersion(equalTo: v)) {
+      Preferences.lastVersionNotified = v
+      notifyUser(title: "New RStudio Daily version available", text: ("Version: " + v))
+    }
+  }
+  
   @objc func performTimer(_ sender: Timer) {
-    print("timer fired")
+    if (Preferences.hourlyRStudioCheck) { performRStudioCheck(sender) }
   }
 
   var mainStoryboard: NSStoryboard!
@@ -69,7 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
   }
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-            
+    
     // dial by IconMark from the Noun Project
     statusItem.button?.image =  #imageLiteral(resourceName: "RSwitch")
     statusItem.menu = statusMenu

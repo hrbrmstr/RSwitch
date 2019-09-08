@@ -37,9 +37,18 @@ class NewSessionViewController: NSViewController {
   @IBAction func cancelPressed(_ sender: Any) {
     self.view.window?.windowController?.close()
   }
+
+  override func viewWillAppear() {
+    
+    nickname.stringValue = ""
+    serverURL.stringValue = "https://"
+    
+    super.viewDidAppear()
+    
+  }
   
   override func viewDidLoad() {
-    print("VIEW IS LOADING")
+    
     super.viewDidLoad()
   
     nickname.delegate = self
@@ -61,9 +70,7 @@ extension NewSessionViewController : NSTextFieldDelegate {
     let currNames = appDelegate.sess.sessions!.map {
       $0.menuTitle
     }
-    
-    print(currNames)
-    
+        
     let nickUnique = !(currNames.firstIndex(of: nick) != nil)
     
     okButton.isEnabled = ((nick.count > 0) && nickUnique && sURL.isValidURL)

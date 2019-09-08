@@ -11,7 +11,7 @@ import Cocoa
 
 extension AppDelegate : NSUserNotificationCenterDelegate {
   
-  func notifyUser(title: String? = nil, subtitle: String? = nil, text: String? = nil) -> Void {
+func notifyUser(title: String? = nil, subtitle: String? = nil, text: String? = nil) -> Void {
     
     let notification = NSUserNotification()
     

@@ -20,7 +20,9 @@ extension UserDefaults {
   
   enum Key: String {
     case showDockIcon = "showDockIcon"
+    case hourlyRStudioCheck = "hourlyRStudioCheck"
     case firstRunGone = "firstRunGone"
+    case lastVersionNotified = ""
   }
   
   func set<T>(_ value: T, forKey key: Key) { set(value, forKey: key.rawValue) }
@@ -50,6 +52,14 @@ struct DockIcon {
 
 struct Preferences {
   
+  static var hourlyRStudioCheck: Bool {
+    get { return(defaults.bool(forKey: .hourlyRStudioCheck)) }
+    set {
+      defaults.set(newValue, forKey: .hourlyRStudioCheck)
+      defaults.synchronize()
+    }
+  }
+  
   static var showDockIcon: Bool {
     get { return(defaults.bool(forKey: .showDockIcon)) }
     set {
@@ -66,7 +76,22 @@ struct Preferences {
     }
   }
   
-  static func restore() { Preferences.showDockIcon = false }
+  static var lastVersionNotified : String {
+    get {
+      let x = defaults.string(forKey: .lastVersionNotified)
+      return((x == nil) ? "" : x!)
+    }
+    set {
+      defaults.set(newValue, forKey: .lastVersionNotified)
+      defaults.synchronize()
+    }
+  }
+  
+  static func restore() {
+    Preferences.showDockIcon = false
+    Preferences.hourlyRStudioCheck = false
+    Preferences.lastVersionNotified = ""
+  }
   
 }
 

@@ -22,6 +22,18 @@ extension AppDelegate: NSMenuDelegate {
     }
     
   }
+  
+  @objc func toggle_hourly_rstudio_check(_ sender: NSMenuItem) {
+  
+    Preferences.hourlyRStudioCheck = !Preferences.hourlyRStudioCheck
+    
+    if (Preferences.hourlyRStudioCheck) { performRStudioCheck(sender) }
+    
+    if let menu = statusItem.menu, let item = menu.item(withTag: 98) {
+      item.state = Preferences.hourlyRStudioCheck.stateValue
+    }
+    
+  }
 
   func menuWillOpen(_ menu: NSMenu) {
     
@@ -52,16 +64,21 @@ extension AppDelegate: NSMenuDelegate {
     
     menu.addItem(NSMenuItem.separator())
 
+    let refsDropdown = NSMenuItem(title: "Reference Desk", action: nil, keyEquivalent: "")
+    let refsSub = NSMenu()
+    menu.addItem(refsDropdown)
+    menu.setSubmenu(refsSub, for: refsDropdown)
+
     // Add items to open various R for macOS pages
-    BrowseMenuAction.populateWebItems(menu: menu)
+    BrowseMenuAction.populateWebItems(menu: refsSub)
 
     menu.addItem(NSMenuItem.separator())
 
     // Add links to local copies of the R Manuals
-    BrowseMenuAction.populateLocalRManualsItems(menu: menu)
+    BrowseMenuAction.populateLocalRManualsItems(menu: refsSub)
     
     // Add links to free R online books
-    BrowseMenuAction.populateRBooksItems(menu: menu)
+    BrowseMenuAction.populateRBooksItems(menu: refsSub)
     
     // Add running apps
     populateRunningApps(menu: menu)
@@ -71,22 +88,32 @@ extension AppDelegate: NSMenuDelegate {
     
     RStudioServerMenuAction.populateRStudioServerSessions(menu: menu, manager: sess)
     
-    // Add a Check for update
     menu.addItem(NSMenuItem.separator())
-    menu.addItem(NSMenuItem(title: "Check for update…", action: #selector(checkForUpdate), keyEquivalent: ""))
-
-    // Add an About item
-    menu.addItem(NSMenuItem.separator())
-    menu.addItem(NSMenuItem(title: "About RSwitch…", action: #selector(showAbout), keyEquivalent: ""))
-    menu.addItem(NSMenuItem(title: "RSwitch Help…", action: #selector(rswitch_help), keyEquivalent: ""))
       
     // Toggle Dock Icon
     menu.addItem(NSMenuItem.separator())
-    let item = NSMenuItem(title: "Toggle Dock Icon", action: #selector(toggle_dock_icon), keyEquivalent: "")
-    item.tag = 99
-    item.target = self
-    item.state = Preferences.showDockIcon.stateValue
-    menu.addItem(item)
+    
+    let prefsDropdown = NSMenuItem(title: "Preferences", action: nil, keyEquivalent: "")
+    let prefSub = NSMenu()
+    
+    menu.addItem(prefsDropdown)
+    menu.setSubmenu(prefSub, for: prefsDropdown)
+    
+    let dockItem = NSMenuItem(title: "Show Dock Icon", action: #selector(toggle_dock_icon), keyEquivalent: "")
+    dockItem.tag = 99
+    dockItem.target = self
+    dockItem.state = Preferences.showDockIcon.stateValue
+    prefSub.addItem(dockItem)
+
+    let rstudioCheckItem = NSMenuItem(title: "Notify me when a new RStudio Daily is available", action: #selector(toggle_hourly_rstudio_check), keyEquivalent: "")
+    rstudioCheckItem.tag = 98
+    rstudioCheckItem.target = self
+    rstudioCheckItem.state = Preferences.hourlyRStudioCheck.stateValue
+    prefSub.addItem(rstudioCheckItem)
+    
+    menu.addItem(NSMenuItem(title: "Check for update…", action: #selector(checkForUpdate), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: "About RSwitch…", action: #selector(showAbout), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: "RSwitch Help…", action: #selector(rswitch_help), keyEquivalent: ""))
 
     // Add a Quit item
     menu.addItem(NSMenuItem.separator())
