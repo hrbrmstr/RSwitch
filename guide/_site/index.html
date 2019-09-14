@@ -484,34 +484,46 @@ div.tocify {
 <p>RSwitch provides two handy menu item shortcuts to download either of those resources, but it expects you do <em>some</em> work to use them. When you select either of the “Download latest&amp;hellip” items some checks are performed (mostly to find the current version of the latest RStudio daily) and if it finds either the r-devel tarball or the exact same version of the RStudio disk image in the <code>~/Downloads</code> directory it will let you know you need to clean up after yourself first:</p>
 <p><img src="r-devel-exists.png" /></p>
 <p><img src="rstudio-exists.png" /></p>
-<p>If RSwitch can download the requested resource it will do so in the background and grey out the selected item until the process is complete:</p>
-<p><img src="rstudio-in-progress.png" /></p>
-<p>When the process is complete (or errors) a notification will be sent:</p>
+<p>If RSwitch can download the requested resource it will do so in the background and grey out the selected item until the process is complete. When the process is complete (or errors) a notification will be sent:</p>
 <p><img src="rstudio-success.png" /></p>
 <p>and the Finder will open up to <code>~/Downloads</code> with the target file selected.</p>
 </div>
 <div id="getting-help-or-resources-from-the-internet" class="section level2">
 <h2>Getting Help or Resources from the Internet</h2>
 <p>Since RSwitch is designed to help you work with R on macOS it seemed only fitting to provide some handy links to resources like the R for macOS page, the CRAN R page, RStudio dailies link, etc. They’re all available via the fairly obvious sub-menu:</p>
-<p><img src="web-help.png" /></p>
+<p><img src="rswitch-1.5.0-resources-reorg.png" /></p>
 <p>and each item will open up in your default web browser. (File an issue if you’d like more links added)</p>
 </div>
 <div id="even-moar-switching" class="section level2">
 <h2>Even Moar Switching</h2>
 <p>Since the theme of RSwitch is, well, <em>switching</em> it, further, seemed only fitting to allow you to make any open RStudio or R GUI instance active from the app:</p>
-<p><img src="app-switch.png" /></p>
+<p><img src="rswitch-1.5.0-switch-to.png" /></p>
 <p>The list is presented in app order (RStudio first since it’s super likely that’s what most macOS R folk are using) and then in app launch order (oldest on top). As shown, if RSwitch can detect what the open RStudio project or package is, that name gets added to the switching title.</p>
 </div>
 <div id="the-item-that-launched-a-thousand-instances" class="section level2">
 <h2>The Item That Launched A Thousand Instances</h2>
-<p>While being able to switch to running instances is fine, it would also be handy to be able to launch RStudio or R GUI from the menubar app. If none are currently running you can launch them with the obviously named menu items. If you hold down <code>&lt;Control&gt;</code> as you click on the RSwitch icon you’ll be given the opportunity to launch new, concurrent instances of either application:</p>
-<p><img src="launch-new.png" /></p>
+<p>While being able to switch to running instances is fine, it would also be handy to be able to launch RStudio or R GUI from the menubar app. If none are currently running you can launch them with the obviously named menu items. If you hold down <code>&lt;Control&gt;</code> as you click on the RSwitch icon you’ll be given the opportunity to launch new, concurrent instances of either application.</p>
 </div>
 <div id="speaking-of-current" class="section level2">
 <h2>Speaking of Current</h2>
 <p>RSwitch is under active, heavy development. Even when the development cycle dies down it will receive updates as bugs are fixed and new features are added. Rather than make you subscribe to a blog or monitor Twitter or social coding sites RSwitch now lets you check for updates right within the app. If there are no updates you get a notification telling you so:</p>
 <p><img src="latest.png" /></p>
 <p>otherwise, a link will open in your default browser so you can download the latest version.</p>
+</div>
+<div id="beyond-the-desktop" class="section level2">
+<h2>Beyond The Desktop</h2>
+<p>Starting with version 1.5.0, RSwitch is now your control center for organizing and accessing RStudio Server instances:</p>
+<p><img src="rswitch-1.5.0-rstudio-server.png" /></p>
+<p>Creating a new connection is just a simple form:</p>
+<p><img src="rswitch-1.5.0-rstudio-server-new.png" /></p>
+<p>and you can then launch a task-specific browser for each instance you have defined:</p>
+<p><img src="rswitch-1.5.0-rstudio-example.png" /></p>
+<p>This allows you to keep RStudio Server work separate from your internet browsing, creating a more focused workspace that you never have to worry about accidentally closing. Window size &amp; position are preserved across launches, too.</p>
+</div>
+<div id="have-it-your-way" class="section level2">
+<h2>Have It Your Way</h2>
+<p>There’s a new minimal preferences system for showing/hiding the dock icon and for enabling background checks for and notifications when new RStudio Dailies are available:</p>
+<p><img src="rswitch-1.5.0-prefs.png" /></p>
 </div>
 <div id="always-on" class="section level2">
 <h2>Always On</h2>

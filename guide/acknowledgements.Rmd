@@ -8,7 +8,7 @@ Despite having found and old-old copy of the source code by hacking URLs via the
 
 RSwitch uses three external frameworks to accomplish its tasks:
 
-- [SwiftSoup](https://github.com/scinfu/SwiftSoup) by Nabil Chatbi
+- [Just](https://github.com/dduan/Just) by Daniel Duan
 - [ProcInfo](https://github.com/objective-see/ProcInfo) by the infamous Patrick Wardle
 - [VersionCompare](https://github.com/DragonCherry/VersionCompare/) by DragonCherry
 

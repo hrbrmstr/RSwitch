@@ -91,11 +91,7 @@ RSwitch provides two handy menu item shortcuts to download either of those resou
 
 ![](rstudio-exists.png)
 
-If RSwitch can download the requested resource it will do so in the background and grey out the selected item until the process is complete:
-
-![](rstudio-in-progress.png)
-
-When the process is complete (or errors) a notification will be sent:
+If RSwitch can download the requested resource it will do so in the background and grey out the selected item until the process is complete. When the process is complete (or errors) a notification will be sent:
 
 ![](rstudio-success.png)
 
@@ -105,7 +101,7 @@ and the Finder will open up to `~/Downloads` with the target file selected.
 
 Since RSwitch is designed to help you work with R on macOS it seemed only fitting to provide some handy links to resources like the R for macOS page, the CRAN R page, RStudio dailies link, etc. They're all available via the fairly obvious sub-menu:
 
-![](web-help.png)
+![](rswitch-1.5.0-resources-reorg.png)
 
 and each item will open up in your default web browser. (File an issue if you'd like more links added)
 
@@ -113,15 +109,13 @@ and each item will open up in your default web browser. (File an issue if you'd 
 
 Since the theme of RSwitch is, well, _switching_ it, further, seemed only fitting to allow you to make any open RStudio or R GUI instance active from the app:
 
-![](app-switch.png)
+![](rswitch-1.5.0-switch-to.png)
 
 The list is presented in app order (RStudio first since it's super likely that's what most macOS R folk are using) and then in app launch order (oldest on top). As shown, if RSwitch can detect what the open RStudio project or package is, that name gets added to the switching title.
 
 ## The Item That Launched A Thousand Instances
 
-While being able to switch to running instances is fine, it would also be handy to be able to launch RStudio or R GUI from the menubar app. If none are currently running you can launch them with the obviously named menu items. If you hold down `<Control>` as you click on the RSwitch icon you'll be given the opportunity to launch new, concurrent instances of either application:
-
-![](launch-new.png)
+While being able to switch to running instances is fine, it would also be handy to be able to launch RStudio or R GUI from the menubar app. If none are currently running you can launch them with the obviously named menu items. If you hold down `<Control>` as you click on the RSwitch icon you'll be given the opportunity to launch new, concurrent instances of either application.
 
 ## Speaking of Current
 
@@ -130,6 +124,28 @@ RSwitch is under active, heavy development. Even when the development cycle dies
 ![](latest.png)
 
 otherwise, a link will open in your default browser so you can download the latest version.
+
+## Beyond The Desktop
+
+Starting with version 1.5.0, RSwitch is now your control center for organizing and accessing RStudio Server instances:
+
+![](rswitch-1.5.0-rstudio-server.png)
+
+Creating a new connection is just a simple form:
+
+![](rswitch-1.5.0-rstudio-server-new.png)
+
+and you can then launch a task-specific browser for each instance you have defined:
+
+![](rswitch-1.5.0-rstudio-example.png)
+
+This allows you to keep RStudio Server work separate from your internet browsing, creating a more focused workspace that you never have to worry about accidentally closing. Window size & position are preserved across launches, too.
+
+## Have It Your Way
+
+There's a new minimal preferences system for showing/hiding the dock icon and for enabling background checks for and notifications when new RStudio Dailies are available:
+
+![](rswitch-1.5.0-prefs.png)
 
 ## Always On
 
