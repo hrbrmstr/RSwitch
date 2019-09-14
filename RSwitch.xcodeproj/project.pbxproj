@@ -36,6 +36,10 @@
 		01F3EF0E230E635300DF5DF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F3EF0D230E635300DF5DF9 /* ViewController.swift */; };
 		01F3EF10230E635500DF5DF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01F3EF0F230E635500DF5DF9 /* Assets.xcassets */; };
 		01F3EF13230E635500DF5DF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01F3EF11230E635500DF5DF9 /* Main.storyboard */; };
+		01FC5D01232874F600771CD7 /* plotPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC5CFD232874F500771CD7 /* plotPopupViewController.swift */; };
+		01FC5D02232874F600771CD7 /* ToolbarWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC5CFE232874F600771CD7 /* ToolbarWebViewController.swift */; };
+		01FC5D03232874F600771CD7 /* RStudioServerSessionWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC5CFF232874F600771CD7 /* RStudioServerSessionWebViewController.swift */; };
+		01FC5D04232874F600771CD7 /* PlotWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC5D00232874F600771CD7 /* PlotWebViewController.swift */; };
 		52B8A14237DA712A6A2ABDE0 /* Pods_RSwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2F8556B6C8EF8ED93F7E99 /* Pods_RSwitch.framework */; };
 		C4290DD6231F190F00AA5955 /* AppMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4290DD5231F190E00AA5955 /* AppMenuActions.swift */; };
 /* End PBXBuildFile section */
@@ -76,6 +80,10 @@
 		01F3EF0F230E635500DF5DF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01F3EF12230E635500DF5DF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01F3EF14230E635500DF5DF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01FC5CFD232874F500771CD7 /* plotPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = plotPopupViewController.swift; sourceTree = "<group>"; };
+		01FC5CFE232874F600771CD7 /* ToolbarWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarWebViewController.swift; sourceTree = "<group>"; };
+		01FC5CFF232874F600771CD7 /* RStudioServerSessionWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RStudioServerSessionWebViewController.swift; sourceTree = "<group>"; };
+		01FC5D00232874F600771CD7 /* PlotWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotWebViewController.swift; sourceTree = "<group>"; };
 		0E2F8556B6C8EF8ED93F7E99 /* Pods_RSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53FF56D90FA7100C1726A4F7 /* Pods-RSwitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSwitch.debug.xcconfig"; path = "Target Support Files/Pods-RSwitch/Pods-RSwitch.debug.xcconfig"; sourceTree = "<group>"; };
 		574911021B3B7938E36AB013 /* Pods-RSwitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSwitch.release.xcconfig"; path = "Target Support Files/Pods-RSwitch/Pods-RSwitch.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +114,10 @@
 				0198B9A2231971D1003F7578 /* String+Version */,
 				0198B9A623197C8E003F7578 /* Utils */,
 				0178970C230ED25100F8F5BC /* AboutViewController.swift */,
+				01FC5CFD232874F500771CD7 /* plotPopupViewController.swift */,
+				01FC5D00232874F600771CD7 /* PlotWebViewController.swift */,
+				01FC5CFF232874F600771CD7 /* RStudioServerSessionWebViewController.swift */,
+				01FC5CFE232874F600771CD7 /* ToolbarWebViewController.swift */,
 				01073F202311E6BD007162C9 /* HandleRSwitch.swift */,
 				01073F1E2311E67D007162C9 /* HandleUpdate.swift */,
 				018A8C402312F4940006E87D /* HandleSwitchTo.swift */,
@@ -377,14 +389,18 @@
 				0197554A231BD919003FAD7B /* RVersions.swift in Sources */,
 				01073F152311E370007162C9 /* Notify.swift in Sources */,
 				C4290DD6231F190F00AA5955 /* AppMenuActions.swift in Sources */,
+				01FC5D03232874F600771CD7 /* RStudioServerSessionWebViewController.swift in Sources */,
 				01073F1D2311E64E007162C9 /* DownloadRStudio.swift in Sources */,
 				01073F172311E397007162C9 /* Menu.swift in Sources */,
 				01F3EF0E230E635300DF5DF9 /* ViewController.swift in Sources */,
+				01FC5D04232874F600771CD7 /* PlotWebViewController.swift in Sources */,
 				01F3EF0C230E635300DF5DF9 /* AppDelegate.swift in Sources */,
+				01FC5D01232874F600771CD7 /* plotPopupViewController.swift in Sources */,
 				01D3E441232131F300E3BC02 /* RStudioServerSessionManager.swift in Sources */,
 				01B611EC232176A200432807 /* NewSessionViewController.swift in Sources */,
 				01073F0F2311AE2E007162C9 /* String+Version.swift in Sources */,
 				0198B99E23196689003F7578 /* BrowseMenuAction.swift in Sources */,
+				01FC5D02232874F600771CD7 /* ToolbarWebViewController.swift in Sources */,
 				01073F132311E1CF007162C9 /* Globals.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

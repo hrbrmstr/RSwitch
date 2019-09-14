@@ -13,8 +13,8 @@ class RStudioServerSession : Codable {
   
   var url : String
   var menuTitle : String
-  var wk : NSWindowController?
-  var wv : WebViewController?
+  var wk : ToolbarWebViewController?
+  var wv : RstudioServerSessionWebViewController?
   
   private enum CodingKeys: String, CodingKey {
     case url
@@ -30,18 +30,19 @@ class RStudioServerSession : Codable {
   
   func show() {
     
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
-    let mainStoryboard = appDelegate.mainStoryboard!
-    
     if (wk == nil) {
-      wk = (mainStoryboard.instantiateController(withIdentifier: "wkPanelController") as! NSWindowController)
-      wv = wk!.window?.contentViewController as? WebViewController
-      wv!.url = url
-      wv!.nickname = menuTitle
+      
+      wk = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "windowWithWkViewAndToolbar") as? ToolbarWebViewController
+          
+      wk?.nicknname.stringValue = menuTitle
+      wk?.url.stringValue = url
+      
+      wv = (wk?.contentViewController as! RstudioServerSessionWebViewController)
+
     }
-   
-    wk?.window?.orderFront(appDelegate)
-    wk?.showWindow(appDelegate)
+
+    wk?.showWindow(self)
+    wv?.loadWebView(urlIn: url)
     
     NSApp.activate(ignoringOtherApps: true)
 

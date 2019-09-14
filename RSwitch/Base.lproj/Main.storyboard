@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14865.1"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14865.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -698,81 +697,6 @@
             <point key="canvasLocation" x="435" y="-92"/>
         </scene>
         <!--Window Controller-->
-        <scene sceneID="MKQ-4Y-Oth">
-            <objects>
-                <windowController storyboardIdentifier="wkPanelController" id="qjv-aN-QDU" customClass="SessionWindowController" customModule="RSwitch" sceneMemberID="viewController">
-                    <window key="window" identifier="wkPanelController" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titleVisibility="hidden" id="0uE-Xe-6tV">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <rect key="contentRect" x="-480" y="985" width="480" height="270"/>
-                        <rect key="screenRect" x="-2560" y="0.0" width="2560" height="1440"/>
-                        <toolbar key="toolbar" implicitIdentifier="120C2095-EF52-4259-9751-99BE445F0A18" explicitIdentifier="sessionDelete" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="1h8-Yt-Vhz">
-                            <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="SDw-ZN-plv"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="WNi-eE-iYD"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="xHz-Mi-NXD"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Jbz-Yu-NVz"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="rDu-xC-TQY"/>
-                                <toolbarItem implicitItemIdentifier="F7A6A7DB-439F-4CDA-A709-0B604ACF7634" explicitItemIdentifier="titleThing" label="Window Title" paletteLabel="Window Title" tag="88" sizingBehavior="auto" id="Cz9-Cn-dUF">
-                                    <nil key="toolTip"/>
-                                    <textField key="view" identifier="sessionTitle" horizontalHuggingPriority="251" verticalHuggingPriority="750" tag="88" id="gxD-qg-AUg">
-                                        <rect key="frame" x="15" y="14" width="45" height="14"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" identifier="toolbarTitle" title="Label" id="312-Lg-tJU">
-                                            <font key="font" metaFont="fixedUser" size="11"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="C5E453F9-B8DF-42A3-B04B-FEC4774D8C17" label="Delete Session" paletteLabel="Delete Session" toolTip="Close this session and delete the session from the sessions popup submenu." tag="77" sizingBehavior="auto" id="RdT-NR-Rq5">
-                                    <button key="view" identifier="deleteButton" verticalHuggingPriority="750" tag="77" imageHugsTitle="YES" id="yQr-Wa-hEC">
-                                        <rect key="frame" x="0.0" y="14" width="127" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" title="Delete Session" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mLg-dJ-21p">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="deletePressed:" target="qjv-aN-QDU" id="diI-k3-yQA"/>
-                                        </connections>
-                                    </button>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="7C1E2141-99F5-4AAF-8DFC-F98346F8B458" explicitItemIdentifier="nickThing" label="Nickname" paletteLabel="Nickname" sizingBehavior="auto" id="z3h-u9-ok2">
-                                    <nil key="toolTip"/>
-                                    <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="kjS-Ur-lI5">
-                                        <rect key="frame" x="11" y="14" width="37" height="16"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="6X3-G1-f3A">
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </toolbarItem>
-                            </allowedToolbarItems>
-                            <defaultToolbarItems>
-                                <toolbarItem reference="z3h-u9-ok2"/>
-                                <toolbarItem reference="rDu-xC-TQY"/>
-                                <toolbarItem reference="Cz9-Cn-dUF"/>
-                                <toolbarItem reference="rDu-xC-TQY"/>
-                                <toolbarItem reference="RdT-NR-Rq5"/>
-                            </defaultToolbarItems>
-                        </toolbar>
-                        <connections>
-                            <outlet property="delegate" destination="qjv-aN-QDU" id="ydd-t5-B2B"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <outlet property="nickField" destination="kjS-Ur-lI5" id="6cc-wZ-qao"/>
-                        <outlet property="titleField" destination="gxD-qg-AUg" id="IKb-uP-5s4"/>
-                        <segue destination="tec-9J-KNb" kind="relationship" relationship="window.shadowedContentViewController" id="idQ-y1-OGg"/>
-                    </connections>
-                </windowController>
-                <customObject id="QEf-Ku-YK9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-454" y="470"/>
-        </scene>
-        <!--Window Controller-->
         <scene sceneID="NLO-A5-Grh">
             <objects>
                 <windowController storyboardIdentifier="newSessPanel" id="hjJ-ZI-mmO" sceneMemberID="viewController">
@@ -874,33 +798,7 @@ DQ
                 </viewController>
                 <customObject id="nc3-iI-ege" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-595" y="1094"/>
-        </scene>
-        <!--Web View Controller-->
-        <scene sceneID="1Kq-xR-oeu">
-            <objects>
-                <viewController id="tec-9J-KNb" customClass="WebViewController" customModule="RSwitch" sceneMemberID="viewController">
-                    <view key="view" id="8mP-w9-nMB">
-                        <rect key="frame" x="0.0" y="0.0" width="970" height="790"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <wkWebView identifier="rstudio" wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GCI-JV-AYs">
-                                <rect key="frame" x="0.0" y="0.0" width="970" height="790"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                    </view>
-                    <connections>
-                        <outlet property="rstudioServerView" destination="GCI-JV-AYs" id="EHB-ub-k1V"/>
-                    </connections>
-                </viewController>
-                <customObject id="4Rz-ye-vi7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="317" y="1011"/>
+            <point key="canvasLocation" x="-834" y="1098"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="fg4-ci-0Xb">
@@ -1010,6 +908,131 @@ Just by Daniel Duan</string>
                 <customObject id="N40-nE-NTQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="689" y="373"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="zpc-BV-w44">
+            <objects>
+                <windowController storyboardIdentifier="plotPopupPanel" id="X6U-9f-yfp" customClass="PlotWebViewController" customModule="RSwitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Syo-4z-Y10" customClass="NSPanel">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="470" width="1024" height="768"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
+                        <connections>
+                            <outlet property="delegate" destination="X6U-9f-yfp" id="wNo-aL-eHf"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="KYZ-H1-ZrJ" kind="relationship" relationship="window.shadowedContentViewController" id="wkb-zx-r50"/>
+                    </connections>
+                </windowController>
+                <customObject id="Bxt-Fn-oQv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1543" y="713"/>
+        </scene>
+        <!--Plot Popup View Controller-->
+        <scene sceneID="TWn-GZ-Cs7">
+            <objects>
+                <viewController id="KYZ-H1-ZrJ" customClass="plotPopupViewController" customModule="RSwitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="eU0-VI-caI">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                </viewController>
+                <customObject id="eVF-NB-bkw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1543" y="1669"/>
+        </scene>
+        <!--Rstudio Server Session Web View Controller-->
+        <scene sceneID="g2O-De-dmv">
+            <objects>
+                <viewController id="vEe-ha-ldz" customClass="RstudioServerSessionWebViewController" customModule="RSwitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Ay6-LB-5Dx">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                </viewController>
+                <customObject id="den-6f-J99" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="163" y="1300"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="gc2-6Q-yJV">
+            <objects>
+                <windowController storyboardIdentifier="windowWithWkViewAndToolbar" id="apd-30-3H2" customClass="ToolbarWebViewController" customModule="RSwitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titleVisibility="hidden" id="tEd-Wt-0w3">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="1024" height="768"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1440"/>
+                        <toolbar key="toolbar" implicitIdentifier="4A83B593-17C7-41E2-9CE3-6595C15CE0C7" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="small" id="ZuG-0d-94S">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="cHp-BB-NNg"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="t1S-BU-rut"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="r1n-Zx-6NQ"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="qKo-qb-9vD"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Ceb-wL-zzI"/>
+                                <toolbarItem implicitItemIdentifier="B44D956F-5005-43DC-BA36-E960C3B7D4A6" label="Nickname" paletteLabel="Nickname" sizingBehavior="auto" id="zfC-hS-sjt">
+                                    <nil key="toolTip"/>
+                                    <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="sWL-ou-lUa">
+                                        <rect key="frame" x="11" y="14" width="37" height="16"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="dgi-iC-79B">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="348422ED-44C4-4000-A471-D546281652EB" label="Delete Session" paletteLabel="Delete Session" sizingBehavior="auto" id="fEX-FO-ZPr">
+                                    <nil key="toolTip"/>
+                                    <button key="view" verticalHuggingPriority="750" id="cwY-9X-V5b">
+                                        <rect key="frame" x="0.0" y="14" width="127" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Delete Session" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Acv-Va-79Z">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="performDeleteSession:" target="apd-30-3H2" id="iGI-To-I5A"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="B60A8BDA-F4E8-4343-A471-4D63A36FA3D0" label="URL" paletteLabel="URL" sizingBehavior="auto" id="pzD-JT-919">
+                                    <nil key="toolTip"/>
+                                    <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="fkX-fM-eHP">
+                                        <rect key="frame" x="0.0" y="14" width="37" height="16"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="noz-0h-hrO">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="zfC-hS-sjt"/>
+                                <toolbarItem reference="Ceb-wL-zzI"/>
+                                <toolbarItem reference="pzD-JT-919"/>
+                                <toolbarItem reference="Ceb-wL-zzI"/>
+                                <toolbarItem reference="fEX-FO-ZPr"/>
+                            </defaultToolbarItems>
+                        </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="apd-30-3H2" id="Eb5-vi-gcp"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <outlet property="deleteSession" destination="cwY-9X-V5b" id="75j-u8-Ghq"/>
+                        <outlet property="nicknname" destination="sWL-ou-lUa" id="cXl-z2-ZZR"/>
+                        <outlet property="url" destination="fkX-fM-eHP" id="hNb-NI-3Oy"/>
+                        <segue destination="vEe-ha-ldz" kind="relationship" relationship="window.shadowedContentViewController" id="jUP-sM-37w"/>
+                    </connections>
+                </windowController>
+                <customObject id="pY1-dM-LcX" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-105" y="406"/>
         </scene>
     </scenes>
 </document>

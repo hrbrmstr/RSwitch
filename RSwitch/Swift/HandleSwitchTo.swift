@@ -16,6 +16,7 @@ extension AppDelegate {
   
   @objc func switch_to(_ sender: NSMenuItem?) {
     (sender!.representedObject as! NSRunningApplication).activate(options: NSApplication.ActivationOptions.activateIgnoringOtherApps)
+    (sender!.representedObject as! NSRunningApplication).unhide()
   }
 
 }
