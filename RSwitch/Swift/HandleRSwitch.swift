@@ -15,10 +15,11 @@ extension AppDelegate {
   // then removes the current alias and creates the new one.
   @objc func handleRSwitch(_ sender: NSMenuItem?) {
     
-    let fm = FileManager.default;
+    let item = sender?.representedObject as! String
+    let fm = FileManager.default
     let title = sender?.title
     let rm_link = (RVersions.macos_r_framework as NSString).appendingPathComponent("Current")
-    let title_link = (RVersions.macos_r_framework as NSString).appendingPathComponent(title!)
+    let title_link = (RVersions.macos_r_framework as NSString).appendingPathComponent(item)
 
     do {
       try fm.removeItem(atPath: rm_link)

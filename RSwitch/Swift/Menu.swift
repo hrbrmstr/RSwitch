@@ -35,6 +35,10 @@ extension AppDelegate: NSMenuDelegate {
     
   }
 
+  @objc func subscribeToMailingList(_ sender: NSMenuItem) {
+    NSWorkspace.shared.open(URL(string: "https://lists.sr.ht/~hrbrmstr/rswitch")!)
+  }
+
   func menuWillOpen(_ menu: NSMenu) {
     
     if (menu != self.statusMenu) { return }
@@ -112,6 +116,7 @@ extension AppDelegate: NSMenuDelegate {
     prefSub.addItem(rstudioCheckItem)
     
     menu.addItem(NSMenuItem(title: "Check for update…", action: #selector(checkForUpdate), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: "Subscribe to mailing list…", action: #selector(subscribeToMailingList), keyEquivalent: ""))
     menu.addItem(NSMenuItem(title: "About RSwitch…", action: #selector(showAbout), keyEquivalent: ""))
     menu.addItem(NSMenuItem(title: "RSwitch Help…", action: #selector(rswitch_help), keyEquivalent: ""))
 

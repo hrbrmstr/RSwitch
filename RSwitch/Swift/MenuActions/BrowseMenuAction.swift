@@ -41,6 +41,7 @@ class BrowseMenuAction {
 
   private static let webItemsExt = [
     BrowseMenuAction(title: "R Package Documentation (rdrr.io)…", url: "https://rdrr.io/"),
+    BrowseMenuAction(title: "R Compiler Tools for RCpp on macOS…", url: "https://thecoatlessprofessor.com/programming/cpp/r-compiler-tools-for-rcpp-on-macos/"),
     BrowseMenuAction(title: "Rseek…", url: "https://rseek.org"),
     BrowseMenuAction(title: "R StackOverflow…", url: "https://stackoverflow.com/questions/tagged/r"),
     BrowseMenuAction(title: "ROpenSci Discuss…", url: "https://discuss.ropensci.org/"),
