@@ -50,6 +50,29 @@ class RstudioServerSessionWebViewController: NSViewController, NSWindowDelegate 
 
 extension RstudioServerSessionWebViewController: WKUIDelegate {
 
+  func webView(_ webView: WKWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {
+    
+    NSLog("PANELING!")
+    print("PANELING!")
+
+    
+    let openPanel = NSOpenPanel()
+    
+    openPanel.canChooseFiles = true
+    openPanel.allowsMultipleSelection = false
+    openPanel.canChooseDirectories = false
+    openPanel.canCreateDirectories = false
+    openPanel.beginSheetModal(for:self.view.window!) { (response) in
+      if (response == NSApplication.ModalResponse.OK) {
+        completionHandler([openPanel.url!])
+      } else {
+        completionHandler(nil)
+      }
+      openPanel.close()
+    }
+    
+  }
+  
   func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
     
     if navigationAction.targetFrame == nil {

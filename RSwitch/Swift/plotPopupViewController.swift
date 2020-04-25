@@ -28,10 +28,17 @@ class plotPopupViewController: NSViewController {
     view.addSubview(webView)
     
   }
+
   
   func loadWebView(urlIn: String) {
     
     urlPath = urlIn
+    
+    NSLog(urlPath)
+    
+    // Check for "/export/"
+    // If export, then get bring up a Save Panel and then download the file to that location
+
     if let url = URL(string: urlPath) {
       let urlRequest = URLRequest(url: url)
       webView.load(urlRequest)
@@ -50,12 +57,37 @@ extension plotPopupViewController: WKUIDelegate {
   func webViewDidClose(_ webView: WKWebView) {
     self.view.window?.close()
   }
+  
+  
+  func webView(_ webView: WKWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {
+  
+    NSLog("savePanel!")
+  
+    let savePanel = NSSavePanel()
+    
+    savePanel.canCreateDirectories = true
+    savePanel.beginSheetModal(for:self.view.window!) { (response) in
+      if (response == NSApplication.ModalResponse.OK) {
+        completionHandler([savePanel.url!])
+      } else {
+        completionHandler(nil)
+      }
+      savePanel.close()
+    }
+    
+  }
 
 }
 
 extension plotPopupViewController: WKNavigationDelegate {
+  
   open func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+    print("DID START")
   }
+  
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    print("DID FINISH")
   }
+  
 }
+

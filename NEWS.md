@@ -1,3 +1,7 @@
+# 1.7.0
+
+- Added checks for network availability 
+
 # 1.4.0
 
 - Use Notification Center vs alerts for everything but super-fatal errors

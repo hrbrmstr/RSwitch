@@ -10,8 +10,27 @@ import Foundation
 import Cocoa
 
 extension AppDelegate : NSUserNotificationCenterDelegate {
+
   
-func notifyUser(title: String? = nil, subtitle: String? = nil, text: String? = nil) -> Void {
+  func notifyUserWithDL(title: String? = nil, subtitle: String? = nil, text: String? = nil) -> Void {
+    
+    let notification = NSUserNotification()
+    
+    notification.title = title
+    notification.subtitle = subtitle
+    notification.informativeText = text
+    notification.hasActionButton = true
+    notification.actionButtonTitle = "Download"
+    
+    notification.soundName = NSUserNotificationDefaultSoundName 
+    
+    NSUserNotificationCenter.default.delegate = self
+    NSUserNotificationCenter.default.deliver(notification)
+    
+  }
+
+  
+  func notifyUser(title: String? = nil, subtitle: String? = nil, text: String? = nil) -> Void {
     
     let notification = NSUserNotification()
     
@@ -28,6 +47,10 @@ func notifyUser(title: String? = nil, subtitle: String? = nil, text: String? = n
 
   func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
     return(true)
+  }
+  
+  func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+    print(notification)
   }
   
 }

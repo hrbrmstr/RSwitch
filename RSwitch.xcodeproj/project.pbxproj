@@ -27,6 +27,8 @@
 		0198B99E23196689003F7578 /* BrowseMenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B99D23196689003F7578 /* BrowseMenuAction.swift */; };
 		0198B9A0231970ED003F7578 /* AppAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B99F231970ED003F7578 /* AppAlerts.swift */; };
 		0198B9AA23197D3A003F7578 /* Running.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B9A923197D3A003F7578 /* Running.swift */; };
+		01A4F40A23F3084E005B88C2 /* Reachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4F40923F3084E005B88C2 /* Reachable.swift */; };
+		01A4F40C23F30DB4005B88C2 /* Associations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4F40B23F30DB4005B88C2 /* Associations.swift */; };
 		01B611EC232176A200432807 /* NewSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B611EB232176A200432807 /* NewSessionViewController.swift */; };
 		01D3E43A232119DD00E3BC02 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D3E439232119DD00E3BC02 /* WebViewController.swift */; };
 		01D3E43C23211B4C00E3BC02 /* RStudioServerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D3E43B23211B4C00E3BC02 /* RStudioServerAction.swift */; };
@@ -69,6 +71,8 @@
 		0198B99D23196689003F7578 /* BrowseMenuAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseMenuAction.swift; sourceTree = "<group>"; };
 		0198B99F231970ED003F7578 /* AppAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlerts.swift; sourceTree = "<group>"; };
 		0198B9A923197D3A003F7578 /* Running.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Running.swift; sourceTree = "<group>"; };
+		01A4F40923F3084E005B88C2 /* Reachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachable.swift; sourceTree = "<group>"; };
+		01A4F40B23F30DB4005B88C2 /* Associations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Associations.swift; sourceTree = "<group>"; };
 		01B611EB232176A200432807 /* NewSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSessionViewController.swift; sourceTree = "<group>"; };
 		01D3E439232119DD00E3BC02 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		01D3E43B23211B4C00E3BC02 /* RStudioServerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RStudioServerAction.swift; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				01975549231BD919003FAD7B /* RVersions.swift */,
 				0198B9A923197D3A003F7578 /* Running.swift */,
 				011951B3231F00A000B62C3A /* Preferences.swift */,
+				01A4F40923F3084E005B88C2 /* Reachable.swift */,
+				01A4F40B23F30DB4005B88C2 /* Associations.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -285,7 +291,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Bob Rudis";
 				TargetAttributes = {
 					01F3EF07230E635300DF5DF9 = {
@@ -372,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01073F212311E6BD007162C9 /* HandleRSwitch.swift in Sources */,
+				01A4F40A23F3084E005B88C2 /* Reachable.swift in Sources */,
 				0198B9A0231970ED003F7578 /* AppAlerts.swift in Sources */,
 				011951B4231F00A000B62C3A /* Preferences.swift in Sources */,
 				010A1C1423215B0900E32A9A /* SessionWindowController.swift in Sources */,
@@ -394,6 +401,7 @@
 				01073F172311E397007162C9 /* Menu.swift in Sources */,
 				01F3EF0E230E635300DF5DF9 /* ViewController.swift in Sources */,
 				01FC5D04232874F600771CD7 /* PlotWebViewController.swift in Sources */,
+				01A4F40C23F30DB4005B88C2 /* Associations.swift in Sources */,
 				01F3EF0C230E635300DF5DF9 /* AppDelegate.swift in Sources */,
 				01FC5D01232874F600771CD7 /* plotPopupViewController.swift in Sources */,
 				01D3E441232131F300E3BC02 /* RStudioServerSessionManager.swift in Sources */,
@@ -557,8 +565,8 @@
 					"$(PROJECT_DIR)/RSwitch/ObjC",
 					"$(PROJECT_DIR)/RSwitch/ObjC/ProcInfo",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.5.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = is.rud.bob.RSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "rswitch-1+";
@@ -590,8 +598,8 @@
 					"$(PROJECT_DIR)/RSwitch/ObjC",
 					"$(PROJECT_DIR)/RSwitch/ObjC/ProcInfo",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.5.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = is.rud.bob.RSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "rswitch-1+";

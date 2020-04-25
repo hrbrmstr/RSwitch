@@ -27,10 +27,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
   }
   
   @objc func performRStudioCheck(_ sender: NSObject) {
-    let v = RStudioUtils.latestVersionNumber()
-    if (!Preferences.lastVersionNotified.isVersion(equalTo: v)) {
-      Preferences.lastVersionNotified = v
-      notifyUser(title: "New RStudio Daily version available", text: ("Version: " + v))
+    if (currentReachabilityStatus != .notReachable) {
+      let v = RStudioUtils.latestVersionNumber()
+      if (!Preferences.lastVersionNotified.isVersion(equalTo: v)) {
+        Preferences.lastVersionNotified = v
+        notifyUserWithDL(title: "New RStudio Daily version available", text: ("Version: " + v))
+      }
     }
   }
   
@@ -73,7 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
     }
 
     DockIcon.standard.setVisibility(Preferences.showDockIcon)
-    
+
   }
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -89,7 +91,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
     newSessController = (mainStoryboard.instantiateController(withIdentifier: "newSessPanel") as! NSWindowController)
 
     sess = RStudioServerSessionManager()
-        
+            
+    FileAssociationUtils.getHandlers();
+    FileAssociationUtils.setHandlers();
+    FileAssociationUtils.getHandlers();
+
     timer = Timer.scheduledTimer(
         timeInterval: 3600,
         target: self,
