@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,11 @@
 		010A1C1423215B0900E32A9A /* SessionWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010A1C1323215B0900E32A9A /* SessionWindowController.swift */; };
 		0117C9E0232270F0004BC889 /* RStudioUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0117C9DF232270F0004BC889 /* RStudioUtils.swift */; };
 		011951B4231F00A000B62C3A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011951B3231F00A000B62C3A /* Preferences.swift */; };
+		01575A37245443D7004A5715 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01575A36245443D7004A5715 /* main.swift */; };
+		01575A3B245445B2004A5715 /* rswitch-cmd in Resources */ = {isa = PBXBuildFile; fileRef = 01575A34245443D7004A5715 /* rswitch-cmd */; };
+		01575A4024544892004A5715 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 01575A3F24544892004A5715 /* ArgumentParser */; };
+		01575A4324544DA6004A5715 /* RVersions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01975549231BD919003FAD7B /* RVersions.swift */; };
+		01575A4424544F49004A5715 /* AppAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B99F231970ED003F7578 /* AppAlerts.swift */; };
 		0178970D230ED25100F8F5BC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178970C230ED25100F8F5BC /* AboutViewController.swift */; };
 		018A8C3B2312C7BC0006E87D /* libprocInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 018A8C3A2312C7BC0006E87D /* libprocInfo.a */; };
 		018A8C3F2312CB480006E87D /* procHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 018A8C3E2312CB480006E87D /* procHelper.m */; };
@@ -46,6 +51,28 @@
 		C4290DD6231F190F00AA5955 /* AppMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4290DD5231F190E00AA5955 /* AppMenuActions.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		01575A3C24544613004A5715 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01F3EF00230E635300DF5DF9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01575A33245443D7004A5715;
+			remoteInfo = "rswitch-cmd";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		01575A32245443D7004A5715 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		01073F0E2311AE2E007162C9 /* String+Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Version.swift"; sourceTree = "<group>"; };
 		01073F122311E1CF007162C9 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
@@ -59,6 +86,8 @@
 		010A1C1323215B0900E32A9A /* SessionWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWindowController.swift; sourceTree = "<group>"; };
 		0117C9DF232270F0004BC889 /* RStudioUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RStudioUtils.swift; sourceTree = "<group>"; };
 		011951B3231F00A000B62C3A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		01575A34245443D7004A5715 /* rswitch-cmd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "rswitch-cmd"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01575A36245443D7004A5715 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		016750FB2319A7A4009E2FD6 /* RSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RSwitch.entitlements; sourceTree = "<group>"; };
 		0178970C230ED25100F8F5BC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		018A8C392312C7BC0006E87D /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = procInfo.h; sourceTree = "<group>"; };
@@ -95,6 +124,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		01575A31245443D7004A5715 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01575A4024544892004A5715 /* ArgumentParser in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		01F3EF05230E635300DF5DF9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,6 +170,14 @@
 				01B611EB232176A200432807 /* NewSessionViewController.swift */,
 			);
 			path = Swift;
+			sourceTree = "<group>";
+		};
+		01575A35245443D7004A5715 /* rswitch-cmd */ = {
+			isa = PBXGroup;
+			children = (
+				01575A36245443D7004A5715 /* main.swift */,
+			);
+			path = "rswitch-cmd";
 			sourceTree = "<group>";
 		};
 		018A8C342312C6510006E87D /* ObjC */ = {
@@ -218,16 +263,20 @@
 			isa = PBXGroup;
 			children = (
 				01F3EF0A230E635300DF5DF9 /* RSwitch */,
+				01575A35245443D7004A5715 /* rswitch-cmd */,
 				01F3EF09230E635300DF5DF9 /* Products */,
 				6E9DFB632C8DAEE9C1D64321 /* Pods */,
 				08E99D67B1A9A0A9D2CF3F66 /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		01F3EF09230E635300DF5DF9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				01F3EF08230E635300DF5DF9 /* RSwitch.app */,
+				01575A34245443D7004A5715 /* rswitch-cmd */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -265,6 +314,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		01575A33245443D7004A5715 /* rswitch-cmd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01575A38245443D7004A5715 /* Build configuration list for PBXNativeTarget "rswitch-cmd" */;
+			buildPhases = (
+				01575A30245443D7004A5715 /* Sources */,
+				01575A31245443D7004A5715 /* Frameworks */,
+				01575A32245443D7004A5715 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "rswitch-cmd";
+			packageProductDependencies = (
+				01575A3F24544892004A5715 /* ArgumentParser */,
+			);
+			productName = "rswitch-cmd";
+			productReference = 01575A34245443D7004A5715 /* rswitch-cmd */;
+			productType = "com.apple.product-type.tool";
+		};
 		01F3EF07230E635300DF5DF9 /* RSwitch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01F3EF18230E635500DF5DF9 /* Build configuration list for PBXNativeTarget "RSwitch" */;
@@ -278,6 +347,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				01575A3D24544613004A5715 /* PBXTargetDependency */,
 			);
 			name = RSwitch;
 			productName = RSwitch;
@@ -290,10 +360,13 @@
 		01F3EF00230E635300DF5DF9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1130;
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Bob Rudis";
 				TargetAttributes = {
+					01575A33245443D7004A5715 = {
+						CreatedOnToolsVersion = 11.4;
+					};
 					01F3EF07230E635300DF5DF9 = {
 						CreatedOnToolsVersion = 11.0;
 						LastSwiftMigration = 1100;
@@ -301,7 +374,7 @@
 				};
 			};
 			buildConfigurationList = 01F3EF03230E635300DF5DF9 /* Build configuration list for PBXProject "RSwitch" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -309,11 +382,15 @@
 				Base,
 			);
 			mainGroup = 01F3EEFF230E635300DF5DF9;
+			packageReferences = (
+				01575A3E24544892004A5715 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = 01F3EF09230E635300DF5DF9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				01F3EF07230E635300DF5DF9 /* RSwitch */,
+				01575A33245443D7004A5715 /* rswitch-cmd */,
 			);
 		};
 /* End PBXProject section */
@@ -323,6 +400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01575A3B245445B2004A5715 /* rswitch-cmd in Resources */,
 				01F3EF10230E635500DF5DF9 /* Assets.xcassets in Resources */,
 				01F3EF13230E635500DF5DF9 /* Main.storyboard in Resources */,
 			);
@@ -373,6 +451,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		01575A30245443D7004A5715 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01575A4424544F49004A5715 /* AppAlerts.swift in Sources */,
+				01575A4324544DA6004A5715 /* RVersions.swift in Sources */,
+				01575A37245443D7004A5715 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		01F3EF04230E635300DF5DF9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,6 +503,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		01575A3D24544613004A5715 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01575A33245443D7004A5715 /* rswitch-cmd */;
+			targetProxy = 01575A3C24544613004A5715 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		01F3EF11230E635500DF5DF9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -427,6 +523,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		01575A39245443D7004A5715 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = CBY22P58G8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "is.rud.rswitch-cmd";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		01575A3A245443D7004A5715 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = CBY22P58G8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "is.rud.rswitch-cmd";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		01F3EF16230E635500DF5DF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -478,7 +610,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = /Users/hrbrmstr/Desktop;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -533,7 +665,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = /Users/hrbrmstr/Desktop;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
@@ -550,8 +682,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RSwitch/RSwitch.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBY22P58G8;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -569,7 +701,8 @@
 				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = is.rud.bob.RSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "rswitch-1+";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "RSwitch/ObjC/RSwitch-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -583,8 +716,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RSwitch/RSwitch.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBY22P58G8;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -602,7 +735,8 @@
 				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = is.rud.bob.RSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "rswitch-1+";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "RSwitch/ObjC/RSwitch-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -612,6 +746,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		01575A38245443D7004A5715 /* Build configuration list for PBXNativeTarget "rswitch-cmd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01575A39245443D7004A5715 /* Debug */,
+				01575A3A245443D7004A5715 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		01F3EF03230E635300DF5DF9 /* Build configuration list for PBXProject "RSwitch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -631,6 +774,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		01575A3E24544892004A5715 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:apple/swift-argument-parser.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		01575A3F24544892004A5715 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01575A3E24544892004A5715 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 01F3EF00230E635300DF5DF9 /* Project object */;
 }

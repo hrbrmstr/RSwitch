@@ -36,14 +36,14 @@ class RStudioServerMenuAction {
     menu.addItem(rsDropdown)
     menu.setSubmenu(rsSub, for: rsDropdown)
     
-    let newRStudioSessItem = NSMenuItem(title: "New RStudio Server Connection…", action: Selector(("newRstudioServerSession:")), keyEquivalent: "")
+    let newRStudioSessItem = NSMenuItem(title: "New RStudio Server Connection…", action: #selector(AppDelegate.newRstudioServerSession(_:)), keyEquivalent: "")
     
     rsSub.addItem(newRStudioSessItem)
     rsSub.addItem(NSMenuItem.separator())
     
     for sess in manager.sessions! {
       
-      let sessItem = NSMenuItem(title: sess.menuTitle, action: Selector(("activateServerSession:")), keyEquivalent: "")
+        let sessItem = NSMenuItem(title: sess.menuTitle, action: #selector(AppDelegate.activateServerSession(_:)), keyEquivalent: "")
       sessItem.representedObject = sess
       rsSub.addItem(sessItem)
       
