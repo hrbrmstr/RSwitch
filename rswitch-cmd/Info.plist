@@ -1,0 +1,14 @@
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>English</string>
+    <key>CFBundleIdentifier</key>
+    <string>is.rud.rswitch-cmd</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>61.0</string>
+    <key>CFBundleName</key>
+    <string>rswitch-cmd</string>
+    <key>CFBundleVersion</key>
+    <string>1.0</string>
+</dict>
+</plist>
