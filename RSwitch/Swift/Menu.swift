@@ -34,6 +34,18 @@ extension AppDelegate: NSMenuDelegate {
     }
     
   }
+  
+  @objc func toggle_ensure_file_handlers(_ sender: NSMenuItem) {
+    
+    Preferences.ensureFileHandlers = !Preferences.ensureFileHandlers
+      
+    if (Preferences.ensureFileHandlers) { FileAssociationUtils.setHandlers()  }
+      
+    if let menu = statusItem.menu, let item = menu.item(withTag: 98) {
+      item.state = Preferences.ensureFileHandlers.stateValue
+    }
+    
+  }
 
   @objc func subscribeToMailingList(_ sender: NSMenuItem) {
     NSWorkspace.shared.open(URL(string: "https://lists.sr.ht/~hrbrmstr/rswitch")!)
@@ -115,6 +127,12 @@ extension AppDelegate: NSMenuDelegate {
     rstudioCheckItem.state = Preferences.hourlyRStudioCheck.stateValue
     prefSub.addItem(rstudioCheckItem)
     
+    let fileHandlersCheckItem = NSMenuItem(title: "Ensure RStudio opens R/Rmd files", action: #selector(toggle_ensure_file_handlers), keyEquivalent: "")
+    fileHandlersCheckItem.tag = 97
+    fileHandlersCheckItem.target = self
+    fileHandlersCheckItem.state = Preferences.ensureFileHandlers.stateValue
+    prefSub.addItem(fileHandlersCheckItem)
+
     menu.addItem(NSMenuItem(title: "Check for update…", action: #selector(checkForUpdate), keyEquivalent: ""))
     menu.addItem(NSMenuItem(title: "Subscribe to mailing list…", action: #selector(subscribeToMailingList), keyEquivalent: ""))
     menu.addItem(NSMenuItem(title: "About RSwitch…", action: #selector(showAbout), keyEquivalent: ""))

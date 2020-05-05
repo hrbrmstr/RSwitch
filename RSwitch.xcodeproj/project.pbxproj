@@ -103,6 +103,7 @@
 		01A4F40923F3084E005B88C2 /* Reachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachable.swift; sourceTree = "<group>"; };
 		01A4F40B23F30DB4005B88C2 /* Associations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Associations.swift; sourceTree = "<group>"; };
 		01B611EB232176A200432807 /* NewSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSessionViewController.swift; sourceTree = "<group>"; };
+		01BDA1A5245482CD005DC733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		01D3E439232119DD00E3BC02 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		01D3E43B23211B4C00E3BC02 /* RStudioServerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RStudioServerAction.swift; sourceTree = "<group>"; };
 		01D3E43E2321315900E3BC02 /* RStudioServerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RStudioServerSession.swift; sourceTree = "<group>"; };
@@ -175,6 +176,7 @@
 		01575A35245443D7004A5715 /* rswitch-cmd */ = {
 			isa = PBXGroup;
 			children = (
+				01BDA1A5245482CD005DC733 /* Info.plist */,
 				01575A36245443D7004A5715 /* main.swift */,
 			);
 			path = "rswitch-cmd";
@@ -313,11 +315,22 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		01BDA1A624548938005DC733 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		01575A33245443D7004A5715 /* rswitch-cmd */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 01575A38245443D7004A5715 /* Build configuration list for PBXNativeTarget "rswitch-cmd" */;
 			buildPhases = (
+				01BDA1A624548938005DC733 /* Headers */,
 				01575A30245443D7004A5715 /* Sources */,
 				01575A31245443D7004A5715 /* Frameworks */,
 				01575A32245443D7004A5715 /* CopyFiles */,
@@ -526,17 +539,21 @@
 		01575A39245443D7004A5715 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = CBY22P58G8;
 				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/rswitch-cmd/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "is.rud.rswitch-cmd";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				STRIP_INSTALLED_PRODUCT = NO;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -544,17 +561,21 @@
 		01575A3A245443D7004A5715 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = CBY22P58G8;
 				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/rswitch-cmd/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "is.rud.rswitch-cmd";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				STRIP_INSTALLED_PRODUCT = NO;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -591,7 +612,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -615,6 +636,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -652,7 +674,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -670,6 +692,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
+				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -682,8 +705,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RSwitch/RSwitch.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBY22P58G8;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -701,8 +724,9 @@
 				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = is.rud.bob.RSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				STRIP_INSTALLED_PRODUCT = NO;
+				PROVISIONING_PROFILE_SPECIFIER = "rswitch-1+";
+				SKIP_INSTALL = NO;
+				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "RSwitch/ObjC/RSwitch-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -716,8 +740,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RSwitch/RSwitch.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBY22P58G8;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -735,8 +759,9 @@
 				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = is.rud.bob.RSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				STRIP_INSTALLED_PRODUCT = NO;
+				PROVISIONING_PROFILE_SPECIFIER = "rswitch-1+";
+				SKIP_INSTALL = NO;
+				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "RSwitch/ObjC/RSwitch-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;

@@ -16,10 +16,12 @@ extension AppDelegate : NSUserNotificationCenterDelegate {
     
     let notification = NSUserNotification()
     
+//    notification.identifier = "RSwitch"
     notification.title = title
     notification.subtitle = subtitle
     notification.informativeText = text
     notification.hasActionButton = true
+    notification.otherButtonTitle = "Dismiss"
     notification.actionButtonTitle = "Download"
     
     notification.soundName = NSUserNotificationDefaultSoundName 
@@ -34,6 +36,7 @@ extension AppDelegate : NSUserNotificationCenterDelegate {
     
     let notification = NSUserNotification()
     
+//    notification.identifier = "RSwitch"
     notification.title = title
     notification.subtitle = subtitle
     notification.informativeText = text
@@ -46,10 +49,12 @@ extension AppDelegate : NSUserNotificationCenterDelegate {
   }
 
   func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+    print("should present")
     return(true)
   }
   
   func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+    print("did activate")
     print(notification)
   }
   

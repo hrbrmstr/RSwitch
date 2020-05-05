@@ -38,6 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
   
   @objc func performTimer(_ sender: Timer) {
     if (Preferences.hourlyRStudioCheck) { performRStudioCheck(sender) }
+    if (Preferences.ensureFileHandlers) { FileAssociationUtils.setHandlers()  }
   }
 
   var mainStoryboard: NSStoryboard!
@@ -92,9 +93,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
 
     sess = RStudioServerSessionManager()
             
-    FileAssociationUtils.getHandlers();
-    FileAssociationUtils.setHandlers();
-    FileAssociationUtils.getHandlers();
+    if (Preferences.ensureFileHandlers) { FileAssociationUtils.setHandlers()  }
 
     timer = Timer.scheduledTimer(
         timeInterval: 3600,

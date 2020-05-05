@@ -21,6 +21,7 @@ extension UserDefaults {
   enum Key: String {
     case showDockIcon = "showDockIcon"
     case hourlyRStudioCheck = "hourlyRStudioCheck"
+    case ensureFileHandlers = "ensureFileHandlers"
     case firstRunGone = "firstRunGone"
     case lastVersionNotified = ""
   }
@@ -86,10 +87,19 @@ struct Preferences {
       defaults.synchronize()
     }
   }
-  
+
+  static var ensureFileHandlers: Bool {
+    get { return(defaults.bool(forKey: .ensureFileHandlers)) }
+    set {
+      defaults.set(newValue, forKey: .ensureFileHandlers)
+      defaults.synchronize()
+    }
+  }
+
   static func restore() {
     Preferences.showDockIcon = false
     Preferences.hourlyRStudioCheck = false
+    Preferences.ensureFileHandlers = false
     Preferences.lastVersionNotified = ""
   }
   

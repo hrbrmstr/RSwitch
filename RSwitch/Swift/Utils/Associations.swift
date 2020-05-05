@@ -45,12 +45,12 @@ class FileAssociationUtils {
   public static func setHandlers() {
     
     let setResR : String = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, "R" as CFString, nil)?.takeRetainedValue() as String? ?? "";
-    NSLog("UTI of .R extension: " + setResR);
+    //NSLog("UTI of .R extension: " + setResR);
 
     LSSetDefaultRoleHandlerForContentType(setResR as CFString, LSRolesMask.all, "org.rstudio.RStudio" as CFString);
     
     let setResRmd : String = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, "Rmd" as CFString, nil)?.takeRetainedValue() as String? ?? "";
-    NSLog("UTI of .Rmd extension: " + setResRmd);
+    //NSLog("UTI of .Rmd extension: " + setResRmd);
     
     LSSetDefaultRoleHandlerForContentType(setResRmd as CFString, LSRolesMask.all, "org.rstudio.RStudio" as CFString);
 

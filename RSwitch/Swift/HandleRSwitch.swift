@@ -33,6 +33,7 @@ extension AppDelegate {
             withDestinationURL: NSURL(fileURLWithPath: title_link) as URL
       )
       self.notifyUser(title: "Success", text: "Current R version switched to " + title!)
+//      self.notifyUserWithDL(title: "Success", subtitle: "Subtitle", text: "Current R version switched to " + title!)
     } catch {
       self.notifyUser(title: "Action failed", text: "Failed to create alias for " + title_link + " (\(error))")
     }
