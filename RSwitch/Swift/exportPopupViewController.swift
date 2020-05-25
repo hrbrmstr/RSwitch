@@ -35,14 +35,14 @@ class exportPopupViewController: NSViewController {
     
     urlPath = urlIn
     
-    NSLog("loadWebView: " + urlPath)
+    NSLog("loadWebView: \(urlPath)")
     
     // Check for "/export/"
     // If export, then get bring up a Save Panel and then download the file to that location
 
     if let url = URL(string: urlPath) {
       
-      NSLog("URL path: " + url.path)
+      NSLog("URL path: \(url.path)")
       
       if (url.path.starts(with: "/export")) {
         
@@ -54,15 +54,11 @@ class exportPopupViewController: NSViewController {
         savePanel.nameFieldStringValue = url.queryParameters["name"]!
         savePanel.beginSheetModal(for:self.view.window!) { (response) in
           if (response == NSApplication.ModalResponse.OK) {
-            //completionHandler([savePanel.url!])
-            NSLog("SP OK RESP")
-            NSLog("From here " + url.absoluteString)
-            NSLog("To here " + savePanel.url!.absoluteString)
-            
+                        
             download_from_studio_server(fromRS: url.absoluteString, toFS: savePanel.url!.absoluteString)
             
           } else {
-            //completionHandler(nil)
+            
             NSLog("Don't do anything!")
           }
           savePanel.close()
@@ -93,11 +89,11 @@ extension exportPopupViewController: WKUIDelegate {
 extension exportPopupViewController: WKNavigationDelegate {
   
   open func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-    print("Export DID START")
+    print("Export DID START \(String(describing: webView.url))")
   }
   
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-    print("Export DID FINISH")
+    print("Export DID FINISH \(String(describing: webView.url))")
   }
   
 }

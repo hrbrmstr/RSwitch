@@ -95,6 +95,8 @@ extension RstudioServerSessionWebViewController: WKUIDelegate {
         
         exportWV.loadWebView(urlIn: navigationAction.request.url!.absoluteString)
         
+        NSLog("After exportWV.loadWebView")
+
         return(exportWV.webView)
 
         

@@ -12,9 +12,21 @@ import Cocoa
 func download_from_studio_server(fromRS : String, toFS : String) {
   
   NSLog("download from rstudio server")
-  
+    
   let rsURL = URL(string: fromRS)!
   let fsURL = URL(string: toFS)!
+
+  if (FileManager.default.fileExists(atPath: fsURL.path)) {
+    
+    NSLog("Deleting old file")
+    do {
+      try FileManager.default.removeItem(at: fsURL)
+    } catch {
+      NSLog("error deleting old file")
+    }
+    
+  }
+
   
   let task = URLSession.shared.downloadTask(with: rsURL) {
     localURL, urlResponse, error in
@@ -32,10 +44,10 @@ func download_from_studio_server(fromRS : String, toFS : String) {
         do {
           NSLog("Trying to move the data from \(localURL) to \(fsURL)");
           try FileManager.default.moveItem(at: localURL, to: fsURL)
-//          NSWorkspace.shared.openFile(
-//            fsURL.deletingLastPathComponent().absoluteString, withApplication: "Finder"
-//          )
-//          NSWorkspace.shared.activateFileViewerSelecting([fsURL])
+          NSWorkspace.shared.openFile(
+            fsURL.deletingLastPathComponent().absoluteString, withApplication: "Finder"
+          )
+          NSWorkspace.shared.activateFileViewerSelecting([fsURL])
         } catch {
           NSLog("Move Error \(error)")
         }
