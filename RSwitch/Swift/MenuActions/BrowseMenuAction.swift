@@ -36,7 +36,10 @@ class BrowseMenuAction {
     BrowseMenuAction(title: "R-devel News…", url: "https://developer.r-project.org/blosxom.cgi/R-devel/NEWS"),
     BrowseMenuAction(title: "R-Forge macOS Subversion…", url: "http://svn.rforge.net/osx/trunk/"),
     BrowseMenuAction(title: "R-Project R GUI Subversion…", url: "https://svn.r-project.org/R-packages/trunk/Mac-GUI/"),
-    BrowseMenuAction(title: "Bioconductor…", url: "https://www.bioconductor.org/")
+    BrowseMenuAction(title: "Bioconductor…", url: "https://www.bioconductor.org/"),
+    BrowseMenuAction(title: "gfortran for macOS…", url: "https://github.com/fxcoudert/gfortran-for-macOS/releases"),
+    BrowseMenuAction(title: "macOS dependent static libs for building R…", url: "https://mac.r-project.org/libs-4/"),
+    BrowseMenuAction(title: "Sources for tools and libraries…", url: "https://mac.r-project.org/src/")
   ]
 
   private static let webItemsExt = [
@@ -50,7 +53,9 @@ class BrowseMenuAction {
     BrowseMenuAction(title: "Unofficial R-O GitHub CRAN Mirror…", url: "https://github.com/cran"),
     BrowseMenuAction(title: "XQuartz (X11 for macOS)…", url: "https://www.xquartz.org/"),
     BrowseMenuAction(title: "Homebrew (macOS Package Manager)…", url: "https://brew.sh/"),
-    BrowseMenuAction(title: "Apple Developer Portal…", url: "https://developer.apple.com/")
+    BrowseMenuAction(title: "OSGeo Homebrew tap…", url:"https://osgeo.github.io/homebrew-osgeo4mac/"),
+    BrowseMenuAction(title: "Apple Developer Portal…", url: "https://developer.apple.com/"),
+    BrowseMenuAction(title: "RStudio GitHub Issues…", url: "https://github.com/rstudio/rstudio/issues")
   ]
 
   private static let webItemsMan = [

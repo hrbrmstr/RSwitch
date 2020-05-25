@@ -45,7 +45,7 @@ extension AppDelegate {
           if (status < 300) {
             
             guard let fileURL = tempURL else {
-              DispatchQueue.main.async { [weak self] in  self?.rstudio_enabled = true }
+              DispatchQueue.main.async { [weak self] in self?.rstudio_enabled = true }
               return
             }
             

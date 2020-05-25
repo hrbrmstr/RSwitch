@@ -15,17 +15,10 @@ func download_from_studio_server(fromRS : String, toFS : String) {
     
   let rsURL = URL(string: fromRS)!
   let fsURL = URL(string: toFS)!
-
-  if (FileManager.default.fileExists(atPath: fsURL.path)) {
-    
-    NSLog("Deleting old file")
-    do {
-      try FileManager.default.removeItem(at: fsURL)
-    } catch {
-      NSLog("error deleting old file")
-    }
-    
-  }
+  
+  URLSession.shared.configuration.timeoutIntervalForRequest = 300.0
+  
+  //URLSession.shared.downloadTask(with: <#T##URLRequest#>)
 
   
   let task = URLSession.shared.downloadTask(with: rsURL) {
@@ -40,6 +33,17 @@ func download_from_studio_server(fromRS : String, toFS : String) {
       if let localURL = localURL {
         
         NSLog("We've got the data");
+        
+        if (FileManager.default.fileExists(atPath: fsURL.path)) {
+          
+          NSLog("Deleting old file")
+          do {
+            try FileManager.default.removeItem(at: fsURL)
+          } catch {
+            NSLog("error deleting old file")
+          }
+          
+        }
         
         do {
           NSLog("Trying to move the data from \(localURL) to \(fsURL)");

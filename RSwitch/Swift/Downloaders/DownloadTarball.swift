@@ -9,7 +9,8 @@
 import Foundation
 import Cocoa
 
-let tarballURL = "https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz"
+let tarballURL = "https://mac.r-project.org/high-sierra/R-devel/x86_64/R-devel.tar.gz"
+//let tarballURL = "https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz"
 let tarballFile = NSString(string: tarballURL).lastPathComponent as String
 
 extension AppDelegate {
