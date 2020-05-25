@@ -51,16 +51,15 @@ The `Resources` directory (and everything else in `/Library/Frameworks/R.framewo
 - `Resources@ -> Versions/Current/Resources`
 - `Versions/`
 
-For the most control, you can install a coexisting version of R **oldrel**-1, **oldrel** (as of the date this document was created those would be R 3.4 and R 3.5), current **release** (R 3.6) and **devel** (3.7) by hand by going to the [R for macOS Developer's Page](https://mac.r-project.org/) and downloading the `tar.gz` version of those distributions:
+For the most control, you can install a coexisting version of R **oldrel**-1, **oldrel** (as of the date this document was created those would be R 3.5 and R 3.6), current **release** (R 4.0) and **devel** (4.1) by hand by going to [R for macOS](https://mac.r-project.org/) and downloading the `tar.gz` version of those distributions:
 
 ![](r-macos-downloads.png)
 
 Here are direct `https` links to the tarballs:
 
-- [R 3.4](https://mac.r-project.org/mavericks/R-3.4-branch/R-3.4-branch-mavericks-sa-x86_64.tar.gz) (oldrel-1)
-- [R 3.5](https://mac.r-project.org/el-capitan/R-3.5-branch/R-3.5-branch-el-capitan-sa-x86_64.tar.gz) (oldrel)
 - [R 3.6](https://mac.r-project.org/el-capitan/R-3.6-branch/R-3.6-branch-el-capitan-sa-x86_64.tar.gz) (current)
-- [R 3.7](https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz) (devel)
+- [R 4.0](https://mac.r-project.org/el-capitan/R-3.6-branch/R-4.0-branch-el-capitan-sa-x86_64.tar.gz) (current)
+- [R 4.1](https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz) (devel)
 
 Once downloaded, you can fire up a terminal prompt, head to the root directory (i.e. `cd /`) and run `tar -xvzf path-to-thing-you-just-downloaded` to lay out the contents of the tarball onto the filesystem. You can also use the `.pkg` versions if you prefer a clicky-installer wizard, but these installers will remove any previous versions of the framework (kinda defeating the purpose). You can still use the `.pkg` format by heading over to the command line and using `pkgutil --forget` to prevent said clobbering behavior (as noted in [Section 4.2](https://cran.rstudio.org/doc/manuals/R-admin.html#Uninstalling-under-macOS) of _R Installation and Administration_. For example:
 

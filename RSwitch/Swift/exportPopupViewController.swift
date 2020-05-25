@@ -1,15 +1,17 @@
 //
-//  plotPopupViewController.swift
-//  wktest
+//  exportPopupViewController.swift
+//  RSwitch
 //
-//  Created by hrbrmstr on 9/9/19.
-//  Copyright © 2019 Bob Rudis. All rights reserved.
+//  Created by hrbrmstr on 5/24/20.
+//  Copyright © 2020 Bob Rudis. All rights reserved.
 //
 
 import Cocoa
 import WebKit
 
-class plotPopupViewController: NSViewController {
+// EXPORT
+
+class exportPopupViewController: NSViewController {
 
   var webView: WKWebView!
   var urlPath: String = ""
@@ -33,30 +35,42 @@ class plotPopupViewController: NSViewController {
     
     urlPath = urlIn
     
-    NSLog(urlPath)
+    NSLog("loadWebView: " + urlPath)
     
     // Check for "/export/"
     // If export, then get bring up a Save Panel and then download the file to that location
 
     if let url = URL(string: urlPath) {
       
-      let urlRequest = URLRequest(url: url)
-
       NSLog("URL path: " + url.path)
       
       if (url.path.starts(with: "/export")) {
         
         NSLog("  Name: " + url.queryParameters["name"]!)
         
-        DispatchQueue.main.async {
-          self.webView.removeFromSuperview()
+        let savePanel = NSSavePanel()
+        
+        savePanel.canCreateDirectories = true
+        savePanel.nameFieldStringValue = url.queryParameters["name"]!
+        savePanel.beginSheetModal(for:self.view.window!) { (response) in
+          if (response == NSApplication.ModalResponse.OK) {
+            //completionHandler([savePanel.url!])
+            NSLog("SP OK RESP")
+            NSLog("From here " + url.absoluteString)
+            NSLog("To here " + savePanel.url!.absoluteString)
+            
+            download_from_studio_server(fromRS: url.absoluteString, toFS: savePanel.url!.absoluteString)
+            
+          } else {
+            //completionHandler(nil)
+            NSLog("Don't do anything!")
+          }
+          savePanel.close()
         }
-        
-      } else {
-        
-        webView.load(urlRequest)
 
+        
       }
+      
     }
     
   }
@@ -67,41 +81,23 @@ class plotPopupViewController: NSViewController {
     
 }
 
-extension plotPopupViewController: WKUIDelegate {
+extension exportPopupViewController: WKUIDelegate {
   
   func webViewDidClose(_ webView: WKWebView) {
     self.view.window?.close()
   }
   
-  
-  func webView(_ webView: WKWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {
-  
-    NSLog("savePanel!")
-  
-    let savePanel = NSSavePanel()
-    
-    savePanel.canCreateDirectories = true
-    savePanel.beginSheetModal(for:self.view.window!) { (response) in
-      if (response == NSApplication.ModalResponse.OK) {
-        completionHandler([savePanel.url!])
-      } else {
-        completionHandler(nil)
-      }
-      savePanel.close()
-    }
-    
-  }
 
 }
 
-extension plotPopupViewController: WKNavigationDelegate {
+extension exportPopupViewController: WKNavigationDelegate {
   
   open func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-    print("DID START")
+    print("Export DID START")
   }
   
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-    print("DID FINISH")
+    print("Export DID FINISH")
   }
   
 }

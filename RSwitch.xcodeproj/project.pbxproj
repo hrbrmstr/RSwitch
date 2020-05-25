@@ -47,6 +47,10 @@
 		01FC5D02232874F600771CD7 /* ToolbarWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC5CFE232874F600771CD7 /* ToolbarWebViewController.swift */; };
 		01FC5D03232874F600771CD7 /* RStudioServerSessionWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC5CFF232874F600771CD7 /* RStudioServerSessionWebViewController.swift */; };
 		01FC5D04232874F600771CD7 /* PlotWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC5D00232874F600771CD7 /* PlotWebViewController.swift */; };
+		01FC6E97247B0AB60091AC87 /* exportPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC6E96247B0AB60091AC87 /* exportPopupViewController.swift */; };
+		01FC6E99247B0AF80091AC87 /* urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC6E98247B0AF80091AC87 /* urls.swift */; };
+		01FC6E9B247B0B370091AC87 /* ExportWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC6E9A247B0B370091AC87 /* ExportWebViewController.swift */; };
+		01FC6E9D247B2FF80091AC87 /* DownloadFromRStudioServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FC6E9C247B2FF80091AC87 /* DownloadFromRStudioServer.swift */; };
 		52B8A14237DA712A6A2ABDE0 /* Pods_RSwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2F8556B6C8EF8ED93F7E99 /* Pods_RSwitch.framework */; };
 		C4290DD6231F190F00AA5955 /* AppMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4290DD5231F190E00AA5955 /* AppMenuActions.swift */; };
 /* End PBXBuildFile section */
@@ -118,6 +122,10 @@
 		01FC5CFE232874F600771CD7 /* ToolbarWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarWebViewController.swift; sourceTree = "<group>"; };
 		01FC5CFF232874F600771CD7 /* RStudioServerSessionWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RStudioServerSessionWebViewController.swift; sourceTree = "<group>"; };
 		01FC5D00232874F600771CD7 /* PlotWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotWebViewController.swift; sourceTree = "<group>"; };
+		01FC6E96247B0AB60091AC87 /* exportPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exportPopupViewController.swift; sourceTree = "<group>"; };
+		01FC6E98247B0AF80091AC87 /* urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = urls.swift; sourceTree = "<group>"; };
+		01FC6E9A247B0B370091AC87 /* ExportWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportWebViewController.swift; sourceTree = "<group>"; };
+		01FC6E9C247B2FF80091AC87 /* DownloadFromRStudioServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadFromRStudioServer.swift; sourceTree = "<group>"; };
 		0E2F8556B6C8EF8ED93F7E99 /* Pods_RSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53FF56D90FA7100C1726A4F7 /* Pods-RSwitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSwitch.debug.xcconfig"; path = "Target Support Files/Pods-RSwitch/Pods-RSwitch.debug.xcconfig"; sourceTree = "<group>"; };
 		574911021B3B7938E36AB013 /* Pods-RSwitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSwitch.release.xcconfig"; path = "Target Support Files/Pods-RSwitch/Pods-RSwitch.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +166,8 @@
 				0178970C230ED25100F8F5BC /* AboutViewController.swift */,
 				01FC5CFD232874F500771CD7 /* plotPopupViewController.swift */,
 				01FC5D00232874F600771CD7 /* PlotWebViewController.swift */,
+				01FC6E96247B0AB60091AC87 /* exportPopupViewController.swift */,
+				01FC6E9A247B0B370091AC87 /* ExportWebViewController.swift */,
 				01FC5CFF232874F600771CD7 /* RStudioServerSessionWebViewController.swift */,
 				01FC5CFE232874F600771CD7 /* ToolbarWebViewController.swift */,
 				01073F202311E6BD007162C9 /* HandleRSwitch.swift */,
@@ -233,6 +243,7 @@
 			children = (
 				01073F1A2311E613007162C9 /* DownloadTarball.swift */,
 				01073F1C2311E64E007162C9 /* DownloadRStudio.swift */,
+				01FC6E9C247B2FF80091AC87 /* DownloadFromRStudioServer.swift */,
 			);
 			path = Downloaders;
 			sourceTree = "<group>";
@@ -242,6 +253,7 @@
 			children = (
 				01073F182311E3B8007162C9 /* Bundle.swift */,
 				01073F122311E1CF007162C9 /* Globals.swift */,
+				01FC6E98247B0AF80091AC87 /* urls.swift */,
 				0117C9DF232270F0004BC889 /* RStudioUtils.swift */,
 				01975549231BD919003FAD7B /* RVersions.swift */,
 				0198B9A923197D3A003F7578 /* Running.swift */,
@@ -374,7 +386,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Bob Rudis";
 				TargetAttributes = {
 					01575A33245443D7004A5715 = {
@@ -498,16 +510,20 @@
 				01073F152311E370007162C9 /* Notify.swift in Sources */,
 				C4290DD6231F190F00AA5955 /* AppMenuActions.swift in Sources */,
 				01FC5D03232874F600771CD7 /* RStudioServerSessionWebViewController.swift in Sources */,
+				01FC6E9D247B2FF80091AC87 /* DownloadFromRStudioServer.swift in Sources */,
 				01073F1D2311E64E007162C9 /* DownloadRStudio.swift in Sources */,
 				01073F172311E397007162C9 /* Menu.swift in Sources */,
 				01F3EF0E230E635300DF5DF9 /* ViewController.swift in Sources */,
+				01FC6E97247B0AB60091AC87 /* exportPopupViewController.swift in Sources */,
 				01FC5D04232874F600771CD7 /* PlotWebViewController.swift in Sources */,
 				01A4F40C23F30DB4005B88C2 /* Associations.swift in Sources */,
 				01F3EF0C230E635300DF5DF9 /* AppDelegate.swift in Sources */,
+				01FC6E9B247B0B370091AC87 /* ExportWebViewController.swift in Sources */,
 				01FC5D01232874F600771CD7 /* plotPopupViewController.swift in Sources */,
 				01D3E441232131F300E3BC02 /* RStudioServerSessionManager.swift in Sources */,
 				01B611EC232176A200432807 /* NewSessionViewController.swift in Sources */,
 				01073F0F2311AE2E007162C9 /* String+Version.swift in Sources */,
+				01FC6E99247B0AF80091AC87 /* urls.swift in Sources */,
 				0198B99E23196689003F7578 /* BrowseMenuAction.swift in Sources */,
 				01FC5D02232874F600771CD7 /* ToolbarWebViewController.swift in Sources */,
 				01073F132311E1CF007162C9 /* Globals.swift in Sources */,

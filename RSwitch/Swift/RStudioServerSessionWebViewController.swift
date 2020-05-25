@@ -55,7 +55,6 @@ extension RstudioServerSessionWebViewController: WKUIDelegate {
     NSLog("PANELING!")
     print("PANELING!")
 
-    
     let openPanel = NSOpenPanel()
     
     openPanel.canChooseFiles = true
@@ -77,15 +76,43 @@ extension RstudioServerSessionWebViewController: WKUIDelegate {
     
     if navigationAction.targetFrame == nil {
       
-      let plotWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "plotPopupPanel") as! PlotWebViewController
+      let u = URL(string: navigationAction.request.url!.absoluteString)!
       
-      let plotWV = (plotWindowController.contentViewController as! plotPopupViewController)
-      plotWV.view.window?.title = navigationAction.request.url!.absoluteString
-      plotWV.setupWebView(configuration: configuration)
-      plotWindowController.showWindow(self)
-      plotWV.loadWebView(urlIn: navigationAction.request.url!.absoluteString)
-      
-      return(plotWV.webView)
+      if ((u.urlComponents?.path.starts(with: "/export/")) != nil) {
+        
+        NSLog("Navigation action thing: " + navigationAction.request.url!.absoluteString)
+        
+        let exportWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "exportPopupPanel") as! ExportWebViewController
+        
+        let exportWV = (exportWindowController.contentViewController as! exportPopupViewController)
+
+        exportWV.view.window?.title = navigationAction.request.url!.absoluteString
+        
+        exportWV.setupWebView(configuration: configuration)
+        exportWindowController.showWindow(self)
+        
+        NSLog("Before exportWV.loadWebView")
+        
+        exportWV.loadWebView(urlIn: navigationAction.request.url!.absoluteString)
+        
+        return(exportWV.webView)
+
+        
+      } else {
+        
+        let plotWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "plotPopupPanel") as! PlotWebViewController
+        
+        let plotWV = (plotWindowController.contentViewController as! plotPopupViewController)
+
+        plotWV.view.window?.title = navigationAction.request.url!.absoluteString
+        
+        plotWV.setupWebView(configuration: configuration)
+        plotWindowController.showWindow(self)
+        plotWV.loadWebView(urlIn: navigationAction.request.url!.absoluteString)
+        
+        return(plotWV.webView)
+
+      }
       
     }
     

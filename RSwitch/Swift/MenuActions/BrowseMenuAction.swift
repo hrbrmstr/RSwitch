@@ -30,7 +30,7 @@ class BrowseMenuAction {
   public var url : URL
 
   private static let webItemsR = [
-    BrowseMenuAction(title: "R for macOS Developer's…", url: "https://mac.r-project.org/"),
+    BrowseMenuAction(title: "R for macOS…", url: "https://mac.r-project.org/"),
     BrowseMenuAction(title: "R for macOS CRAN…", url: "https://cran.rstudio.org/bin/macosx/"),
     BrowseMenuAction(title: "R-SIG-Mac Archives…", url: "https://stat.ethz.ch/pipermail/r-sig-mac/"),
     BrowseMenuAction(title: "R-devel News…", url: "https://developer.r-project.org/blosxom.cgi/R-devel/NEWS"),
@@ -41,7 +41,7 @@ class BrowseMenuAction {
 
   private static let webItemsExt = [
     BrowseMenuAction(title: "R Package Documentation (rdrr.io)…", url: "https://rdrr.io/"),
-    BrowseMenuAction(title: "R Compiler Tools for RCpp on macOS…", url: "https://thecoatlessprofessor.com/programming/cpp/r-compiler-tools-for-rcpp-on-macos/"),
+    BrowseMenuAction(title: "R Compiler Tools for Rcpp on macOS…", url: "https://thecoatlessprofessor.com/programming/cpp/r-compiler-tools-for-rcpp-on-macos/"),
     BrowseMenuAction(title: "Rseek…", url: "https://rseek.org"),
     BrowseMenuAction(title: "R StackOverflow…", url: "https://stackoverflow.com/questions/tagged/r"),
     BrowseMenuAction(title: "ROpenSci Discuss…", url: "https://discuss.ropensci.org/"),
@@ -54,12 +54,12 @@ class BrowseMenuAction {
   ]
 
   private static let webItemsMan = [
-    BrowseMenuAction(title: "An Introduction to R…", url: "file:///Library/Frameworks/R.framework/Versions/3.6/Resources/doc/manual/R-intro.html"),
-    BrowseMenuAction(title: "R Data Import/Export…", url: "file:///Library/Frameworks/R.framework/Versions/3.6/Resources/doc/manual/R-data.html"),
-    BrowseMenuAction(title: "R Installation and Administration…", url: "file:///Library/Frameworks/R.framework/Versions/3.6/Resources/doc/manual/R-admin.html"),
-    BrowseMenuAction(title: "Writing R Extensions…", url: "file:///Library/Frameworks/R.framework/Versions/3.6/Resources/doc/manual/"),
-    BrowseMenuAction(title: "The R language definition…", url: "file:///Library/Frameworks/R.framework/Versions/3.6/Resources/doc/manual/R-exts.html"),
-    BrowseMenuAction(title: "R Internals…", url: "file:///Library/Frameworks/R.framework/Versions/3.6/Resources/doc/manual/R-ints.html")
+    BrowseMenuAction(title: "An Introduction to R…", url: "file:///Library/Frameworks/R.framework/Resources/doc/manual/R-intro.html"),
+    BrowseMenuAction(title: "R Data Import/Export…", url: "file:///Library/Frameworks/R.framework/Resources/doc/manual/R-data.html"),
+    BrowseMenuAction(title: "R Installation and Administration…", url: "file:///Library/Frameworks/R.framework/Resources/doc/manual/R-admin.html"),
+    BrowseMenuAction(title: "Writing R Extensions…", url: "file:///Library/Frameworks/R.framework/Resources/doc/manual/"),
+    BrowseMenuAction(title: "The R language definition…", url: "file:///Library/Frameworks/R.framework/Resources/doc/manual/R-exts.html"),
+    BrowseMenuAction(title: "R Internals…", url: "file:///Library/Frameworks/R.framework/Resources/doc/manual/R-ints.html")
   ]
   
   private static let webItemsBook = [
