@@ -89,13 +89,50 @@ extension RstudioServerSessionWebViewController: WKUIDelegate {
         exportWV.view.window?.title = navigationAction.request.url!.absoluteString
         
         exportWV.setupWebView(configuration: configuration)
-        exportWindowController.showWindow(self)
+        //exportWindowController.showWindow(self)
         
         NSLog("Before exportWV.loadWebView")
         
-        exportWV.loadWebView(urlIn: navigationAction.request.url!.absoluteString)
-        
+//        exportWV.loadWebView(urlIn: navigationAction.request.url!.absoluteString)
+        exportWV.loadWebView(urlIn: "")
+                
         NSLog("After exportWV.loadWebView")
+
+        let urlPath = navigationAction.request.url!.absoluteString
+        
+        NSLog("loadWebView: \(urlPath)")
+        
+        // Check for "/export/"
+        // If export, then get bring up a Save Panel and then download the file to that location
+
+        if let url = URL(string: urlPath) {
+          
+          NSLog("URL path: \(url.path)")
+          
+          if (url.path.starts(with: "/export")) {
+            
+            NSLog("  Name: " + url.queryParameters["name"]!)
+            
+            let savePanel = NSSavePanel()
+            
+            savePanel.canCreateDirectories = true
+            savePanel.nameFieldStringValue = url.queryParameters["name"]!
+            savePanel.beginSheetModal(for:self.view.window!) { (response) in
+              if (response == NSApplication.ModalResponse.OK) {
+                            
+                download_from_studio_server(fromRS: url.absoluteString, toFS: savePanel.url!.absoluteString)
+                
+              } else {
+                
+                NSLog("Don't do anything!")
+              }
+              savePanel.close()
+            }
+
+            
+          }
+          
+        }
 
         return(exportWV.webView)
 
