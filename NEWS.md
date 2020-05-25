@@ -1,6 +1,10 @@
 # 1.7.0
 
 - Added checks for network availability 
+- Added command-line switcher
+- Supports file uploads to and exports from RStudio Server
+- Added more web resource URLs
+- Added Preference to always check/force that RStudio owns .R and .Rmd files
 
 # 1.4.0
 

@@ -18,7 +18,6 @@ class QueryParameters {
     let queryItems: [URLQueryItem]
     init(url: URL?) {
         queryItems = URLComponents(string: url?.absoluteString ?? "")?.queryItems ?? []
-        print(queryItems)
     }
     subscript(name: String) -> String? {
         return queryItems.first(where: { $0.name == name })?.value

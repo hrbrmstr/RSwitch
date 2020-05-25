@@ -17,8 +17,9 @@ RSwitch is a macOS menubar application that works on macOS 10.14+ and provides h
 
 Many thanks to the following folks for their contributions to the project to help make RSwitch better for everyone:
 
-- [Benjamin Guiastrennec](https://github.com/guiastrennec) for suggesting improvements to the documentation regarding how to use the installer packages from the [R for macOS Developer's Page](https://mac.r-project.org/) without clobbering existing R Framework installs.
+- [Benjamin Guiastrennec](https://github.com/guiastrennec) for suggesting improvements to the documentation regarding how to use the installer packages from the [R for macOS Developer's Page](https://mac.r-project.org/) without clobbering existing R Framework installs and also for encouraging support for RStudio Sever file uploads and exports.
 - [Xavier Adam](https://github.com/xvrdm) for [adding books to the RSwitch library](https://github.com/hrbrmstr/RSwitch/pull/4).
+- [Patrick Schratz](https://github.com/pat-s) for encourging the development of a command-line switcher to make it easier to use in automation (and sans mouse).
 
 ## Basic/Core Usage
 
@@ -57,14 +58,14 @@ For the most control, you can install a coexisting version of R **oldrel**-1, **
 
 Here are direct `https` links to the tarballs:
 
-- [R 3.6](https://mac.r-project.org/el-capitan/R-3.6-branch/R-3.6-branch-el-capitan-sa-x86_64.tar.gz) (current)
-- [R 4.0](https://mac.r-project.org/el-capitan/R-3.6-branch/R-4.0-branch-el-capitan-sa-x86_64.tar.gz) (current)
-- [R 4.1](https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz) (devel)
+- [R 3.6](https://mac.r-project.org/el-capitan/R-3.6-branch/R-3.6-branch-el-capitan-sa-x86_64.tar.gz) (oldrel)
+- [R 4.0](https://mac.r-project.org/high-sierra/R-4.0-branch/x86_64/R-4.0-branch.tar.gz) (current)
+- [R 4.1](https://mac.r-project.org/high-sierra/R-devel/x86_64/R-devel.tar.gz) (devel)
 
 Once downloaded, you can fire up a terminal prompt, head to the root directory (i.e. `cd /`) and run `tar -xvzf path-to-thing-you-just-downloaded` to lay out the contents of the tarball onto the filesystem. You can also use the `.pkg` versions if you prefer a clicky-installer wizard, but these installers will remove any previous versions of the framework (kinda defeating the purpose). You can still use the `.pkg` format by heading over to the command line and using `pkgutil --forget` to prevent said clobbering behavior (as noted in [Section 4.2](https://cran.rstudio.org/doc/manuals/R-admin.html#Uninstalling-under-macOS) of _R Installation and Administration_. For example:
 
 ```{bash eval=FALSE}
-sudo pkgutil --forget org.r-project.R.el-capitan.fw.pkg \
+sudo pkgutil --forget org.r-project.R.el-capitan.fw.pkg \ # may need to use high-sierra vs el-capitan
              --forget org.r-project.x86_64.tcltk.x11 \
              --forget org.r-project.x86_64.texinfo \
              --forget org.r-project.R.el-capitan.GUI.pkg
@@ -100,7 +101,7 @@ and the Finder will open up to `~/Downloads` with the target file selected.
 
 Since RSwitch is designed to help you work with R on macOS it seemed only fitting to provide some handy links to resources like the R for macOS page, the CRAN R page, RStudio dailies link, etc. They're all available via the fairly obvious sub-menu:
 
-![](rswitch-1.5.0-resources-reorg.png)
+![](web-resources.png)
 
 and each item will open up in your default web browser. (File an issue if you'd like more links added)
 
@@ -138,19 +139,65 @@ and you can then launch a task-specific browser for each instance you have defin
 
 ![](rswitch-1.5.0-rstudio-example.png)
 
-This allows you to keep RStudio Server work separate from your internet browsing, creating a more focused workspace that you never have to worry about accidentally closing. Window size & position are preserved across launches, too.
+This allows you to keep RStudio Server work separate from your internet browsing, creating a more focused workspace that you never have to worry about accidentally closing. Window size & position are preserved across launches, too and the keystrokes you are used to in RStudio Desktop on macOS are the same in this task-specific browser.
+
+File uploads and downloads ("exports") are also now supported.
 
 ## Have It Your Way
 
-There's a new minimal preferences system for showing/hiding the dock icon and for enabling background checks for and notifications when new RStudio Dailies are available:
+There's a minimal preferences system for showing/hiding the dock icon and for enabling background checks for and notifications when new RStudio Dailies are available.
 
-![](rswitch-1.5.0-prefs.png)
+![](rswitch-prefs.png)
+
+Another (new) preference is "Ensure RStudio opens R/Rmd files". Xcode and other developer-oriented programs seem to love to takeover either `.R` and `.Rmd` (sometimes both) and loading Xcode can take a while. Setting this preference will enable an hourly check for who owns those extensions and forces them back to RStudio in the event they are changed.
 
 ## Always On
 
 If you like RSwitch enough to keep it running all the time, just drag the item to the "Login Items" table of your user in the "Users & Groups" pane of "System Preferences"
 
 ![](users-n-grps.png)
+
+## Taking Command(line)
+
+There's a new command-line switcher for folks who would rather not interact with a menu to change R versions. `RSwitch.app` comes with `rswitch-cmd` tucked into `/Applications/RSwitch.app/Contents/Resources/`. You can make it easier to type by making a symbolic link in `/usr/local/bin/` (or your preferred path that's on `$PATH`):
+
+```shell
+$ ln -s /Applications/RSwitch.app/Contents/Resources/rswitch-cmd /usr/local/bin/rswitch
+```
+
+Firing off just `rswitch` will bring up a list of available R installs with an asterisk signifying which one is active:
+
+```shell
+$ rswitch
+2.14 (incomplete)
+3.5
+3.6
+3.7
+4.0 *
+4.1
+```
+
+Just call it with the version you want to switch to and you are ready to go (you can also use `--list` or `-l` if you like typing more than you need to):
+
+```shell
+$ rswitch 4.1
+$ rswitch --list
+2.14 (incomplete)
+3.5
+3.6
+3.7
+4.0
+4.1 *
+```
+
+You'll receive an error message if the version specified cannot be found:
+
+```shell
+$ rswitch 4.4
+R version 4.4 not found.
+```
+
+All non-successful operations will set a non-zero exit code in the event you are using the command-line utility in scripts.
 
 ## Getting Help
 

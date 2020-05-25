@@ -49,6 +49,7 @@ struct RSwitch: ParsableCommand {
       
       if (!versions.contains(rversion!)) {
         print("R version " + rversion! + " not found.", to: &outputStream)
+        Darwin.exit(3)
       } else {
         if (rversion! == targetPath) {
           print("Current R version already points to " + targetPath)

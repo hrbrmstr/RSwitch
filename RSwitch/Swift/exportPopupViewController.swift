@@ -33,41 +33,29 @@ class exportPopupViewController: NSViewController {
 
   func loadWebView(urlIn: String) {
     
-    urlPath = urlIn
-    
-    NSLog("loadWebView: \(urlPath)")
-    
-    // Check for "/export/"
-    // If export, then get bring up a Save Panel and then download the file to that location
-
-    if let url = URL(string: urlPath) {
-      
-      NSLog("URL path: \(url.path)")
-      
-      if (url.path.starts(with: "/export")) {
-        
-        NSLog("  Name: " + url.queryParameters["name"]!)
-        
-        let savePanel = NSSavePanel()
-        
-        savePanel.canCreateDirectories = true
-        savePanel.nameFieldStringValue = url.queryParameters["name"]!
-        savePanel.beginSheetModal(for:self.view.window!) { (response) in
-          if (response == NSApplication.ModalResponse.OK) {
-                        
-            download_from_studio_server(fromRS: url.absoluteString, toFS: savePanel.url!.absoluteString)
-            
-          } else {
-            
-            NSLog("Don't do anything!")
-          }
-          savePanel.close()
-        }
-
-        
-      }
-      
-    }
+//    urlPath = urlIn
+//    
+//    // Check for "/export/"
+//    // If export, then get bring up a Save Panel and then download the file to that location
+//
+//    if let url = URL(string: urlPath) {
+//      
+//      if (url.path.starts(with: "/export")) {
+//        
+//        let savePanel = NSSavePanel()
+//        
+//        savePanel.canCreateDirectories = true
+//        savePanel.nameFieldStringValue = url.queryParameters["name"]!
+//        savePanel.beginSheetModal(for:self.view.window!) { (response) in
+//          if (response == NSApplication.ModalResponse.OK) {
+//            download_from_studio_server(fromRS: url.absoluteString, toFS: savePanel.url!.absoluteString)
+//          }
+//          savePanel.close()
+//        }
+//        
+//      }
+//      
+//    }
     
   }
   
@@ -88,13 +76,9 @@ extension exportPopupViewController: WKUIDelegate {
 
 extension exportPopupViewController: WKNavigationDelegate {
   
-  open func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-    print("Export DID START \(String(describing: webView.url))")
-  }
+  open func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {  }
   
-  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-    print("Export DID FINISH \(String(describing: webView.url))")
-  }
+  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {  }
   
 }
 

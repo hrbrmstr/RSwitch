@@ -49,13 +49,10 @@ extension AppDelegate : NSUserNotificationCenterDelegate {
   }
 
   func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
-    print("should present")
     return(true)
   }
   
   func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
-    print("did activate")
-    print(notification)
   }
   
 }

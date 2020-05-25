@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -14,6 +13,7 @@
 
 <title>Using RSwitch</title>
 
+<script src="site_libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/darkly.min.css" rel="stylesheet" />
@@ -87,7 +87,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -236,6 +235,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -264,6 +264,12 @@ $(document).ready(function () {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -376,8 +382,9 @@ div.tocify {
 <h2>Credits</h2>
 <p>Many thanks to the following folks for their contributions to the project to help make RSwitch better for everyone:</p>
 <ul>
-<li><a href="https://github.com/guiastrennec">Benjamin Guiastrennec</a> for suggesting improvements to the documentation regarding how to use the installer packages from the <a href="https://mac.r-project.org/">R for macOS Developer’s Page</a> without clobbering existing R Framework installs.</li>
+<li><a href="https://github.com/guiastrennec">Benjamin Guiastrennec</a> for suggesting improvements to the documentation regarding how to use the installer packages from the <a href="https://mac.r-project.org/">R for macOS Developer’s Page</a> without clobbering existing R Framework installs and also for encouraging support for RStudio Sever file uploads and exports.</li>
 <li><a href="https://github.com/xvrdm">Xavier Adam</a> for <a href="https://github.com/hrbrmstr/RSwitch/pull/4">adding books to the RSwitch library</a>.</li>
+<li><a href="https://github.com/pat-s">Patrick Schratz</a> for encourging the development of a command-line switcher to make it easier to use in automation (and sans mouse).</li>
 </ul>
 </div>
 <div id="basiccore-usage" class="section level2">
@@ -391,6 +398,8 @@ div.tocify {
 ├── 3.5
 ├── 3.6
 ├── 3.7
+├── 4.0
+├── 4.1
 └── Current</code></pre>
 <p>The “R Framework” is, well, <em>R</em> on your macOS system. All of the necessary supporting libraries, code, pacakges, configuration elements, etc. exist in the framework directory. Here is the top-level contents of the <code>3.5</code> version of the R Framework:</p>
 <pre class="r"><code>fs::dir_tree(path = &quot;/Library/Frameworks/R.framework/Versions/3.5&quot;, recurse = 1)</code></pre>
@@ -456,17 +465,16 @@ div.tocify {
 <li><code>Resources@ -&gt; Versions/Current/Resources</code></li>
 <li><code>Versions/</code></li>
 </ul>
-<p>For the most control, you can install a coexisting version of R <strong>oldrel</strong>-1, <strong>oldrel</strong> (as of the date this document was created those would be R 3.4 and R 3.5), current <strong>release</strong> (R 3.6) and <strong>devel</strong> (3.7) by hand by going to the <a href="https://mac.r-project.org/">R for macOS Developer’s Page</a> and downloading the <code>tar.gz</code> version of those distributions:</p>
+<p>For the most control, you can install a coexisting version of R <strong>oldrel</strong>-1, <strong>oldrel</strong> (as of the date this document was created those would be R 3.5 and R 3.6), current <strong>release</strong> (R 4.0) and <strong>devel</strong> (4.1) by hand by going to <a href="https://mac.r-project.org/">R for macOS</a> and downloading the <code>tar.gz</code> version of those distributions:</p>
 <p><img src="r-macos-downloads.png" /></p>
 <p>Here are direct <code>https</code> links to the tarballs:</p>
 <ul>
-<li><a href="https://mac.r-project.org/mavericks/R-3.4-branch/R-3.4-branch-mavericks-sa-x86_64.tar.gz">R 3.4</a> (oldrel-1)</li>
-<li><a href="https://mac.r-project.org/el-capitan/R-3.5-branch/R-3.5-branch-el-capitan-sa-x86_64.tar.gz">R 3.5</a> (oldrel)</li>
-<li><a href="https://mac.r-project.org/el-capitan/R-3.6-branch/R-3.6-branch-el-capitan-sa-x86_64.tar.gz">R 3.6</a> (current)</li>
-<li><a href="https://mac.r-project.org/el-capitan/R-devel/R-devel-el-capitan-sa-x86_64.tar.gz">R 3.7</a> (devel)</li>
+<li><a href="https://mac.r-project.org/el-capitan/R-3.6-branch/R-3.6-branch-el-capitan-sa-x86_64.tar.gz">R 3.6</a> (oldrel)</li>
+<li><a href="https://mac.r-project.org/high-sierra/R-4.0-branch/x86_64/R-4.0-branch.tar.gz">R 4.0</a> (current)</li>
+<li><a href="https://mac.r-project.org/high-sierra/R-devel/x86_64/R-devel.tar.gz">R 4.1</a> (devel)</li>
 </ul>
 <p>Once downloaded, you can fire up a terminal prompt, head to the root directory (i.e. <code>cd /</code>) and run <code>tar -xvzf path-to-thing-you-just-downloaded</code> to lay out the contents of the tarball onto the filesystem. You can also use the <code>.pkg</code> versions if you prefer a clicky-installer wizard, but these installers will remove any previous versions of the framework (kinda defeating the purpose). You can still use the <code>.pkg</code> format by heading over to the command line and using <code>pkgutil --forget</code> to prevent said clobbering behavior (as noted in <a href="https://cran.rstudio.org/doc/manuals/R-admin.html#Uninstalling-under-macOS">Section 4.2</a> of <em>R Installation and Administration</em>. For example:</p>
-<pre class="bash"><code>sudo pkgutil --forget org.r-project.R.el-capitan.fw.pkg \
+<pre class="bash"><code>sudo pkgutil --forget org.r-project.R.el-capitan.fw.pkg \ # may need to use high-sierra vs el-capitan
              --forget org.r-project.x86_64.tcltk.x11 \
              --forget org.r-project.x86_64.texinfo \
              --forget org.r-project.R.el-capitan.GUI.pkg</code></pre>
@@ -491,7 +499,7 @@ div.tocify {
 <div id="getting-help-or-resources-from-the-internet" class="section level2">
 <h2>Getting Help or Resources from the Internet</h2>
 <p>Since RSwitch is designed to help you work with R on macOS it seemed only fitting to provide some handy links to resources like the R for macOS page, the CRAN R page, RStudio dailies link, etc. They’re all available via the fairly obvious sub-menu:</p>
-<p><img src="rswitch-1.5.0-resources-reorg.png" /></p>
+<p><img src="web-resources.png" /></p>
 <p>and each item will open up in your default web browser. (File an issue if you’d like more links added)</p>
 </div>
 <div id="even-moar-switching" class="section level2">
@@ -518,17 +526,45 @@ div.tocify {
 <p><img src="rswitch-1.5.0-rstudio-server-new.png" /></p>
 <p>and you can then launch a task-specific browser for each instance you have defined:</p>
 <p><img src="rswitch-1.5.0-rstudio-example.png" /></p>
-<p>This allows you to keep RStudio Server work separate from your internet browsing, creating a more focused workspace that you never have to worry about accidentally closing. Window size &amp; position are preserved across launches, too.</p>
+<p>This allows you to keep RStudio Server work separate from your internet browsing, creating a more focused workspace that you never have to worry about accidentally closing. Window size &amp; position are preserved across launches, too and the keystrokes you are used to in RStudio Desktop on macOS are the same in this task-specific browser.</p>
+<p>File uploads and downloads (“exports”) are also now supported.</p>
 </div>
 <div id="have-it-your-way" class="section level2">
 <h2>Have It Your Way</h2>
-<p>There’s a new minimal preferences system for showing/hiding the dock icon and for enabling background checks for and notifications when new RStudio Dailies are available:</p>
-<p><img src="rswitch-1.5.0-prefs.png" /></p>
+<p>There’s a minimal preferences system for showing/hiding the dock icon and for enabling background checks for and notifications when new RStudio Dailies are available.</p>
+<p><img src="rswitch-prefs.png" /></p>
+<p>Another (new) preference is “Ensure RStudio opens R/Rmd files”. Xcode and other developer-oriented programs seem to love to takeover either <code>.R</code> and <code>.Rmd</code> (sometimes both) and loading Xcode can take a while. Setting this preference will enable an hourly check for who owns those extensions and forces them back to RStudio in the event they are changed.</p>
 </div>
 <div id="always-on" class="section level2">
 <h2>Always On</h2>
 <p>If you like RSwitch enough to keep it running all the time, just drag the item to the “Login Items” table of your user in the “Users &amp; Groups” pane of “System Preferences”</p>
 <p><img src="users-n-grps.png" /></p>
+</div>
+<div id="taking-commandline" class="section level2">
+<h2>Taking Command(line)</h2>
+<p>There’s a new command-line switcher for folks who would rather not interact with a menu to change R versions. <code>RSwitch.app</code> comes with <code>rswitch-cmd</code> tucked into <code>/Applications/RSwitch.app/Contents/Resources/</code>. You can make it easier to type by making a symbolic link in <code>/usr/local/bin/</code> (or your preferred path that’s on <code>$PATH</code>):</p>
+<pre class="shell"><code>$ ln -s /Applications/RSwitch.app/Contents/Resources/rswitch-cmd /usr/local/bin/rswitch</code></pre>
+<p>Firing off just <code>rswitch</code> will bring up a list of available R installs with an asterisk signifying which one is active:</p>
+<pre class="shell"><code>$ rswitch
+2.14 (incomplete)
+3.5
+3.6
+3.7
+4.0 *
+4.1</code></pre>
+<p>Just call it with the version you want to switch to and you are ready to go (you can also use <code>--list</code> or <code>-l</code> if you like typing more than you need to):</p>
+<pre class="shell"><code>$ rswitch 4.1
+$ rswitch --list
+2.14 (incomplete)
+3.5
+3.6
+3.7
+4.0
+4.1 *</code></pre>
+<p>You’ll receive an error message if the version specified cannot be found:</p>
+<pre class="shell"><code>$ rswitch 4.4
+R version 4.4 not found.</code></pre>
+<p>All non-successful operations will set a non-zero exit code in the event you are using the command-line utility in scripts.</p>
 </div>
 <div id="getting-help" class="section level2">
 <h2>Getting Help</h2>
