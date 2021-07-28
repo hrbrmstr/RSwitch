@@ -19,7 +19,7 @@ class RStudioUtils {
     if (res.ok) {
       do {
         let doc = try SwiftSoup.parse(String(decoding: res.content!, as: UTF8.self))
-        let anchor = try doc.select("td.filename > a").first()!.text()
+        let anchor = try doc.select("td.filename > a").first()?.text() ?? ""
         return(URL(string: "https://s3.amazonaws.com/rstudio-ide-build/desktop/macos/\(anchor)")!)
       } catch {
       }
