@@ -21,9 +21,10 @@
 		011951B4231F00A000B62C3A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011951B3231F00A000B62C3A /* Preferences.swift */; };
 		01575A37245443D7004A5715 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01575A36245443D7004A5715 /* main.swift */; };
 		01575A3B245445B2004A5715 /* rswitch-cmd in Resources */ = {isa = PBXBuildFile; fileRef = 01575A34245443D7004A5715 /* rswitch-cmd */; };
-		01575A4024544892004A5715 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 01575A3F24544892004A5715 /* ArgumentParser */; };
 		01575A4324544DA6004A5715 /* RVersions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01975549231BD919003FAD7B /* RVersions.swift */; };
 		01575A4424544F49004A5715 /* AppAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198B99F231970ED003F7578 /* AppAlerts.swift */; };
+		016E258626B1DF6D00F64B65 /* Pods_RSwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 016E258526B1DF6D00F64B65 /* Pods_RSwitch.framework */; };
+		016E258726B1DF6D00F64B65 /* Pods_RSwitch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 016E258526B1DF6D00F64B65 /* Pods_RSwitch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0178970D230ED25100F8F5BC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178970C230ED25100F8F5BC /* AboutViewController.swift */; };
 		018A8C3B2312C7BC0006E87D /* libprocInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 018A8C3A2312C7BC0006E87D /* libprocInfo.a */; };
 		018A8C3F2312CB480006E87D /* procHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 018A8C3E2312CB480006E87D /* procHelper.m */; };
@@ -76,6 +77,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		016E258826B1DF6D00F64B65 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				016E258726B1DF6D00F64B65 /* Pods_RSwitch.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +106,8 @@
 		01575A34245443D7004A5715 /* rswitch-cmd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "rswitch-cmd"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01575A36245443D7004A5715 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		016750FB2319A7A4009E2FD6 /* RSwitch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RSwitch.entitlements; sourceTree = "<group>"; };
+		016E258126B1DF5700F64B65 /* Pods_RSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_RSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		016E258526B1DF6D00F64B65 /* Pods_RSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_RSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0178970C230ED25100F8F5BC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		018A8C392312C7BC0006E87D /* procInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = procInfo.h; sourceTree = "<group>"; };
 		018A8C3A2312C7BC0006E87D /* libprocInfo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libprocInfo.a; sourceTree = "<group>"; };
@@ -139,7 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01575A4024544892004A5715 /* ArgumentParser in Frameworks */,
+				016E258626B1DF6D00F64B65 /* Pods_RSwitch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +328,8 @@
 		08E99D67B1A9A0A9D2CF3F66 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				016E258526B1DF6D00F64B65 /* Pods_RSwitch.framework */,
+				016E258126B1DF5700F64B65 /* Pods_RSwitch.framework */,
 				0E2F8556B6C8EF8ED93F7E99 /* Pods_RSwitch.framework */,
 			);
 			name = Frameworks;
@@ -349,6 +365,7 @@
 				01575A30245443D7004A5715 /* Sources */,
 				01575A31245443D7004A5715 /* Frameworks */,
 				01575A32245443D7004A5715 /* CopyFiles */,
+				016E258826B1DF6D00F64B65 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -356,7 +373,6 @@
 			);
 			name = "rswitch-cmd";
 			packageProductDependencies = (
-				01575A3F24544892004A5715 /* ArgumentParser */,
 			);
 			productName = "rswitch-cmd";
 			productReference = 01575A34245443D7004A5715 /* rswitch-cmd */;
@@ -389,7 +405,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "Bob Rudis";
 				TargetAttributes = {
 					01575A33245443D7004A5715 = {
@@ -411,7 +427,6 @@
 			);
 			mainGroup = 01F3EEFF230E635300DF5DF9;
 			packageReferences = (
-				01575A3E24544892004A5715 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 			);
 			productRefGroup = 01F3EF09230E635300DF5DF9 /* Products */;
 			projectDirPath = "";
@@ -559,8 +574,9 @@
 		01575A39245443D7004A5715 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
+				ARCHS = x86_64;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -581,8 +597,9 @@
 		01575A3A245443D7004A5715 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
+				ARCHS = x86_64;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -604,6 +621,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = Intel;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -626,6 +644,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -654,7 +673,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -666,6 +685,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = Intel;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -688,6 +708,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -722,11 +743,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 53FF56D90FA7100C1726A4F7 /* Pods-RSwitch.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = x86_64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RSwitch/RSwitch.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBY22P58G8;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -744,7 +766,7 @@
 				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = is.rud.bob.RSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "rswitch-1+";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "RSwitch/ObjC/RSwitch-Bridging-Header.h";
@@ -757,11 +779,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 574911021B3B7938E36AB013 /* Pods-RSwitch.release.xcconfig */;
 			buildSettings = {
+				ARCHS = x86_64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RSwitch/RSwitch.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CBY22P58G8;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -779,7 +802,7 @@
 				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = is.rud.bob.RSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "rswitch-1+";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "RSwitch/ObjC/RSwitch-Bridging-Header.h";
@@ -819,25 +842,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		01575A3E24544892004A5715 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:apple/swift-argument-parser.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		01575A3F24544892004A5715 /* ArgumentParser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 01575A3E24544892004A5715 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
-			productName = ArgumentParser;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 01F3EF00230E635300DF5DF9 /* Project object */;
 }

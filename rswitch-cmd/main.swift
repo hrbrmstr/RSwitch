@@ -148,16 +148,16 @@ struct RSwitch: ParsableCommand {
     version: "1.1.0"
   )
   
-  @Flag(name: .shortAndLong, help: "List R versions.")
+  @Option(name: .shortAndLong, help: "List R versions.")
   var list: Bool
   
-  @Flag(name: .long, help: "Install latest R-devel.")
+  @Option(name: .long, help: "Install latest R-devel.")
   var installRDevel: Bool
   
-  @Flag(name: .long,  help: "Install R-release daily build.")
+  @Option(name: .long,  help: "Install R-release daily build.")
   var installR: Bool
   
-  @Flag(name: .long,  help: "Install latest RStudio Daily Build (Requires 'sudo'.")
+  @Option(name: .long,  help: "Install latest RStudio Daily Build (Requires 'sudo'.")
   var installRStudio: Bool
 
   @Argument(help: "The R version to switch to.")

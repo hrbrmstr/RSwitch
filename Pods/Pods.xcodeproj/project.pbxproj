@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		016E258026B1DF1800F64B65 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 016E257F26B1DF1800F64B65 /* ArgumentParser */; };
 		1642FF2CBDC0D5DE293557BAC7483330 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F0FBF810ECE65109C95E0C8BBB893F /* Just.swift */; };
 		183F65FE3A9F053B826D0BE6F6FD4976 /* Just-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076A7E6A9514F7BC8853C054606452 /* Just-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3319EB536901C1505EA1E0A74CA48C36 /* Pods-RSwitch-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D5168CB259AAB643C8297DEDFBA2A3 /* Pods-RSwitch-dummy.m */; };
@@ -54,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				016E258026B1DF1800F64B65 /* ArgumentParser in Frameworks */,
 				CE397D843966A9C8A318E053B323901E /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,6 +200,9 @@
 				77D947801AA4E2D5978E29F77C5511CD /* PBXTargetDependency */,
 			);
 			name = "Pods-RSwitch";
+			packageProductDependencies = (
+				016E257F26B1DF1800F64B65 /* ArgumentParser */,
+			);
 			productName = "Pods-RSwitch";
 			productReference = 5D52FFF81A1E26634DAD54B2BE7CBA99 /* Pods_RSwitch.framework */;
 			productType = "com.apple.product-type.framework";
@@ -227,7 +232,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1300;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -238,6 +243,9 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			packageReferences = (
+				016E257E26B1DF1800F64B65 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = 623DD1C81238D9DB831E4CF39661DBBE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -321,6 +329,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -422,6 +431,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -602,6 +612,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		016E257E26B1DF1800F64B65 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		016E257F26B1DF1800F64B65 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 016E257E26B1DF1800F64B65 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }
