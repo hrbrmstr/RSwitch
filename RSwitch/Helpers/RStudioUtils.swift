@@ -11,15 +11,15 @@ import Just
 class RStudioUtils {
   
   var pro: String { get {
-    return(RStudioUtils.latestProVersionURL().absoluteString)
+    return(RStudioUtils.latestProVersionURL().absoluteString.replacingOccurrences(of: "%2B", with: "+"))
   } }
   
   public static func latestProVersionURL() -> URL {
-    let res = Just.get("https://dailies.rstudio.com/rstudio/pro/mac/index.html?\(String(Date().timeIntervalSince1970))", timeout: 10)
+    let res = Just.get("https://dailies.rstudio.com/rstudio/pro/mac/index.html?\(String(Date().timeIntervalSince1970))", timeout: 10) // cache bust
     if (res.ok) {
       do {
         let doc = try SwiftSoup.parse(String(decoding: res.content!, as: UTF8.self))
-        let anchor = try doc.select("td.filename > a").first()?.text() ?? ""
+        let anchor = try doc.select("td.filename > a").first()?.text().replacingOccurrences(of: "+", with: "%2B") ?? ""
         return(URL(string: "https://s3.amazonaws.com/rstudio-ide-build/desktop/macos/\(anchor)")!)
       } catch {
       }
@@ -28,8 +28,9 @@ class RStudioUtils {
   }
 
   public static func latestProVersionNumber(fromString : String? = nil) -> String {
-    let urlString = (fromString == nil) ? latestProVersionURL().absoluteString : fromString!
+    let urlString = (fromString == nil) ? latestProVersionURL().absoluteString.replacingOccurrences(of: "%2B", with: "+") : fromString!
     return(
+      //                           https://s3.amazonaws.com/rstudio-ide-build/desktop/macos/RStudio-pro-2021-07.0.266.dmg
       urlString // https://s3.amazonaws.com/rstudio-ide-build/desktop/macos/RStudio-pro-1.4.1038-1.dmg
         .replacingOccurrences(of: "https://s3.amazonaws.com/rstudio-ide-build/desktop/macos/RStudio-pro-", with: "")
         .replacingOccurrences(of: ".dmg", with: "")
@@ -41,7 +42,7 @@ class RStudioUtils {
     if (res.ok) {
       do {
         let doc = try SwiftSoup.parse(String(decoding: res.content!, as: UTF8.self))
-        let anchor = try doc.select("td.filename > a").first()!.text()
+        let anchor = try doc.select("td.filename > a").first()?.text().replacingOccurrences(of: "+", with: "%2B") ?? ""
         return(URL(string: "https://s3.amazonaws.com/rstudio-ide-build/desktop/macos/\(anchor)")!)
       } catch {
       }
@@ -52,6 +53,7 @@ class RStudioUtils {
   public static func latestVersionNumber(fromString : String? = nil) -> String {
     let urlString = (fromString == nil) ? latestVersionURL().absoluteString : fromString!
     return(
+      //                           https://s3.amazonaws.com/rstudio-ide-build/desktop/macos/RStudio-2021-07.0.266.dmg
       urlString // https://s3.amazonaws.com/rstudio-ide-build/desktop/macos/RStudio-1.4.1038.dmg
         .replacingOccurrences(of: "https://s3.amazonaws.com/rstudio-ide-build/desktop/macos/RStudio-", with: "")
         .replacingOccurrences(of: ".dmg", with: "")

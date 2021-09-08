@@ -22,7 +22,7 @@ struct DownloadButtonView : View {
 }
 
 struct DownloadView : View {
-    
+  
   let title: String
   let resourceURL: () -> URL
   
@@ -32,7 +32,7 @@ struct DownloadView : View {
   @State var showingAlert: Bool = false
   @State var alertMessage: String = ""
   @State var task: URLSessionDownloadTask?
-
+  
   func fileExists(basename: String) -> Bool {
     
     var isDirectory:ObjCBool = false
@@ -54,7 +54,7 @@ struct DownloadView : View {
         self.show = false
         self.isDownloading = false
       }
-
+      
       if (error != nil) {
         
         let err = error! as NSError
@@ -71,7 +71,7 @@ struct DownloadView : View {
         return()
         
       } else if (response != nil) {
-
+        
         let status = (response as? HTTPURLResponse)!.statusCode
         
         if (status < 300) {
@@ -89,26 +89,26 @@ struct DownloadView : View {
             
             let basename = NSString(string: urlString).lastPathComponent as String
             let dldir = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
-            let dlfile = dldir.appendingPathComponent(basename)
+            let dlfile = dldir.appendingPathComponent(basename.replacingOccurrences(of: "%2B", with: "+"))
             
             try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             try FileManager.default.moveItem(at: fileURL, to: dlfile)
-                        
+            
             NSWorkspace.shared.activateFileViewerSelecting([dlfile])
             
             DispatchQueue.main.async {
               self.progress = 0
             }
-
+            
             if (dlfile.pathExtension == "dmg") {
-
+              
               let task = Process.launchedProcess(
                 launchPath: "/usr/bin/hdiutil",
-                arguments: [ "attach", dlfile.absoluteString ]
+                arguments: [ "attach", "-autoopen", dlfile.absoluteString ]
               )
               task.waitUntilExit()
             }
-
+            
           } catch {
             DispatchQueue.main.async {
               self.alertMessage = "Error downloading \(title). Please ensure RSwitch has Full Disk Access permissions."
@@ -152,7 +152,7 @@ struct DownloadView : View {
       }
     }
     .padding(8)
-    .frame(width: 70, height: 60, alignment:  .center)
+    .frame(width: 90, height: 60, alignment:  .center)
     .background(Color(#colorLiteral(red: 0.1372351348, green: 0.1372662485, blue: 0.1372331679, alpha: 1)))
     .cornerRadius(10)
     .overlay(
@@ -167,7 +167,7 @@ struct DownloadView : View {
       }
       
       let urlString = resourceURL().absoluteString
-
+      
       let basename = URL(string: urlString)!.lastPathComponent
       
       if (fileExists(basename: basename)) {
@@ -176,7 +176,7 @@ struct DownloadView : View {
         self.show = false
         return()
       }
-
+      
       self.show = (currentReachabilityStatus != .notReachable)
       
       if (self.show) { downloadFile() }
@@ -200,27 +200,40 @@ struct Downloaders: View {
       
       Spacer()
       
-      DownloadView(
-        title: "R-devel",
-        resourceURL: RUtils.RDevelURL
-      )
-
+      VStack {
+        Spacer()
+        DownloadView(
+          title: "R-dev (arm)",
+          resourceURL: RUtils.RDevelURLArm
+        )
+        
+        Spacer()
+        
+        DownloadView(
+          title: "R-dev (x86)",
+          resourceURL: RUtils.RDevelURLX86
+        )
+        Spacer()
+      }
+      
+      VStack {
+        Spacer()
+        DownloadView(
+          title: "RStudio",
+          resourceURL: RStudioUtils.latestVersionURL
+        )
+        
+        Spacer()
+        
+        DownloadView(
+          title: "RS Pro",
+          resourceURL: RStudioUtils.latestProVersionURL
+        )
+        Spacer()
+      }
+      
       Spacer()
       
-      DownloadView(
-        title: "RStudio",
-        resourceURL: RStudioUtils.latestVersionURL
-      )
-      
-      Spacer()
-
-      DownloadView(
-        title: "RS Pro",
-        resourceURL: RStudioUtils.latestProVersionURL
-      )
-      
-      Spacer()
-
     }
     
   }

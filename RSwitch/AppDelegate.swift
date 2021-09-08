@@ -27,13 +27,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let contentView = ContentView()
     
     popover.contentViewController = MainViewController()
-    popover.contentSize = NSSize(width: 300, height: 200)
+    popover.contentSize = NSSize(width: 300, height: 300)
     popover.contentViewController?.view = NSHostingView(rootView: contentView)
-  
+    
     statusBar = StatusBarController.init(popover)
     
     URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
-        
+    
     timer = Timer.scheduledTimer(
       timeInterval: 3600,
       target: self,
@@ -41,9 +41,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       userInfo: nil,
       repeats: true
     )
-        
+    
     performTimer(nil)
-
+    
   }
   
   func applicationWillFinishLaunching(_ aNotification: Notification) {
@@ -66,30 +66,34 @@ extension AppDelegate {
   ]
   
   static let downloadsFolder = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
-
+  
   static let targetSize = NSSize(width: 20.0, height: 20.0)
   static let rlogo = #imageLiteral(resourceName: "RLogo").resized(to: targetSize)
   
   @objc func performRStudioCheck(_ sender: NSObject?) {
-
+    
     if (currentReachabilityStatus != .notReachable) {
-
+      
       if (Preferences.hourlyRStudioCheck) {
         let v = RStudioUtils.latestVersionNumber()
         if (!Preferences.lastVersionNotified.isVersion(equalTo: v)) {
-          DispatchQueue.main.async { Preferences.lastVersionNotified = v }
-          notifyUser(title: "New Version Available", subtitle: "RStudio", body: "Version: \(v)")
+          if (v.last != "/") {
+            DispatchQueue.main.async { Preferences.lastVersionNotified = v }
+            notifyUser(title: "New Version Available", subtitle: "RStudio", body: "Version: \(v)")
+          }
         }
       }
       
       if (Preferences.hourlyRStudioProCheck) {
         let vp = RStudioUtils.latestProVersionNumber()
         if (!Preferences.lastProVersionNotified.isVersion(equalTo: vp)) {
-          DispatchQueue.main.async { Preferences.lastProVersionNotified = vp }
-          notifyUser(title: "New Version Available", subtitle: "RStudio Pro", body: "Version: \(vp)")
+          if (vp.last != "/") {
+            DispatchQueue.main.async { Preferences.lastProVersionNotified = vp }
+            notifyUser(title: "New Version Available", subtitle: "RStudio Pro", body: "Version: \(vp)")
+          }
         }
       }
-
+      
     }
   }
   
