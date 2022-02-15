@@ -6,7 +6,6 @@
 
 import Cocoa
 import SwiftUI
-import ProcLib
 import UserNotifications
 
 @NSApplicationMain
@@ -27,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let contentView = ContentView()
     
     popover.contentViewController = MainViewController()
-    popover.contentSize = NSSize(width: 300, height: 300)
+    popover.contentSize = NSSize(width: 300, height: 200)
     popover.contentViewController?.view = NSHostingView(rootView: contentView)
     
     statusBar = StatusBarController.init(popover)
@@ -59,46 +58,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 extension AppDelegate {
   
-  static var downloadObservers : [ String: NSKeyValueObservation? ]  = [
-    "R-devel": nil,
-    "RStudio": nil,
-    "RS Pro": nil
-  ]
-  
-  static let downloadsFolder = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
-  
   static let targetSize = NSSize(width: 20.0, height: 20.0)
   static let rlogo = #imageLiteral(resourceName: "RLogo").resized(to: targetSize)
   
-  @objc func performRStudioCheck(_ sender: NSObject?) {
-    
-    if (currentReachabilityStatus != .notReachable) {
-      
-      if (Preferences.hourlyRStudioCheck) {
-        let v = RStudioUtils.latestVersionNumber()
-        if (!Preferences.lastVersionNotified.isVersion(equalTo: v)) {
-          if (v.last != "/") {
-            DispatchQueue.main.async { Preferences.lastVersionNotified = v }
-            notifyUser(title: "New Version Available", subtitle: "RStudio", body: "Version: \(v)")
-          }
-        }
-      }
-      
-      if (Preferences.hourlyRStudioProCheck) {
-        let vp = RStudioUtils.latestProVersionNumber()
-        if (!Preferences.lastProVersionNotified.isVersion(equalTo: vp)) {
-          if (vp.last != "/") {
-            DispatchQueue.main.async { Preferences.lastProVersionNotified = vp }
-            notifyUser(title: "New Version Available", subtitle: "RStudio Pro", body: "Version: \(vp)")
-          }
-        }
-      }
-      
-    }
-  }
-  
   @objc func performTimer(_ sender: Timer?) {
-    if (Preferences.hourlyRStudioCheck) { performRStudioCheck(sender) }
   }
   
 }

@@ -35,7 +35,7 @@ extension NSImage {
   
 }
 
-// Abusing thje String class to deal with R version numbers
+// Abusing the String class to deal with R version numbers
 
 extension String {
   

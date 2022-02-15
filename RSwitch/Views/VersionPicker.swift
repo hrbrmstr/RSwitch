@@ -62,7 +62,6 @@ struct VersionPicker: View {
 
     }
     .padding(4)
-    .background(Color(#colorLiteral(red: 0.1372351348, green: 0.1372662485, blue: 0.1372331679, alpha: 1)))
     .cornerRadius(5)
     .alert(isPresented: $showingAlert) {
       Alert(

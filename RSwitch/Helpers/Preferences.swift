@@ -16,12 +16,8 @@ extension UserDefaults {
   
   enum Key: String {
     case showDockIcon = "showDockIcon"
-    case hourlyRStudioCheck = "hourlyRStudioCheck"
-    case hourlyRStudioProCheck = "hourlyRStudioProCheck"
     case ensureFileHandlers = "ensureFileHandlers"
     case firstRunGone = "firstRunGone"
-    case lastVersionNotified = "lastVersionNotified"
-    case lastProVersionNotified = "lastProVersionNotified"
     case notificationsAllowed = "notificationsAllowed"
   }
   
@@ -52,22 +48,6 @@ struct DockIcon {
 
 struct Preferences {
   
-  static var hourlyRStudioCheck: Bool {
-    get { return(defaults.bool(forKey: .hourlyRStudioCheck)) }
-    set {
-      defaults.set(newValue, forKey: .hourlyRStudioCheck)
-      defaults.synchronize()
-    }
-  }
-  
-  static var hourlyRStudioProCheck: Bool {
-    get { return(defaults.bool(forKey: .hourlyRStudioProCheck)) }
-    set {
-      defaults.set(newValue, forKey: .hourlyRStudioProCheck)
-      defaults.synchronize()
-    }
-  }
-
   static var showDockIcon: Bool {
     get { return(defaults.bool(forKey: .showDockIcon)) }
     set {
@@ -92,28 +72,6 @@ struct Preferences {
     }
   }
   
-  static var lastVersionNotified : String {
-    get {
-      let x = defaults.string(forKey: .lastVersionNotified)
-      return((x == nil) ? "" : x!)
-    }
-    set {
-      defaults.set(newValue, forKey: .lastVersionNotified)
-      defaults.synchronize()
-    }
-  }
-  
-  static var lastProVersionNotified : String {
-    get {
-      let x = defaults.string(forKey: .lastProVersionNotified)
-      return((x == nil) ? "" : x!)
-    }
-    set {
-      defaults.set(newValue, forKey: .lastProVersionNotified)
-      defaults.synchronize()
-    }
-  }
-
   static var ensureFileHandlers: Bool {
     get { return(defaults.bool(forKey: .ensureFileHandlers)) }
     set {
@@ -125,12 +83,8 @@ struct Preferences {
   static func restore() {
     Preferences.showDockIcon = false
     Preferences.firstRunGone = false
-    Preferences.hourlyRStudioCheck = true
-    Preferences.hourlyRStudioProCheck = true
     Preferences.ensureFileHandlers = false
     Preferences.notificationsAllowed = true
-    Preferences.lastVersionNotified = ""
-    Preferences.lastProVersionNotified = ""
   }
   
 }

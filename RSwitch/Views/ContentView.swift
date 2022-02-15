@@ -8,8 +8,6 @@ import AppKit
 struct PrefsView: View {
   
   @Binding var show : Bool
-  @State var rstudioCheck : Bool = Preferences.hourlyRStudioCheck
-  @State var rstudioProCheck : Bool = Preferences.hourlyRStudioProCheck
   @State var showDockIcon : Bool = Preferences.showDockIcon
   
   var body: some View {
@@ -17,14 +15,6 @@ struct PrefsView: View {
     VStack {
       Form {
         Group {
-          Toggle("Check hourly for new RStudio Daily", isOn: $rstudioCheck)
-            .onChange(of: rstudioCheck) { _ in
-              DispatchQueue.main.async { Preferences.hourlyRStudioCheck = rstudioCheck }
-            }
-          Toggle("Check hourly for new RStudio Pro Daily", isOn: $rstudioProCheck)
-            .onChange(of: rstudioProCheck) { _ in
-              DispatchQueue.main.async { Preferences.hourlyRStudioProCheck = rstudioProCheck }
-            }
           Toggle("Show icon in the Dock as well as menu", isOn: $showDockIcon)
             .onChange(of: showDockIcon) { _ in
               DispatchQueue.main.async { Preferences.showDockIcon = showDockIcon }
@@ -35,10 +25,6 @@ struct PrefsView: View {
         
       }
       VStack {
-        Button("Clear stored version checks") {
-          Preferences.lastVersionNotified = ""
-          Preferences.lastProVersionNotified = ""
-        }
         Button("Done") { show = false }
       }
     }.padding()
@@ -82,7 +68,12 @@ struct ContentView: View {
       VersionPicker()
         .environmentObject(versionsModel)
       
-      Downloaders()
+      Spacer()
+
+      Link("\(Image(systemName: "link.circle")) RSwitch Home", destination: URL(string: "https://github.com/hrbrmstr/RSwitch")!)
+      Divider()
+      Link("\(Image(systemName: "link.circle")) macOS for R Developers",  destination: URL(string: "https://mac.r-project.org")!)
+      Link("\(Image(systemName: "link.circle")) R for macOS (CRAN)",  destination: URL(string: "https://cran.r-project.org/bin/macosx/")!)
       
       Spacer()
       
@@ -90,8 +81,7 @@ struct ContentView: View {
       
     }
     .padding(10)
-    .frame(minWidth: 300.0, minHeight: 300, alignment: .top)
-    .background(Color(#colorLiteral(red: 0.1176293567, green: 0.1176572666, blue: 0.1176275685, alpha: 1)))
+    .frame(minWidth: 300.0, alignment: .top)
     .cornerRadius(5)
     .sheet(isPresented: $prefsShowing, content: {
       PrefsView(show: $prefsShowing)
