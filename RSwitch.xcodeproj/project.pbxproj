@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0146075C27BE8AB0001C5E64 /* rswitch-cli in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0146075B27BE8AB0001C5E64 /* rswitch-cli */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0147150427BD4FB900982AE7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0147150327BD4FB900982AE7 /* main.swift */; };
 		0147150A27BD517800982AE7 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 0147150927BD517800982AE7 /* ArgumentParser */; };
 		0147150C27BD557D00982AE7 /* RVersions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0147150B27BD557D00982AE7 /* RVersions.swift */; };
@@ -27,6 +28,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0146075627BE83B9001C5E64 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 12;
+			files = (
+				0146075C27BE8AB0001C5E64 /* rswitch-cli in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		014714FF27BD4FB900982AE7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,6 +50,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0146075827BE8630001C5E64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0146075B27BE8AB0001C5E64 /* rswitch-cli */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = "rswitch-cli"; path = "DerivedData/RSwitch/Build/Products/Release/rswitch-cli"; sourceTree = "<group>"; };
 		0147150127BD4FB900982AE7 /* rswitch-cli */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "rswitch-cli"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0147150327BD4FB900982AE7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		0147150B27BD557D00982AE7 /* RVersions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RVersions.swift; sourceTree = "<group>"; };
@@ -85,6 +98,7 @@
 			children = (
 				0147150327BD4FB900982AE7 /* main.swift */,
 				0147150B27BD557D00982AE7 /* RVersions.swift */,
+				0146075827BE8630001C5E64 /* Info.plist */,
 			);
 			path = "rswitch-cli";
 			sourceTree = "<group>";
@@ -92,6 +106,7 @@
 		A70B6227237AF87000A2BA73 = {
 			isa = PBXGroup;
 			children = (
+				0146075B27BE8AB0001C5E64 /* rswitch-cli */,
 				A70B6232237AF87000A2BA73 /* RSwitch */,
 				A70B6231237AF87000A2BA73 /* Products */,
 			);
@@ -184,6 +199,7 @@
 				A70B622C237AF87000A2BA73 /* Sources */,
 				A70B622D237AF87000A2BA73 /* Frameworks */,
 				A70B622E237AF87000A2BA73 /* Resources */,
+				0146075627BE83B9001C5E64 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -204,7 +220,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1330;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1330;
 				ORGANIZATIONNAME = "Golden Chopper";
 				TargetAttributes = {
 					0147150027BD4FB900982AE7 = {
@@ -296,12 +312,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBY22P58G8;
 				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/RSwitch/rswitch-cli/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "is.rud.rswitch-cli";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -310,12 +329,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBY22P58G8;
 				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/RSwitch/rswitch-cli/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "is.rud.rswitch-cli";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -475,12 +497,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RSwitch/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Bob Rudis";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 3.1.0b;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = is.rud.rswitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

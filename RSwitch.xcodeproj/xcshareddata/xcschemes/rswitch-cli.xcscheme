@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A70B622F237AF87000A2BA73"
-               BuildableName = "RSwitch.app"
-               BlueprintName = "RSwitch"
+               BlueprintIdentifier = "0147150027BD4FB900982AE7"
+               BuildableName = "rswitch-cli"
+               BlueprintName = "rswitch-cli"
                ReferencedContainer = "container:RSwitch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A70B622F237AF87000A2BA73"
-            BuildableName = "RSwitch.app"
-            BlueprintName = "RSwitch"
+            BlueprintIdentifier = "0147150027BD4FB900982AE7"
+            BuildableName = "rswitch-cli"
+            BlueprintName = "rswitch-cli"
             ReferencedContainer = "container:RSwitch.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A70B622F237AF87000A2BA73"
-            BuildableName = "RSwitch.app"
-            BlueprintName = "RSwitch"
+            BlueprintIdentifier = "0147150027BD4FB900982AE7"
+            BuildableName = "rswitch-cli"
+            BlueprintName = "rswitch-cli"
             ReferencedContainer = "container:RSwitch.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
