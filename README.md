@@ -1,3 +1,7 @@
+It's been Sherlocked: https://github.com/r-lib/rig/ so ima archiving the project.
+
+---------------------------------------
+
 # RSwitch — Menubar and command-line utility to switch R versions on macOS
 
 The next iteration of RSwitch (macOS 11+)
